@@ -1,0 +1,1517 @@
+/* =====================================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+   ===================================================== */
+
+/* CSS: Selector de raíz para definir variables reutilizables en todo el archivo */
+:root { 
+    /* Colores: Variables que usa el CSS para pintar botones e iconos */
+    --primary: #6366f1;       /* CSS: Color índigo base para botones y tabs */
+    --primary-dark: #4f46e5;  /* CSS: Tono oscuro para efectos hover */
+    --secondary: #0ea5e9;     /* CSS: Azul cielo para degradados */
+    --accent: #8b5cf6;        /* CSS: Violeta para acentos visuales */
+    
+    /* Texto: Variables que definen el color de las letras en el HTML */
+    --text-main: #1e293b;     /* CSS: Color principal para párrafos y títulos */
+    --text-muted: #64748b;    /* CSS: Color gris para descripciones secundarias */
+    --text-light: #f8fafc;    /* CSS: Color claro para texto sobre fondos oscuros */
+
+    /* Fondos: Variables para las capas del diseño */
+    --bg-body: #f3f4f6;       /* CSS: Fondo del <body> en modo claro */
+    --bg-card: rgba(255, 255, 255, 0.55); /* CSS/HTML: Fondo traslúcido de las tarjetas */
+    --bg-header: rgba(255, 255, 255, 0.1); /* CSS/HTML: Fondo del <header> superior */
+    --border-glass: 1px solid rgba(255, 255, 255, 0.3); /* CSS: Borde sutil tipo cristal */
+
+    /* Efectos: Sombras que dan profundidad al HTML */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);   /* CSS: Sombra suave para inputs */
+    --shadow-md: 0 8px 20px rgba(0,0,0,0.08);  /* CSS: Sombra para tarjetas */
+    --shadow-lg: 0 20px 30px rgba(0,0,0,0.12); /* CSS: Sombra para el modal */
+
+    /* Fuentes: Relación con los links de Google Fonts en el <head> del HTML */
+    --font-heading: 'Poppins', sans-serif; /* CSS: Fuente para títulos h1, h2, h3 */
+    --font-body: 'Inter', sans-serif;      /* CSS: Fuente para párrafos generales */
+    --font-code: 'Fira Code', monospace;   /* CSS: Fuente para etiquetas <code> */
+
+    /* Radios: Define la redondez de las esquinas en el HTML */
+    --radius-md: 16px; /* CSS: Redondeo de cuadros internos */
+    --radius-lg: 24px; /* CSS: Redondeo de tarjetas y modal */
+}
+
+/* CSS: Clase activada por javascript.js (función toggleDarkMode) */
+body.dark-mode { 
+    --text-main: #f1f5f9;      /* CSS: Texto claro para la noche */
+    --text-muted: #94a3b8;     /* CSS: Texto grisáceo sutil */
+    --bg-body: #0f172a;        /* CSS: Fondo azul noche para el <body> */
+    --bg-card: rgba(15, 23, 42, 0.25); /* CSS: Tarjetas oscuras traslúcidas */
+    --bg-header: rgba(0, 0, 0, 0.3);   /* CSS: Header más oscuro */
+    --border-glass: 1px solid rgba(255, 255, 255, 0.08); /* CSS: Borde nocturno */
+    --shadow-md: 0 8px 20px rgba(0,0,0,0.3); /* CSS: Sombras más fuertes */
+}
+
+/* CSS: Selector universal para resetear márgenes de fábrica del navegador */
+* { 
+    margin: 0;           /* CSS: Quita espacio externo de todas las etiquetas */
+    padding: 0;          /* CSS: Quita espacio interno de todas las etiquetas */
+    box-sizing: border-box; /* CSS: Asegura que el padding no altere el ancho total */
+}
+
+/* CSS: Estilo base para la etiqueta maestra <body> */
+body { 
+    font-family: var(--font-body);       /* CSS: Aplica fuente Inter a todo el sitio */
+    background-color: var(--bg-body);    /* CSS: Aplica color de fondo dinámico */
+    color: var(--text-main);             /* CSS: Aplica color de texto dinámico */
+    transition: background-color 0.3s ease, color 0.3s ease; /* CSS: Suaviza cambio a modo oscuro */
+    min-height: 100vh;                   /* CSS: Cubre el 100% del alto de la pantalla */
+    position: relative;                  /* CSS: Base para posicionar elementos absolutos detrás */
+    overflow-x: hidden;                  /* CSS: Bloquea el scroll hacia los lados */
+}
+
+/* =====================================================
+   1.1 SCROLLBAR PERSONALIZADO (CROMO/FIREFOX)
+   ===================================================== */
+
+/* CSS: Pseudoelemento para la barra lateral en Chrome/Edge/Safari */
+::-webkit-scrollbar { 
+    width: 8px;              /* CSS: Define el ancho de la barra de scroll */
+}
+
+/* CSS: El fondo por donde corre la barra */
+::-webkit-scrollbar-track { 
+    background: var(--bg-body); /* CSS: El carril usa el fondo del sitio */
+}
+
+/* CSS: La parte móvil de la barra de scroll */
+::-webkit-scrollbar-thumb { 
+    background: rgba(99, 102, 241, 0.3); /* CSS: Color índigo con transparencia */
+    border-radius: 10px;      /* CSS: Bordes tipo cápsula */
+    border: 2px solid var(--bg-body); /* CSS: Crea separación visual con el fondo */
+}
+
+/* CSS: Cambio de color al tocar la barra de scroll */
+::-webkit-scrollbar-thumb:hover { 
+    background: var(--primary); /* CSS: Color sólido al interactuar */
+}
+
+/* CSS: Estilo simplificado para el navegador Firefox */
+* { 
+    scrollbar-width: thin; /* CSS: Barra delgada en Firefox */
+    scrollbar-color: rgba(99, 102, 241, 0.3) transparent; /* CSS: Colores en Firefox */
+}
+
+/* CSS: Capa decorativa que va detrás de todo el contenido */
+.background-shapes { 
+    position: fixed;     /* CSS: Fija la decoración al monitor */
+    top: 0; left: 0; width: 100%; height: 100%; /* CSS: Cubre toda la pantalla */
+    z-index: -1;         /* CSS: La envía detrás del texto y tarjetas */
+    background: 
+        radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 40%), /* CSS: Mancha de luz arriba */
+        radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.1) 0%, transparent 40%); /* CSS: Mancha de luz abajo */
+    pointer-events: none; /* CSS: Permite clics al fondo si se tocan las manchas */
+}
+
+/* CSS: Aplica tipografía Poppins a los títulos del HTML */
+h1, h2, h3 { 
+    font-family: var(--font-heading); /* CSS: Fuente Poppins */
+    font-weight: 700;                 /* CSS: Grosor de letra fuerte */
+}
+
+/* CSS: Reglas que se activan con body.dark-mode en javascript.js */
+body.dark-mode .tarjeta-img-contenedor img { 
+    filter: brightness(0.8) contrast(1.1); /* CSS: Atenúa las fotos de las tarjetas */
+    transition: filter 0.3s ease; /* CSS: Transición suave del filtro */
+}
+
+/* =====================================================
+   FONDO DINÁMICO: REJILLA (DÍA) / MATRIX (NOCHE)
+   ===================================================== */
+
+/* CSS: Estilo para el <canvas id="matrix-bg"> usado en javascript.js */
+#matrix-bg { 
+    position: fixed; /* CSS: Fijo detrás de las tarjetas */
+    top: 0; left: 0; width: 100vw; height: 100vh; /* CSS: Tamaño total de ventana */
+    z-index: -2;          /* CSS: Más al fondo que las manchas decorativas */
+    opacity: 0.07; /* CSS: Opacidad muy baja por defecto */
+    pointer-events: none; /* CSS: No interfiere con el uso de la web */
+}
+
+/* CSS: Estado cuando NO está activa la clase dark-mode */
+body:not(.dark-mode) { 
+    background: 
+        linear-gradient(rgb(248, 250, 252), rgb(248, 250, 252)), 
+        url('../img/fondos/header-bg1.jpg'); /* HTML/CSS: Carga imagen de fondo de día */
+    background-size: cover; /* CSS: Ajusta imagen al ancho */
+    background-position: center; /* CSS: Centra imagen */
+    background-attachment: fixed; /* CSS: Fondo estático al bajar */
+    background-color: #f8fafc;    /* CSS: Respaldo de color sólido */
+}
+
+/* CSS: Estilo para los párrafos dentro de tarjetas en modo día */
+body:not(.dark-mode) .tarjeta p { 
+    color: #475569; /* CSS: Color de texto para mejor lectura diurna */
+}
+
+/* CSS: Estilo para botones de copiar en modo día */
+body:not(.dark-mode) .btn-copiar { 
+    background: rgba(241, 245, 249, 0.9); /* CSS: Fondo casi sólido */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* CSS: Borde sutil */
+}
+
+/* CSS: Oculta el efecto Matrix del javascript.js durante el día */
+body:not(.dark-mode) #matrix-bg { 
+    display: none; 
+}
+
+/* CSS: Activa el Matrix en noche mediante javascript.js */
+body.dark-mode #matrix-bg { 
+    display: block;  /* CSS: Muestra el canvas */
+    opacity: 0.22;   /* CSS: Brillo ideal para el fondo Matrix */
+}
+
+/* =====================================================
+   2. HEADER, BUSCADOR Y NAVEGACIÓN (INTEGRADO)
+   ===================================================== */
+
+/* CSS: Estilo para la etiqueta <header> del index.html */
+header { 
+    background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.7)), 
+        url('../img/fondos/header-bg2.jpg'); /* HTML/CSS: Imagen de cabecera nocturna */
+    background-size: cover;           /* CSS: Ajuste total */
+    background-position: center;      /* CSS: Centrado */
+    background-attachment: fixed;     /* CSS: Efecto Parallax al bajar */
+    backdrop-filter: blur(15px);      /* CSS: Desenfoque de cristal */
+    -webkit-backdrop-filter: blur(15px); /* CSS: Compatibilidad Apple */
+    border-bottom: var(--border-glass); /* CSS: Línea inferior de cristal */
+    padding: 4rem 1.5rem;             /* CSS: Espaciado interno de cabecera */
+    text-align: center;               /* CSS: Centra título y buscador */
+    position: relative;               /* CSS: Ancla para elementos internos */
+    overflow: hidden;                 /* CSS: Corta elementos que se salgan */
+}
+
+/* CSS: Estilo para el título <h1> dentro del header */
+header h1 { 
+    font-size: 3rem;                  /* CSS: Tamaño impactante */
+    margin-bottom: 0.5rem;            /* CSS: Espacio con el subtítulo */
+    background: linear-gradient(135deg, var(--primary), var(--secondary)); /* CSS: Degradado de letras */
+    -webkit-background-clip: text;    /* CSS: Recorta degradado a la forma de las letras */
+    -webkit-text-fill-color: transparent; /* CSS: Letras transparentes para ver degradado */
+    background-clip: text;            /* CSS: Recorte de fondo a texto */
+    text-shadow: 0 4px 15px rgba(0,0,0,0.3); /* CSS: Sombra para profundidad de texto */
+}
+
+/* CSS: Cambia la cabecera cuando no hay modo oscuro */
+body:not(.dark-mode) header { 
+    background: 
+        linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255)), 
+        url('../img/fondos/header-bg3.jpg'); /* HTML/CSS: Imagen de cabecera diurna */
+    background-size: cover; /* CSS: Ajuste total */
+    background-position: center; /* CSS: Centrado */
+    background-attachment: fixed; /* CSS: Efecto Parallax */
+    backdrop-filter: blur(12px); /* CSS: Cristal de día */
+    -webkit-backdrop-filter: blur(12px); /* CSS: Compatibilidad Apple */
+}
+
+/* CSS: Estilo para el subtítulo del header en modo claro */
+body:not(.dark-mode) header p { 
+    color: #475569; /* CSS: Texto gris oscuro */
+    font-weight: 500; /* CSS: Grosor medio */
+}
+
+/* CSS: Estilo para el subtítulo general en el header */
+header p { 
+    color: var(--text-muted);         /* CSS: Color gris suave */
+    font-size: 1.1rem;                /* CSS: Tamaño de lectura cómodo */
+    margin-bottom: 2rem;              /* CSS: Espacio con el buscador */
+}
+
+/* CSS: Contenedor del buscador en index.html */
+.search-container { 
+    position: relative;               /* CSS: Ancla para el icono de lupa */
+    max-width: 550px;                 /* CSS: Ancho máximo en PC */
+    margin: 0 auto 2.5rem;            /* CSS: Centrado horizontal y margen inferior */
+}
+
+/* CSS: Estilo para el <input id="inputBusqueda"> */
+.search-container input { 
+    width: 100%;                      /* CSS: Ocupa todo el contenedor */
+    padding: 16px 20px 16px 55px;     /* CSS: Espacio para el icono de lupa */
+    border-radius: 50px;              /* CSS: Forma de píldora */
+    border: 2px solid transparent;    /* CSS: Borde invisible */
+    background: var(--bg-card);       /* CSS: Fondo traslúcido */
+    box-shadow: var(--shadow-sm);     /* CSS: Sombra ligera */
+    font-size: 1rem;                  /* CSS: Texto de búsqueda */
+    font-family: var(--font-body);    /* CSS: Fuente Inter */
+    color: var(--text-main);          /* CSS: Texto del usuario */
+    transition: all 0.3s ease;        /* CSS: Suaviza enfoque */
+}
+
+/* CSS: Estado cuando el usuario hace clic en el buscador */
+.search-container input:focus { 
+    outline: none;                    /* CSS: Quita borde azul de navegador */
+    border-color: var(--primary);     /* CSS: Pone borde índigo */
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2); /* CSS: Resplandor exterior */
+}
+
+/* CSS: Icono de lupa dentro del buscador */
+.search-container i { 
+    position: absolute;               /* CSS: Flota sobre el input */
+    left: 22px;                       /* CSS: Posición izquierda */
+    top: 50%;                         /* CSS: Centrado vertical */
+    transform: translateY(-50%);      /* CSS: Ajuste de centrado exacto */
+    color: var(--primary);            /* CSS: Color índigo */
+    font-size: 1.2rem;                /* CSS: Tamaño icono */
+}
+
+/* CSS: Estilo para la barra de categorías <nav id="tabs-categorias"> */
+#tabs-categorias { 
+    position: sticky;           /* CSS: Se queda fijo al bajar */
+    top: 0;                     /* CSS: Se ancla al techo */
+    z-index: 2000;              /* CSS: Encima de las tarjetas */
+    background: var(--bg-body); /* CSS: Color según tema */
+    backdrop-filter: blur(15px); /* CSS: Desenfoque de cristal al bajar */
+    -webkit-backdrop-filter: blur(15px); /* CSS: Compatibilidad Apple */
+    border-bottom: var(--border-glass); /* CSS: Línea inferior de separación */
+    padding: 15px 20px;         /* CSS: Espaciado interno */
+    margin: 0;                  /* CSS: Sin márgenes externos */
+    display: flex;              /* CSS: Botones en fila */
+    justify-content: flex-start; /* CSS: Alineación a la izquierda */
+    overflow-x: auto;           /* CSS: Scroll horizontal en celulares */
+    white-space: nowrap;        /* CSS: No permite saltos de línea */
+    scrollbar-width: thin;      /* CSS: Barra de scroll delgada */
+}
+
+/* 1. Centrar los botones dentro de la barra de navegación */
+.tabs-container {
+    display: flex;
+    justify-content: center; /* JS: Centra todas las pestañas en la pantalla */
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px;
+    scrollbar-width: none;
+}
+/* 2. Centrar el contenido DENTRO de cada pestaña */
+/* CSS: Estilo para cada botón <button class="tab"> */
+.tab { 
+    /* 1. ESTRUCTURA Y ALINEACIÓN (Lo nuevo) */
+    height: 42px;             /* Altura fija para uniformidad */
+    display: flex;            /* Activa el contenedor flexible */
+    align-items: center;      /* Centrado vertical */
+    justify-content: center;  /* Centrado horizontal (Texto + Número) */
+    gap: 8px;                 /* Espacio entre icono, texto y número */
+    flex-shrink: 0;           /* Evita que el botón se aplaste en móviles */
+    padding: 0 20px;          /* Espacio lateral interno */
+
+    /* 2. ESTILO VISUAL (Tus originales) */
+    background: transparent;
+    color: var(--text-muted);
+    border: 2px solid transparent;
+    border-radius: 30px;      /* Mantiene la forma de cápsula */
+    cursor: pointer;
+    font-weight: 600;
+    font-family: var(--font-body);
+    
+    /* 3. ANIMACIONES */
+    transition: background-color 0.4s ease, 
+                box-shadow 0.4s ease, 
+                transform 0.2s ease, 
+                color 0.3s ease;
+}
+
+/* 3. Estilo del contador (Badge) para que se vea profesional */
+.count-badge {
+    background: rgba(255, 255, 255, 0.15); /* Fondo sutil traslúcido */
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    min-width: 20px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* CSS: Efecto hover para botones de categoría */
+.tab:hover { 
+    background: rgba(99, 102, 241, 0.1); /* CSS: Fondo índigo traslúcido */
+    color: var(--primary);            /* CSS: Letras índigo */
+}
+
+/* CSS: Clase gestionada por javascript.js (filtrarPorCategoria) */
+.tab.active { 
+    background: var(--primary); /* CSS: Fondo índigo */
+    color: white; /* CSS: Letras blancas */
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); /* CSS: Resplandor índigo */
+}
+
+/* CSS: Colores específicos por cada botón activo */
+.tab.active.cmd { background: #000000; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); } /* CSS: Negro para CMD */
+.tab.active.atajos { background: #f39c12; box-shadow: 0 4px 12px rgba(243, 156, 18, 0.4); } /* CSS: Naranja para Atajos */
+.tab.active.basicos { background: #7f19c4; box-shadow: 0 4px 12px rgba(127, 25, 196, 0.4); } /* CSS: Púrpura para Básicos */
+.tab.active.programas { background: #045da1; box-shadow: 0 4px 12px rgba(4, 93, 161, 0.4); } /* CSS: Azul para Programas */
+.tab.active.aplicaciones { background: #db9717; box-shadow: 0 4px 12px rgba(219, 151, 23, 0.4); } /* CSS: Ocre para Aplicaciones */
+.tab.active.onlinea { background: #2ecc71; box-shadow: 0 4px 12px rgba(46, 204, 113, 0.4); } /* CSS: Verde para Online */
+.tab.active.windows { background: #54d8f0; box-shadow: 0 4px 12px rgba(84, 216, 240, 0.4); color: #1e293b; } /* CSS: Celeste para Windows */
+.tab.active.tutoriales { background: #04657e; box-shadow: 0 4px 12px rgba(3, 96, 119, 0.4); } /* CSS: Cian para Tutoriales */
+.tab.active.programacion { background: #023aa0; box-shadow: 0 4px 12px rgba(2, 58, 160, 0.4); } /* CSS: Marino para Programación */
+.tab.active.excel { background: #0b5f2e; box-shadow: 0 4px 12px rgba(11, 95, 46, 0.4); } /* CSS: Bosque para Excel */
+.tab.active.investigacion { background: #397399; box-shadow: 0 4px 12px rgba(72, 225, 236, 0.4); } /* CSS: Fucsia para Utilidades */
+.tab.active.utilidades { background: #ec4899; box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4); } /* CSS: Fucsia para Utilidades */
+
+/* style.css - Pestaña Favoritos con Alta Visibilidad */
+.tab.favoritas.active {
+    color: #ff9f43 !important; /* Naranja Ámbar técnico */
+    border-color: rgba(255, 159, 67, 0.6);
+    background: rgba(255, 159, 67, 0.1); 
+    box-shadow: 0 0 15px rgba(255, 159, 67, 0.2); 
+}
+
+.tab.favoritas .count-badge {
+    background: #ff9f43 !important;
+    color: #0f172a !important; /* Texto oscuro para máxima lectura */
+    box-shadow: 0 0 10px rgba(255, 159, 67, 0.5);
+}
+
+/* CSS: Barra de herramientas <div class="global-tools"> en index.html */
+.global-tools { 
+    display: flex; /* CSS: Iconos en fila */
+    align-items: center; /* CSS: Centrado vertical */
+    justify-content: center; /* CSS: Centrado horizontal */
+    gap: 8px; /* CSS: Separación entre botones */
+    margin: 25px auto 0; /* CSS: Margen superior y centrado automático */
+    padding: 8px 16px; /* CSS: Espacio interno cápsula */
+    width: fit-content; /* CSS: Ancho según contenido */
+    background: rgba(255, 255, 255, 0.05); /* CSS: Fondo traslúcido cristal */
+    backdrop-filter: blur(12px); /* CSS: Desenfoque cristal */
+    -webkit-backdrop-filter: blur(12px); /* CSS: Compatibilidad Apple */
+    border-radius: 50px; /* CSS: Bordes redondeados */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* CSS: Borde sutil */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); /* CSS: Sombra flotante */
+    transition: all 0.4s ease; /* CSS: Suaviza interacciones */
+}
+
+/* CSS: Efecto hover para la barra de herramientas completa */
+.global-tools:hover { 
+    background: rgba(255, 255, 255, 0.08); /* CSS: Aclara fondo */
+    border-color: var(--primary); /* CSS: Resplandor índigo */
+    transform: translateY(-2px); /* CSS: Levanta cápsula */
+}
+
+/* CSS: Botones internos de la barra global */
+.global-tools button { 
+    background: transparent; /* CSS: Sin fondo */
+    border: none; /* CSS: Sin borde */
+    width: 42px; /* CSS: Ancho fijo circular */
+    height: 42px; /* CSS: Alto fijo circular */
+    border-radius: 50%; /* CSS: Círculo perfecto */
+    cursor: pointer; /* CSS: Mano */
+    color: var(--text-muted); /* CSS: Gris suave */
+    font-size: 1.1rem; /* CSS: Tamaño icono */
+    display: flex; /* CSS: Centra icono */
+    align-items: center; /* CSS: Centrado vertical */
+    justify-content: center; /* CSS: Centrado horizontal */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* CSS: Animación elástica */
+    position: relative; /* CSS: Ancla para tooltip */
+}
+
+/* CSS: Hover para iconos internos de herramientas */
+.global-tools button:hover { 
+    color: white; /* CSS: Icono blanco */
+    background: var(--primary); /* CSS: Fondo índigo */
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.5); /* CSS: Brillo exterior */
+    transform: scale(1.1); /* CSS: Agranda botón */
+}
+
+/* CSS: Texto de ayuda al pasar el mouse (data-tooltip) */
+.global-tools button::after { 
+    content: attr(data-tooltip); /* HTML/CSS: Lee atributo del HTML */
+    position: absolute; /* CSS: Flota sobre botón */
+    bottom: -35px; /* CSS: Posición inferior */
+    font-size: 0.7rem; /* CSS: Letra pequeña */
+    background: var(--primary); /* CSS: Fondo índigo */
+    color: white; /* CSS: Letra blanca */
+    padding: 4px 8px; /* CSS: Espacio interno */
+    border-radius: 4px; /* CSS: Redondeado sutil */
+    opacity: 0; /* CSS: Invisible por defecto */
+    pointer-events: none; /* CSS: No interfiere clics */
+    transition: 0.3s; /* CSS: Suaviza aparición */
+}
+
+/* CSS: Muestra el tooltip al tocar el botón */
+.global-tools button:hover::after { 
+    opacity: 1; 
+}
+
+/* =====================================================
+   3. REJILLA DE TARJETAS (Grid principal)
+   ===================================================== */
+
+/* CSS: Estilo para el <section id="lista-recursos"> del index.html */
+.grid-container, #lista-recursos { 
+    display: grid;                    /* CSS: Activa rejilla de columnas */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* CSS: Columnas automáticas responsivas */
+    gap: 25px;                        /* CSS: Espacio entre tarjetas */
+    max-width: 1450px;                /* CSS: Ancho máximo en PC Cambia de 1200 a 1450 para que entren 4 */
+    margin: 40px auto;                /* CSS: Centrado horizontal y margen vertical */
+    padding: 0 20px;                  /* CSS: Espacio lateral para móviles */
+}
+
+/* CSS: Estilo para el <div> generado por javascript.js (función mostrarNotas) */
+.tarjeta { 
+    background: var(--bg-card);       /* CSS: Fondo según tema y transparencia */
+    backdrop-filter: blur(8px);      /* CSS: Desenfoque cristalino */
+    -webkit-backdrop-filter: blur(8px); /* CSS: Compatibilidad Apple */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* CSS: Borde sutil */
+    border-radius: var(--radius-lg);  /* CSS: Esquinas redondeadas de variable */
+    padding: 25px;                    /* CSS: Espacio interno */
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.2); /* CSS: Sombra profunda */
+    display: flex;                    /* CSS: Contenido apilado */
+    flex-direction: column;           /* CSS: Dirección vertical */
+    position: relative;               /* CSS: Ancla para imágenes */
+    overflow: hidden;                 /* CSS: Mantiene fotos dentro de bordes */
+    /* 2. LA ANIMACIÓN: Cómo entra a la pantalla */
+    animation: fadeInUp 0.4s ease forwards;
+    /* 3. LA TRANSICIÓN MEJORADA: Cómo se mueve después */
+    /* Usamos !important para asegurar que esta lista de transiciones 
+       específicas (opacidad, transform, etc.) sea la que mande sobre la anterior */
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.4s ease, 
+                opacity 0.4s ease, 
+                border-color 0.4s ease !important;   
+}
+
+/* CSS: Efecto hover para cada tarjeta */
+/* CSS: El efecto de elevar la tarjeta SOLO se activará en computadoras con mouse */
+@media (hover: hover) {
+    .tarjeta:hover { 
+        transform: translateY(-8px);      /* CSS: Sube tarjeta */
+        box-shadow: 0 10px 30px -5px rgba(99, 102, 241, 0.4); /* CSS: Resplandor índigo */
+        border-color: var(--primary);     /* CSS: Borde índigo */
+    }
+}
+
+/* CSS: Contenedor de la foto de la tarjeta */
+.tarjeta-img-contenedor { 
+    width: calc(100% + 50px); /* CSS: Compensa padding lateral de tarjeta */
+    margin: -25px -25px 20px -25px; /* CSS: Sube imagen al borde superior */
+    height: 160px; /* CSS: Alto fijo */
+    overflow: hidden; /* CSS: Corta zoom de imagen */
+    border-bottom: 2px solid var(--primary); /* CSS: Línea índigo divisoria */
+    /* JS: Si la tarjeta NO tiene imagen, este bloque debe seguir ocupando espacio */
+    background: var(--bg-body);
+}
+
+/* CSS: Estilo para la <img> inyectada por javascript.js */
+.tarjeta-img-contenedor img { 
+    width: 100%; /* CSS: Llena ancho */
+    height: 100%; /* CSS: Llena alto */
+    object-fit: cover; /* CSS: Ajuste sin deformar */
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* CSS: Zoom suave */
+}
+
+/* CSS: Zoom en foto al tocar la tarjeta */
+.tarjeta:hover .tarjeta-img-contenedor img { 
+    transform: scale(1.1); 
+}
+
+/* CSS: Contenedor de título y etiqueta en tarjeta */
+.comando-header { 
+    display: flex; /* CSS: Fila */
+    justify-content: space-between; /* CSS: Extremos */
+    align-items: flex-start; /* CSS: Arriba */
+    margin-bottom: 15px; /* CSS: Espacio inferior */
+}
+
+/* 1. Caja de Cabecera: Bloquea el espacio del Título y la Etiqueta */
+.tarjeta-header {
+    /* JS: Altura fija para que el comando negro no suba ni baje */
+    min-height: 90px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 5px;
+}
+
+/* 2. El Título: Ya no necesita min-height porque lo controla el header, 
+   pero limitamos las líneas para que no rompa la caja */
+.tarjeta h3 { 
+    font-size: 1.25rem;
+    margin: 0;
+    color: var(--text-main);
+    
+    /* JS: 1.4 de alto por línea x 2 líneas = 2.8rem exactos */
+    line-height: 1.4; 
+    min-height: 2.8rem; 
+    
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
+}
+
+/* 3. Bloque de Comando (code): Reserva un alto fijo para que la descripción siempre empiece a la misma altura */
+.tarjeta code {
+    background: #1e293b !important;
+    padding: 10px;
+    border-radius: 10px;
+    display: block;
+    margin: 10px 0;
+    height: 2.8rem; /* JS: Antes era 3.2rem, ahora es más compacto */
+    line-height: 1.2;
+    overflow-x: auto;
+    white-space: nowrap; 
+}
+
+/* 4. Descripción: Altura mínima para 3 líneas */
+.tarjeta p { 
+    color: var(--text-muted);
+    line-height: 1.4;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    line-clamp: 3;
+    overflow: hidden;   
+    /* JS: Reserva espacio para 3 líneas exactas (1.6 de alto x 3 líneas = ~4.8em) */
+    min-height: 4.5em; 
+}
+
+/* CSS: Indica al usuario que el texto se puede tocar */
+.expandible {
+    cursor: pointer;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+/* CSS: Cuando se activa la expansión, quitamos los límites */
+.expandible.expandida {
+    display: block !important; /* CSS: Apaga el motor de recorte */
+    -webkit-line-clamp: unset !important; 
+    line-clamp: unset !important;
+    overflow: visible !important;
+    min-height: auto !important; /* CSS: Deja que crezca lo que necesite */
+    background: rgba(99, 102, 241, 0.05); /* CSS: Un toque de color para resaltar */
+    padding: 5px;
+    border-radius: 8px;
+}
+
+/* CSS: Efecto visual al pasar el mouse */
+.expandible:hover {
+    color: var(--primary);
+}
+
+/* CSS: Texto resaltado en descripción */
+.tarjeta p strong { 
+    color: var(--text-main); /* CSS: Color fuerte */
+    font-weight: 900; /* CSS: Máximo grosor */
+}
+
+/* CSS: Contenedor inferior de botones en tarjeta */
+.panel-controles { 
+    display: flex; /* CSS: Fila */
+    gap: 12px; /* CSS: Separación botones */
+    margin-top: auto; /* CSS: Anclado al fondo */
+    padding-top: 15px; /* CSS: Margen interno */
+    border-top: 1px solid var(--border-glass); /* JS: Una línea sutil para separar el contenido de los botones */
+}
+
+/* CSS: Base para botones "Copiar" y "Guía" */
+.btn-accion { 
+    flex: 1; /* CSS: Mismo ancho ambos */
+    padding: 12px; /* CSS: Altura */
+    border-radius: 12px; /* CSS: Redondeado */
+    border: none; /* CSS: Sin borde */
+    cursor: pointer; /* CSS: Mano */
+    font-weight: 600; /* CSS: Negrita */
+    font-family: var(--font-body); /* CSS: Fuente Inter */
+    transition: all 0.2s ease; /* CSS: Suaviza hover */
+    display: flex; /* CSS: Centra icono */
+    align-items: center; /* CSS: Vertical */
+    justify-content: center; /* CSS: Horizontal */
+    gap: 8px; /* CSS: Icono-texto */
+}
+
+/* CSS: Botón específico para copiar */
+.btn-copiar { 
+    background: var(--bg-body); /* CSS: Fondo según tema */
+    color: var(--text-main); /* CSS: Letra según tema */
+    border: 1px solid rgba(0,0,0,0.1); /* CSS: Borde sutil */
+}
+
+/* CSS: Ajuste de borde para botón copiar en noche */
+body.dark-mode .btn-copiar { 
+    border-color: rgba(255,255,255,0.1); 
+}
+
+/* CSS: Cambio de fondo al tocar copiar */
+.btn-copiar:hover { background: #e2e8f0; }
+body.dark-mode .btn-copiar:hover { background: #334155; }
+
+/* CSS: Botón que abre el modal mediante javascript.js */
+.btn-tutorial { 
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark)); /* CSS: Degradado índigo */
+    color: white; /* CSS: Texto blanco */
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); /* CSS: Sombra índigo */
+}
+
+/* CSS: Efecto hover común para botones de tarjeta */
+.btn-accion:hover { 
+    box-shadow: 0 6px 15px rgba(99, 102, 241, 0.4); /* CSS: Más brillo */
+    transform: translateY(-2px); /* CSS: Levanta botón */
+}
+
+/* CSS: Contenedor de botones de links externos */
+/* 1. Contenedor: Forzamos la cuadrícula de 2 columnas */
+.links-seccion { 
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 10px; 
+    margin: 10px 0;
+    min-height: 40px; 
+}
+
+/* CSS: Estilo para los <a> inyectados por javascript.js */
+.link-item { 
+    text-decoration: none; /* CSS: Sin subrayado */
+    color: var(--primary); /* CSS: Letra índigo */
+    font-weight: 600; /* CSS: Negrita */
+    font-size: 0.9rem; /* CSS: Letra pequeña */
+    display: flex; /* CSS: Icono-texto */
+    align-items: center; /* CSS: Centrado */
+    gap: 5px; /* CSS: Espacio */
+    padding: 5px 10px; /* CSS: Margen interno */
+    background: rgba(99, 102, 241, 0.05); /* CSS: Fondo casi invisible */
+    border-radius: 8px; /* CSS: Redondeado sutil */
+    transition: 0.3s; /* CSS: Suaviza */
+}
+
+/* CSS: Hover para links de tarjeta */
+.link-item:hover { 
+    background: rgba(99, 102, 241, 0.15); /* CSS: Fondo notable */
+    transform: translateY(-2px); /* CSS: Levanta */
+}
+
+/* CSS: Mensaje inyectado por javascript.js si no hay resultados en búsqueda */
+.no-results { 
+    grid-column: 1 / -1; /* CSS: Ocupa todo el ancho de la rejilla */
+    text-align: center; /* CSS: Centrado */
+    padding: 40px; /* CSS: Espaciado */
+    color: var(--text-muted); /* CSS: Gris */
+    font-size: 1.2rem; /* CSS: Grande */
+    font-style: italic; /* CSS: Cursiva */
+}
+
+/* CSS: Barra de pestañas en modo diurno */
+body:not(.dark-mode) #tabs-categorias { 
+    background: rgba(243, 244, 246, 0.8) !important; /* CSS: Fondo claro traslúcido */
+    backdrop-filter: blur(12px); /* CSS: Desenfoque */
+    -webkit-backdrop-filter: blur(12px); /* CSS: Apple */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* CSS: Sombra tenue */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8); /* CSS: Brillo inferior */
+}
+
+/* CSS: Estilo para la etiqueta <main> del index.html */
+main { 
+    min-height: 100vh; /* CSS: Altura mínima total para scroll */
+}
+
+/* CSS: Ajuste de posición para las tarjetas */
+#lista-recursos { 
+    padding-top: 10px; /* Tu margen original */
+    transition: all 0.5s ease; /* El nuevo comando para suavidad */
+}
+
+/* =====================================================
+   4. ETIQUETAS DE COLOR POR CATEGORÍA
+   ===================================================== */
+
+/* CSS: Base para la insignia de categoría en cada tarjeta */
+.etiqueta { 
+    font-size: 0.75rem; /* CSS: Pequeña */
+    font-weight: bold; /* CSS: Negrita */
+    text-transform: uppercase; /* CSS: Forzar Mayúsculas */
+    padding: 4px 10px; /* CSS: Tamaño caja */
+    border-radius: 4px; /* CSS: Redondeado leve */
+    display: inline-block; /* CSS: Ancho según texto */
+    /* JS: Esta es la clave para que no se alargue */
+    width: fit-content;
+    margin-bottom: 10px; /* CSS: Espacio inferior */
+}
+
+/* CSS: Definición de colores según la clase inyectada por javascript.js */
+.etiqueta.cmd { background-color: #000000; color: white; } /* CSS: Negro */
+.etiqueta.atajos { background-color: #f39c12; color: white;} /* CSS: Naranja */
+.etiqueta.basicos { background-color: #7f19c4; color: white; } /* CSS: Púrpura */
+.etiqueta.programas { background-color: #045da1; color: white; } /* CSS: Azul */
+.etiqueta.aplicaciones { background-color: #db9717; color: white; } /* CSS: Ocre */
+.etiqueta.onlinea { background-color: #2ecc71; color: white; } /* CSS: Verde */
+.etiqueta.windows { background-color: #54d8f0; color: white; } /* CSS: Celeste */
+.etiqueta.tutoriales { background-color: #04657e; color: white; } /* CSS: Cian */
+.etiqueta.programacion { background-color: #023aa0; color: white; } /* CSS: Marino */
+.etiqueta.excel { background-color: #0b5f2e; color: white; } /* CSS: Bosque */
+.etiqueta.investigacion { background-color: #0b445f; color: white; } /* CSS: Bosque */
+.etiqueta.utilidades { background-color: #ec4899; color: white; } /* CSS: Fucsia */
+
+/* =====================================================
+   5. MODAL (Ventana Emergente)
+   ===================================================== */
+
+/* CSS: Estilo para el <div id="modal-tutorial"> */
+.modal { 
+    position: fixed; /* CSS: Fijo en pantalla */
+    top: 0; left: 0; width: 100%; height: 100%; /* CSS: Cubre monitor */
+    display: flex; /* CSS: Centrador */
+    justify-content: center; /* CSS: Centra horizontal */
+    align-items: center; /* CSS: Centra vertical */
+    z-index: 4000; /* CSS: Sobre todo el sitio */
+    padding: 20px; /* CSS: Margen móviles */
+}
+
+/* CSS: Capa oscura que desenfoca el fondo cuando el modal abre */
+.modal-blur-overlay { 
+    position: absolute; /* CSS: Cubre modal */
+    top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0, 0, 0, 0.5); /* CSS: Negro traslúcido */
+    backdrop-filter: blur(8px); /* CSS: Desenfoque de fondo */
+}
+
+/* CSS: Caja interna donde se lee el tutorial */
+.modal-contenido { 
+    background: var(--bg-card); /* CSS: Fondo según tema */
+    backdrop-filter: blur(20px); /* CSS: Cristal fuerte */
+    width: 100%; /* CSS: Ancho total */
+    max-width: 800px; /* CSS: Límite PC */
+    max-height: 90vh; /* CSS: No tapa toda la pantalla vertical */
+    overflow-y: auto; /* CSS: Scroll interno si es largo */
+    padding: 40px; /* CSS: Espacio interno */
+    border-radius: var(--radius-lg); /* CSS: Redondeado */
+    position: relative; /* CSS: Ancla para 'X' */
+    box-shadow: var(--shadow-lg); /* CSS: Sombra elevada */
+    border: var(--border-glass); /* CSS: Borde cristal */
+    z-index: 4001; /* CSS: Frente al overlay */
+}
+
+/* CSS: Botón con icono de 'X' gestionado por javascript.js (cerrarTutorial) */
+.cerrar-modal { 
+    position: absolute; /* CSS: Esquina superior */
+    top: 20px; right: 20px; /* CSS: Coordenadas */
+    width: 40px; height: 40px; /* CSS: Círculo */
+    background: var(--bg-body); /* CSS: Fondo según tema */
+    color: var(--text-muted); /* CSS: 'X' gris */
+    border: none; /* CSS: Sin borde */
+    border-radius: 50%; /* CSS: Redondo */
+    font-size: 1.2rem; /* CSS: Tamaño 'X' */
+    cursor: pointer; /* CSS: Mano */
+    transition: 0.3s; /* CSS: Suaviza giro */
+    display: flex; /* CSS: Centra icono */
+    align-items: center; /* CSS: Vertical */
+    justify-content: center; /* CSS: Horizontal */
+    z-index: 4002; /* CSS: Más arriba de todo */
+}
+
+/* CSS: Efecto al tocar la 'X' de cierre */
+.cerrar-modal:hover { 
+    background: #1123c5; /* CSS: Fondo azul */
+    color: white; /* CSS: 'X' blanca */
+    transform: rotate(90deg); /* CSS: Gira 'X' */
+}
+
+/* CSS: Clase activada por javascript.js (función toggleLectura) */
+.modal.modo-lectura .modal-contenido { 
+    max-width: 1000px; /* CSS: Agranda caja */
+    padding: 60px; /* CSS: Más aire */
+}
+
+/* CSS: Texto del tutorial cuando se activa modo lectura */
+.modal.modo-lectura .tutorial-contenido-pro { 
+    font-size: 1.15rem; /* CSS: Letra grande */
+    line-height: 1.8; /* CSS: Más espacio entre líneas */
+    max-width: 800px; /* CSS: Centrado de lectura */
+    margin: 0 auto; 
+}
+
+/* CSS: Color de botón indicando estado activo */
+.modal.modo-lectura .btn-lectura { 
+    background: var(--accent); /* CSS: Violeta */
+    color: white; 
+}
+
+/* =====================================================
+   6. DISEÑO Y CONTENIDO DEL TUTORIAL
+   ===================================================== */
+
+/* CSS: Parte superior inyectada por javascript.js en el modal */
+.tutorial-header { 
+    display: flex; /* CSS: Fila */
+    justify-content: space-between; /* CSS: Extremos */
+    align-items: center; /* CSS: Centrado vertical */
+    padding-right: 60px; /* CSS: Protege zona de 'X' */
+    border-bottom: 2px solid var(--primary); /* CSS: Línea índigo */
+    padding-bottom: 15px; /* CSS: Margen interno */
+    margin-bottom: 20px; /* CSS: Separación de texto */
+}
+
+/* CSS: Título grande dentro del tutorial abierto */
+.tutorial-header h2 { 
+    font-size: 2rem; /* CSS: Tamaño jerarquía */
+    color: var(--primary); /* CSS: Color índigo */
+}
+
+/* CSS: Botón de PDF gestionado por window.print() */
+.btn-pdf { 
+    background: #27ae60; /* CSS: Verde PDF */
+    color: white; /* CSS: Letra blanca */
+    border: none; /* CSS: Sin borde */
+    padding: 6px 12px; /* CSS: Tamaño pequeño */
+    border-radius: 6px; /* CSS: Redondeado sutil */
+    font-size: 0.8rem; /* CSS: Letra legible */
+    cursor: pointer; /* CSS: Mano */
+    display: flex; /* CSS: Icono-texto */
+    align-items: center; /* CSS: Centrado */
+    gap: 5px; /* CSS: Separación */
+    white-space: nowrap; /* CSS: Sin salto de línea */
+}
+
+/* CSS: Etiqueta de categoría dentro del tutorial */
+.tutorial-categoria { 
+    display: flex; /* CSS: Fila */
+    align-items: center; /* CSS: Centrado */
+    gap: 10px; /* CSS: Espacio */
+    margin-top: 10px; /* CSS: Margen */
+    font-weight: 500; /* CSS: Grosor medio */
+}
+
+/* CSS: Resaltado de categoría en modal */
+.tutorial-categoria strong { color: var(--primary); }
+
+/* CSS: Subtítulos de pasos dentro del tutorial */
+.tutorial-contenido-pro h3 { 
+    margin: 15px 0 10px; /* CSS: Espaciado */
+    font-size: 1.4rem; /* CSS: Tamaño paso */
+    color: var(--text-main); /* CSS: Color según tema */
+}
+
+/* CSS: Párrafos descriptivos del tutorial */
+.tutorial-contenido-pro p { 
+    margin-bottom: 10px; /* CSS: Separación */
+    line-height: 1.6; /* CSS: Lectura fluida */
+}
+
+/* CSS: Listas de viñetas en tutorial */
+.tutorial-contenido-pro ul { 
+    list-style: none; /* CSS: Sin puntos por defecto */
+    padding-left: 5px; /* CSS: Alineado */
+}
+
+/* CSS: Cada ítem de la lista del tutorial */
+.tutorial-contenido-pro ul li { 
+    margin-bottom: 8px; /* CSS: Separación */
+    padding-left: 15px; /* CSS: Espacio para viñeta */
+    position: relative; /* CSS: Ancla para ícono */
+}
+
+/* CSS: Icono de viñeta personalizado (Punto índigo) */
+.tutorial-contenido-pro ul li::before { 
+    content: "•"; /* CSS: Símbolo */
+    color: var(--primary); /* CSS: Color índigo */
+    position: absolute; /* CSS: Flota a izquierda */
+    left: 0; /* CSS: Posición */
+    font-weight: bold; /* CSS: Negrita */
+}
+
+/* CSS: Cuadros que resaltan bloques importantes en la guía */
+.tutorial-pasos { 
+    background: rgba(99, 102, 241, 0.06); /* CSS: Fondo índigo tenue */
+    border-left: 5px solid var(--primary); /* CSS: Barra índigo resaltadora */
+    padding: 25px; /* CSS: Espacio interno generoso */
+    border-radius: 0 var(--radius-md) var(--radius-md) 0; /* CSS: Redondeado solo derecha */
+    margin-top: 25px; /* CSS: Margen superior */
+    margin-bottom: 20px; /* CSS: Margen inferior */
+}
+
+/* CSS: Ajuste de contraste para bloques resaltados en noche */
+body.dark-mode .tutorial-pasos { background: rgba(99, 102, 241, 0.1); }
+
+/* CSS: Bloque resaltado secundario (sin barra lateral) */
+.tutorial-pasos.warning { 
+    background: rgba(207, 211, 208, 0.1); /* CSS: Gris tenue */
+    border-left: 0px solid #e4e1dd; /* CSS: Sin barra */
+}
+
+/* =====================================================
+   7. COMPONENTES TÉCNICOS Y CÓDIGO
+   ===================================================== */
+
+/* CSS: Estilo para comandos <code> y elementos .caja-negra */
+code, .caja-negra { 
+    background: #1e293b !important; /* CSS: Fondo terminal oscuro */
+    color: #e2e8f0 !important; /* CSS: Letra clara legible */
+    padding: 15px; /* CSS: Espacio interno */
+    border-radius: 12px; /* CSS: Redondeado comando */
+    display: block; /* CSS: Ocupa ancho total */
+    margin: 15px 0; /* CSS: Separación vertical */
+    font-family: var(--font-code); /* CSS: Fuente Fira Code */
+    font-size: 0.95rem; /* CSS: Tamaño letra código */
+    overflow-x: auto; /* CSS: Scroll si comando es largo */
+    border: 1px solid rgba(255,255,255,0.1); /* CSS: Borde sutil */
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3); /* CSS: Profundidad interna */
+}
+
+/* CSS: Estilo para simular teclas físicas (ej: Win+R) */
+kbd { 
+    background-color: #eee; /* CSS: Fondo gris claro */
+    border-radius: 3px; /* CSS: Esquinas leves */
+    border: 1px solid #b4b4b4; /* CSS: Borde tecla */
+    box-shadow: 0 1px 1px rgba(0,0,0,0.2); /* CSS: Sombra 3D */
+    color: #333; /* CSS: Letra oscura */
+    display: inline-block; /* CSS: Fluye con texto */
+    font-size: 0.85em; /* CSS: Pequeña */
+    font-weight: 700; /* CSS: Negrita */
+    line-height: 1; /* CSS: Altura ajustada */
+    padding: 2px 4px; /* CSS: Espaciado */
+    white-space: nowrap; /* CSS: Sin saltos de línea */
+}
+
+/* CSS: Contenedor que agrupa código y botón "Copiar" */
+.contenedor-comando { 
+    position: relative; /* CSS: Ancla para el botón interno */
+    display: block; /* CSS: Ancho total */
+    width: 100%; 
+}
+
+/* CSS: Botón de copiado pequeño inyectado por javascript.js */
+.btn-copiar-interno { 
+    position: absolute; /* CSS: Flota sobre el código */
+    bottom: 10px; /* CSS: Posición abajo */
+    right: 10px; /* CSS: Posición derecha */
+    padding: 6px 12px; /* CSS: Tamaño pequeño */
+    background: rgba(255, 255, 255, 0.1); /* CSS: Fondo traslúcido cristal */
+    color: #cbd5e0; /* CSS: Letra gris claro */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* CSS: Borde sutil */
+    border-radius: 6px; /* CSS: Redondeado sutil */
+    font-size: 0.75rem; /* CSS: Letra mini */
+    cursor: pointer; /* CSS: Mano */
+    display: flex; /* CSS: Icono-texto */
+    align-items: center; /* CSS: Centrado vertical */
+    gap: 8px; /* CSS: Separación */
+    transition: all 0.2s ease; /* CSS: Suaviza interacción */
+    backdrop-filter: blur(4px); /* CSS: Cristal leve */
+    z-index: 10; /* CSS: Sobre el texto del código */
+}
+
+/* CSS: Cambio al tocar el botón de copiado interno */
+.btn-copiar-interno:hover { 
+    background: var(--primary); /* CSS: Fondo índigo */
+    color: white; /* CSS: Letra blanca */
+    border-color: transparent; /* CSS: Quita borde */
+}
+
+/* CSS: Icono interno de copiado */
+.btn-copiar-interno i { font-size: 0.8rem; }
+
+/* CSS: Contenedor desplegable <details> del tutorial */
+.acordeon-tutorial { 
+    margin: 15px 0; /* CSS: Espaciado vertical */
+    border: 1px solid var(--primary); /* CSS: Borde índigo */
+    border-radius: 8px; /* CSS: Redondeado */
+    overflow: hidden; /* CSS: Mantiene contenido dentro */
+}
+
+/* CSS: Barra clickeable <summary> del acordeón */
+.acordeon-header { 
+    padding: 10px; /* CSS: Espacio clic */
+    background-color: var(--primary); /* CSS: Fondo índigo */
+    color: white; /* CSS: Letra blanca */
+    cursor: pointer; /* CSS: Mano */
+    font-weight: bold; /* CSS: Negrita */
+    list-style: none; /* CSS: Quita flecha nativa */
+    display: flex; /* CSS: Icono-texto */
+    align-items: center; /* CSS: Centrado */
+    gap: 10px; /* CSS: Separación */
+}
+
+/* CSS: Brillo al tocar la barra del acordeón */
+.acordeon-header:hover { filter: brightness(1.1); }
+
+/* CSS: Estilo para bloques de comandos largos o scripts (.BAT) */
+.codigo-consola { 
+    width: 100%; /* CSS: Ancho total */
+    overflow-x: auto; /* CSS: Scroll si línea es larga */
+    white-space: pre; /* CSS: Respeta saltos de línea de datos */
+    text-align: left; /* CSS: Alineado izquierda */
+    padding: 15px; /* CSS: Margen interno */
+    background-color: #2d2d2d; /* CSS: Gris editor oscuro */
+    color: #ccc; /* CSS: Letra gris claro */
+    margin: 0; /* CSS: Sin margen */
+    font-family: 'Consolas', monospace; /* CSS: Fuente terminal */
+    font-size: 0.9rem; /* CSS: Tamaño letra */
+    display: block; /* CSS: Bloque sólido */
+}
+
+/* CSS: Estilo para los <a> inyectados dentro de etiquetas <code> */
+code a.link-comando { 
+    color: #ffffff !important;   /* CSS: Blanco para máximo contraste en terminal */
+    text-decoration: none;       /* CSS: Sin subrayado estilo código */
+    font-weight: 500;            /* CSS: Grosor medio */
+    transition: all 0.3s ease;   /* CSS: Suaviza */
+}
+
+/* CSS: Efecto hover para links de descarga dentro de comandos */
+code a.link-comando:hover { 
+    color: var(--secondary) !important; /* CSS: Azul cielo brillante */
+    text-decoration: underline;         /* CSS: Subraya solo al tocar */
+}
+
+/* Esto asegura que el enlace sea negro en todos sus estados */
+.link-comando {
+    color: #000000; /* Negro */
+    text-decoration: none; /* Opcional: quita el subrayado si prefieres */
+}
+
+/* Para evitar que cambie a morado al hacer clic */
+.link-comando:visited {
+    color: #000000;
+}
+
+/* Opcional: un efecto visual cuando pases el mouse */
+.link-comando:hover {
+    color: #444444; 
+    text-decoration: underline;
+}
+
+/* =====================================================
+   8. BOTONES DE ENLACES POR PLATAFORMA
+   ===================================================== */
+
+/* CSS: Base para botones profesionales de enlaces externos */
+/* 2. Botón: Ahora es un rectángulo de tamaño fijo (Uniforme) */
+.btn-pro-link { 
+    /* JS: FÓRMULA CLAVE: (50% del ancho total) MENOS (5px, que es la mitad del gap de 10px) */
+    /* Esto garantiza que siempre quepan dos, sin importar el tamaño de pantalla */
+    width: calc(50% - 5px); /* JS: Exactamente la mitad menos el hueco */
+    height: 40px; 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-size: 0.75rem;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative; 
+    overflow: visible; /* JS: Para que la burbuja se vea fuera del botón */
+    box-sizing: border-box;
+}
+
+/* 3. El Texto: Esta configuración es VITAL para que el JS pueda medir */
+.texto-btn-cortado {
+    display: block !important;/* JS: Obligatorio para medición */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* JS: Pone los "..." */
+    flex: 1; /* JS: Ocupa todo el espacio sobrante del botón */
+    text-align: left;
+}
+
+/* 4. LA BURBUJA (Tooltip): Aparece sobre el rectángulo */
+.btn-pro-link::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 140%; left: 50%;
+    transform: translateX(-50%) translateY(10px) scale(0.9);
+    background: linear-gradient(135deg, #1e293b, #0f172a); 
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6); /* Sombra más fuerte para que resalte */
+    color: #f1f5f9;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    width: max-content;
+    max-width: 180px;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    /* Z-INDEX SUPREMO: Esto asegura que tape a cualquier otra cosa */
+    z-index: 9999 !important;
+}
+
+/* Flecha de la burbuja */
+.btn-pro-link::before {
+    content: '';
+    position: absolute;
+    bottom: 130%; left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    border: 6px solid transparent;
+    border-top-color: #0f172a;
+    opacity: 0;
+    transition: 0.3s ease;
+    /* Z-INDEX SUPREMO TAMBIÉN AQUÍ */
+    z-index: 9999 !important;
+}
+
+/* Solo se muestra si tiene la clase con-tooltip (puesta por JS) */
+.btn-pro-link.con-tooltip:hover::after,
+.btn-pro-link.con-tooltip:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+}
+
+/* CSS: Asegura que los botones internos del tutorial también sigan la cuadrícula de 2x2 */
+.tutorial-contenido-pro .links-seccion {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+/* CSS: Fuerza a que los botones internos tengan el mismo tamaño que los de afuera */
+.tutorial-contenido-pro .btn-pro-link {
+    width: calc(50% - 5px);
+}
+
+/* CSS: Efecto hover común para todos los links externos */
+.btn-pro-link:hover { 
+    color: white !important; /* CSS: Letra siempre blanca */
+    transform: translateY(-2px); /* CSS: Levanta botón */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* CSS: Sombra profundidad */
+    z-index: 100; /* Se eleva sobre el contenido normal */
+}
+
+/* CSS: Variante Roja para Youtube mediante javascript.js (link.plataforma) */
+.btn-pro-link.youtube { 
+    background: rgba(231, 76, 60, 0.1); /* CSS: Fondo rojo traslúcido */
+    color: #e74c3c; /* CSS: Letra roja */
+    border-color: #e74c3c; /* CSS: Borde rojo */
+}
+.btn-pro-link.youtube:hover { background: #e74c3c; } /* CSS: Fondo sólido al tocar */
+
+/* CSS: Variante Azul para Facebook */
+.btn-pro-link.facebook { 
+    background: rgba(24, 119, 242, 0.1); /* CSS: Azul traslúcido */
+    color: #1877f2; /* CSS: Letra azul */
+    border-color: #1877f2; /* CSS: Borde azul */
+}
+.btn-pro-link.facebook:hover { background: #1877f2; }
+
+/* CSS: Variante Negra para TikTok */
+.btn-pro-link.tiktok { 
+    background: rgba(0, 0, 0, 0.05); /* CSS: Gris casi invisible */
+    color: #000000; /* CSS: Negro */
+    border-color: #000000; /* CSS: Borde negro */
+}
+.btn-pro-link.tiktok:hover { background: #000000; }
+
+/* CSS: Variante Índigo para servicios Google/Drive */
+.btn-pro-link.google { 
+    background: rgba(99, 102, 241, 0.1); /* CSS: Índigo traslúcido */
+    color: var(--primary); /* CSS: Índigo de marca */
+    border-color: var(--primary); /* CSS: Borde de marca */
+}
+.btn-pro-link.google:hover { background: var(--primary); }
+
+/* CSS: Estilo para links sin plataforma definida */
+.btn-pro-link.generic { 
+    background: rgba(46, 146, 204, 0.1); /* CSS: Azul traslúcido */
+    color: #2e92cc; /* CSS: Letra azul */
+    border-color: #2ea7cc; /* CSS: Borde azul */
+}
+.btn-pro-link.generic:hover { background: #2eb4cc; }
+
+/* =====================================================
+   9. UTILIDADES, ANIMACIONES Y PDF
+   ===================================================== */
+
+/* CSS: Clase maestra para ocultar elementos mediante javascript.js */
+.hidden { 
+    display: none !important; /* CSS: Forzar desaparición absoluta */
+}
+
+/* CSS: Animación de entrada inyectada al modal */
+.animate-pop-in { 
+    animation: popIn 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* CSS: Ejecuta clave popIn */
+}
+
+/* CSS: Definición de la animación popIn (de pequeño a normal) */
+@keyframes popIn { 
+    0% { transform: scale(0.9); opacity: 0; } 
+    100% { transform: scale(1); opacity: 1; } 
+}
+
+/* CSS: Animación de subida suave para las tarjetas al cargar */
+@keyframes fadeInUp { 
+    from { 
+        opacity: 0; 
+        transform: translateY(20px); /* CSS: Empieza abajo */
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); /* CSS: Sube a su sitio */
+    }
+}
+
+/* =====================================================
+   SOLUCIÓN FINAL: PDF PROFESIONAL (SIN HOJA EN BLANCO)
+   ===================================================== */
+
+/* CSS: Reglas que solo se activan al presionar el botón de PDF mediante window.print */
+@media print { 
+    /* CSS: Configuración total de página para eliminar huecos blancos */
+    html, body, main { 
+        background: white !important; /* CSS: Papel blanco */
+        margin: 0 !important; /* CSS: Sin márgenes web */
+        padding: 0 !important; 
+        height: auto !important; /* CSS: Quita límite de pantalla */
+        min-height: 0 !important; 
+        overflow: visible !important; /* CSS: Permite scroll infinito al imprimir */
+    }
+
+    /* CSS: Oculta TODA la interfaz de la web para dejar solo el tutorial */
+    header, nav, #tabs-categorias, .global-tools, 
+    .cerrar-modal, .btn-pdf, .panel-controles, 
+    #matrix-bg, #contenedor-subir, .background-shapes, 
+    #lista-recursos, .modal-blur-overlay { 
+        display: none !important; /* CSS: Limpieza total */
+    }
+
+    /* CSS: Forzar colores de lectura para impresora */
+    * { 
+        color: #000000 !important; /* CSS: Letra negra absoluta */
+        print-color-adjust: exact; /* CSS: Fuerza impresión de colores de fondo */
+        -webkit-print-color-adjust: exact; /* CSS: Apple */
+        box-shadow: none !important; /* CSS: Quita sombras (gastan tinta) */
+        text-shadow: none !important; /* CSS: Quita sombras texto */
+        backdrop-filter: none !important; /* CSS: Quita cristales */
+    }
+
+    /* CSS: Ajuste del modal para que sea un documento plano */
+    #modal-tutorial, .modal { 
+        display: block !important; /* CSS: Comportamiento de bloque natural */
+        position: static !important; /* CSS: Se vuelve parte del papel */
+        width: 100% !important; 
+        padding: 0 !important; 
+        margin: 0 !important; 
+    }
+
+    /* CSS: Ajuste de la caja de contenido para papel */
+    .modal-contenido { 
+        display: block !important; /* CSS: Bloque */
+        width: 100% !important; 
+        max-width: none !important; /* CSS: Ancho completo de hoja */
+        height: auto !important; 
+        max-height: none !important; /* CSS: Sin límite de altura */
+        overflow: visible !important; /* CSS: Permite multioja */
+        padding: 0 !important; 
+        margin: 0 !important; 
+        background: white !important; 
+        border: none !important; 
+    }
+
+    /* CSS: Estilo de comandos en el papel impreso */
+    code, .caja-negra, .tutorial-pasos { 
+        background-color: #f1f5f9 !important; /* CSS: Fondo gris claro profesional */
+        border: 1px solid #cbd5e1 !important; /* CSS: Borde sutil */
+        color: #000000 !important; /* CSS: Letra negra interna */
+        page-break-inside: auto !important; /* CSS: Evita cortes feos entre hojas */
+        display: block !important; 
+        width: 100% !important; 
+    }
+
+    /* CSS: Fuerza links negros en papel para que se vean */
+    code a, .caja-negra a, a.link-comando { 
+        color: #000000 !important; 
+        text-decoration: underline !important; /* CSS: Subrayado impreso */
+    }
+
+    /* CSS: Título superior en papel */
+    .tutorial-header { 
+        border-bottom: 2px solid #000 !important; /* CSS: Línea negra firme */
+        margin-top: 0 !important; 
+        padding-top: 0 !important; 
+    }
+
+    /* CSS: Define márgenes físicos de la impresora */
+    @page { margin: 1.5cm; } 
+}
+
+/* CSS: Contenedor flotante derecho <div id="contenedor-subir"> */
+#contenedor-subir { 
+    position: fixed; /* CSS: Flota sobre sitio */
+    bottom: 30px; /* CSS: Posición abajo */
+    right: 30px; /* CSS: Posición derecha */
+    display: flex; /* CSS: Contador y Botón alineados */
+    flex-direction: column-reverse; /* CSS: Contador arriba del botón */
+    align-items: center; /* CSS: Centrado horizontal */
+    gap: 10px; /* CSS: Separación vertical */
+    z-index: 2500; /* CSS: Encima de tarjetas */
+    pointer-events: none; /* CSS: Permite clics al fondo si está invisible */
+}
+
+/* CSS: Botón de flecha gestionado por javascript.js (función mostrarUocultarBoton) */
+#btn-subir { 
+    display: none; /* CSS: Invisible por defecto hasta bajar 500px */
+    pointer-events: auto; /* CSS: Habilita clics cuando se muestra */
+    background: var(--primary); /* CSS: Fondo índigo */
+    color: white; /* CSS: Flecha blanca */
+    border: none; /* CSS: Sin borde */
+    width: 50px; /* CSS: Círculo */
+    height: 50px; 
+    border-radius: 50%; /* CSS: Redondo total */
+    cursor: pointer; /* CSS: Mano */
+    box-shadow: var(--shadow-lg); /* CSS: Sombra alta */
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* CSS: Animación elástica */
+}
+
+/* CSS: Texto inyectado por javascript.js que dice "X de Y" tarjetas */
+#contador-tarjetas { 
+    display: none; /* CSS: Oculto hasta bajar */
+    background: rgba(15, 23, 42, 0.95); /* CSS: Fondo oscuro legible */
+    color: white; /* CSS: Letra blanca */
+    padding: 6px 14px; /* CSS: Espaciado interno */
+    border-radius: 30px; /* CSS: Cápsula */
+    font-size: 0.8rem; /* CSS: Pequeño */
+    font-weight: 700; /* CSS: Negrita */
+    box-shadow: var(--shadow-md); /* CSS: Sombra */
+    white-space: nowrap; /* CSS: No permite saltos */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* CSS: Borde sutil */
+}
+
+/* CSS: Cambio al pasar el mouse por el botón de subir */
+#btn-subir:hover { 
+    transform: scale(1.1) translateY(-3px); /* CSS: Crece y sube un poco */
+    background: var(--primary-dark); /* CSS: Índigo oscuro */
+}
+
+/* =====================================================
+   10. AJUSTES PARA DISPOSITIVOS MÓVILES
+   ===================================================== */
+
+/* CSS: Reglas que se activan en pantallas menores a 768px (Tablets y celulares) */
+@media (max-width: 768px) { 
+    header { 
+        padding: 2.5rem 1rem; /* CSS: Cabecera más pequeña */
+    }
+
+    header h1 { 
+        font-size: 2rem; /* CSS: Título reducido */
+    }
+
+    /* CSS: Ajuste de la rejilla de tarjetas para pantallas estrechas */
+    .grid-container, #lista-recursos { 
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* CSS: Tarjetas más delgadas */
+        gap: 15px; /* CSS: Menos espacio entre ellas */
+        padding: 0 10px; 
+    }
+
+    /* CSS: Ajuste de ubicación del botón flotante */
+    #contenedor-subir { 
+        bottom: 20px; 
+        right: 20px; 
+    }
+}
+
+/* CSS: Ajustes para celulares muy pequeños */
+@media (max-width: 480px) { 
+    header h1 { 
+        font-size: 1.6rem; /* CSS: Título mínimo */
+    }
+    
+    /* CSS: Buscador más compacto */
+    .search-container input { 
+        font-size: 0.9rem; 
+        padding: 12px 15px 12px 45px; 
+    }
+}
+
+/* CSS: Arregla el tamaño de los botones para que no se estiren como óvalos */
+.tab {
+    height: 42px; 
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* CSS: Estilo para el engranaje de favoritos dentro de cada tarjeta */
+/* style.css - Reemplaza el bloque existente de .btn-fav-card */
+
+/* style.css - Botón Pin en Tarjeta */
+
+.btn-fav-card {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    
+    /* --- EFECTO FÍSICO (Relieve) --- */
+    background: rgba(15, 23, 42, 0.7); /* Un poco más opaco para proteger el color */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.5), /* Sombra de caída */
+        inset 0 1px 1px rgba(255, 255, 255, 0.1); /* Brillo de borde superior */
+    
+    color: rgba(255, 255, 255, 0.6); /* Gris tecnológico apagado */
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hover: Pre-iluminación */
+.btn-fav-card:hover {
+    background: rgba(28, 250, 46, 0.1);
+    color: #1cfa2e;
+    transform: scale(1.1) translateY(-2px);
+    border-color: rgba(28, 250, 46, 0.3);
+}
+
+/* --- ESTADO ACTIVO: El "Pin" Clavado --- */
+.btn-fav-card.active {
+    color: #ff9f43 !important;
+    /* Fondo más oscuro para que el naranja resalte sobre cualquier foto */
+    background: rgba(15, 23, 42, 0.9) !important; 
+    border: 2px solid #ff9f43; /* Borde más grueso para que no se pierda */
+    box-shadow: 
+        0 0 25px rgba(255, 159, 67, 0.4), /* Resplandor naranja */
+        inset 0 0 10px rgba(255, 159, 67, 0.2);
+    transform: rotate(45deg) scale(1.1); /* Un poco más grande al estar activo */
+}
+
+/* CSS: Si el contenedor tiene esta clase, las tarjetas no deben animarse al aparecer */
+#lista-recursos.sin-animacion .tarjeta {
+    animation: none !important; /* CSS: Cancela el fadeInUp */
+    transform: none !important;
+    opacity: 1 !important;
+}
+
+/* --- RESET: Limpiamos los estilos de los botones para que recuperen su color original --- */
+body.dark-mode .btn-pro-link span {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+/* --- PALABRAS CON LINK: ESTADO NORMAL (IGUAL AL TEXTO) --- */
+/* Forzamos a que las letras sean blancas y tengan la misma apariencia que el resto */
+body.dark-mode .tutorial-contenido-pro p a.link-comando,
+body.dark-mode .tutorial-contenido-pro li a.link-comando {
+    color: #ffffff !important;   /* Letras blancas como el texto normal */
+    font-weight: bold !important; /* Mantenemos negrita para que se note el relieve */
+    text-decoration: underline;  /* Mantenemos la línea para identificar que es un link */
+    text-shadow: none;           /* Sin brillos iniciales */
+    transition: color 0.3s ease, text-shadow 0.3s ease; /* Transición suave de las letras */
+}
+
+/* --- EFECTO HOVER: CAMBIO DE COLOR EN LAS LETRAS --- */
+/* Solo cuando el mouse está encima, las letras pasan de blanco a dorado */
+body.dark-mode .tutorial-contenido-pro p a.link-comando:hover,
+body.dark-mode .tutorial-contenido-pro li a.link-comando:hover {
+    color: #ffd700 !important;   /* ¡Aquí es donde las letras cambian a Dorado! */
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.5); /* Añade un leve brillo al activarse */
+    text-decoration: underline !important;
+}

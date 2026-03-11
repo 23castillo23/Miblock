@@ -1,0 +1,152 @@
+<!DOCTYPE html> <!-- Define documento como HTML5 (HTML) -->
+<html lang="es"> <!-- Idioma del contenido: español (HTML + accesibilidad) -->
+<head> <!-- Información del documento, no visible (HTML) -->
+
+    <meta charset="UTF-8"> <!-- Permite acentos y símbolos (HTML) -->
+    <meta name="referrer" content="unsafe-url">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Diseño adaptable a móviles (HTML + CSS responsive) -->
+
+    <link rel="manifest" href="manifest.json"> <!-- Conecta con manifiesto PWA (HTML + JS Service Worker) -->
+    <meta name="theme-color" content="#6366f1"> <!-- Color de interfaz en modo app (HTML + PWA) -->
+
+    <title>Comandos y Tutoriales</title> <!-- Título de la pestaña (HTML) -->
+    
+    <link rel="icon" type="image/png" href="img/iconos/favicon.png"> <!-- Ícono de pestaña (HTML) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/iconos/apple-touch-icon.png"> <!-- Ícono en iOS (HTML) -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="img/iconos/favicon-32x32.png"> <!-- Favicon 32px (HTML) -->
+    <link rel="icon" type="image/png" sizes="16x16" href="img/iconos/favicon-16x16.png"> <!-- Favicon 16px (HTML) -->
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- Optimiza carga de fuentes (HTML rendimiento) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- Conexión a servidor de fuentes (HTML rendimiento) -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&family=Fira+Code&display=swap" rel="stylesheet"> <!-- Importa tipografías (HTML + CSS) -->
+
+    <link rel="stylesheet" href="css/style.css"> <!-- Conecta hoja de estilos local (HTML → CSS) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> <!-- Librería de íconos (HTML + CSS externo) -->
+</head>
+
+<body class="dark-mode"> <!-- Contenido visible + clase usada por CSS/JS para modo oscuro -->
+    <canvas id="matrix-bg"></canvas> <!-- Lienzo para animación gráfica (HTML + JavaScript) -->
+            
+    <header> <!-- Encabezado principal (HTML estructural) -->
+        <div class="header-content"> <!-- Contenedor para diseño del header (HTML + CSS) -->
+            <h1>Guía de Comandos y Tutoriales</h1> <!-- Título principal (HTML + SEO) -->
+            <p>Tu base de conocimiento para sistema de Windows.</p> <!-- Descripción del sitio (HTML) -->
+            
+            <div class="search-container"> <!-- Contenedor del buscador (HTML + CSS) -->
+                <i class="fas fa-search"></i> <!-- Icono lupa (HTML + FontAwesome CSS) -->
+                <label for="inputBusqueda" style="display:none;">Buscar comandos</label> <!-- Etiqueta accesible oculta (HTML) -->
+                <input type="text" id="inputBusqueda" name="busqueda" placeholder="¿Qué comando necesitas hoy?"> <!-- Campo de búsqueda usado por JS (HTML + JavaScript) -->
+            </div>            
+
+            <div class="global-tools"> <!-- Contenedor de botones globales (HTML + CSS) -->
+
+                <button onclick="toggleDarkMode()" data-tooltip="Cambiar Tema"> <!-- Ejecuta función JS (JavaScript) -->
+                    <i class="fas fa-moon"></i> <!-- Icono modo oscuro (HTML + CSS) -->
+                </button>
+
+                <button onclick="window.location.href='#'" data-tooltip="Repositorio"> <!-- Redirección con JS -->
+                    <i class="fab fa-github"></i> <!-- Icono GitHub -->
+                </button>
+
+                <button onclick="alert('Bienvenido a tu Guía de Comandos')" data-tooltip="Ayuda"> <!-- Muestra alerta JS -->
+                    <i class="fas fa-question-circle"></i> <!-- Icono ayuda -->
+                </button>
+
+                <button id="btn-login" onclick="iniciarSesion()" data-tooltip="Entrar con Google"> <!-- Llama login JS -->
+                    <i class="fas fa-user-circle"></i> <!-- Icono usuario -->
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <nav id="tabs-categorias"> <!-- Navegación de categorías (HTML + CSS + JS) -->
+
+        <button id="tab-todas" class="tab active" onclick="filtrarPorCategoria('todas')"> <!-- Filtro JS + estilo activo -->
+            <i class="fas fa-layer-group"></i> Todas
+        </button>
+
+        <button class="tab cmd" onclick="filtrarPorCategoria('cmd')"> <!-- Filtro categoría CMD (JS) -->
+            <i class="fas fa-terminal"></i> CMD
+        </button>
+
+        <button class="tab atajos" onclick="filtrarPorCategoria('atajos')"> <!-- Filtro atajos -->
+            <i class="fas fa-bolt"></i> Atajos Win+R
+        </button>
+
+        <button class="tab basicos" onclick="filtrarPorCategoria('basicos')">
+            <i class="fas fa-desktop"></i> Básicos
+        </button>
+
+        <button class="tab programas" onclick="filtrarPorCategoria('programas')">
+            <i class="fas fa-download"></i> Programas
+        </button>
+
+        <button class="tab aplicaciones" onclick="filtrarPorCategoria('aplicaciones')">
+            <i class="fas fa-th-large"></i> Aplicaciones
+        </button>
+                                
+        <button class="tab onlinea" onclick="filtrarPorCategoria('onlinea')">
+            <i class="fas fa-globe"></i> Onlinea
+        </button>
+                
+        <button class="tab windows" onclick="filtrarPorCategoria('windows')">
+            <i class="fab fa-windows"></i> Windows
+        </button>
+                
+        <button class="tab tutoriales" onclick="filtrarPorCategoria('tutoriales')">
+            <i class="fas fa-book-open"></i> Tutoriales
+        </button>
+                               
+        <button class="tab programacion" onclick="filtrarPorCategoria('programacion')">
+            <i class="fas fa-code"></i> Programación
+        </button>
+                
+        <button class="tab excel" onclick="filtrarPorCategoria('excel')">
+            <i class="fa-regular fa-file-excel"></i> Excel
+        </button>
+
+        <button class="tab investigacion" onclick="filtrarPorCategoria('investigacion')">
+            <i class="fas fa-fingerprint"></i> investigacion
+        </button>
+                
+        <button class="tab utilidades" onclick="filtrarPorCategoria('utilidades')">
+            <i class="fas fa-tools"></i> Utilidades
+        </button>
+
+        <button class="tab favoritas" onclick="filtrarPorCategoria('favoritas')">
+            <i class="fas fa-thumbtack"></i> Favoritos
+        </button>
+        
+    </nav>
+
+    <main> <!-- Contenido principal (HTML semántico) -->
+
+        <section id="lista-recursos"></section> <!-- JS inserta contenido dinámico aquí -->
+    </main>
+
+    <div id="modal-tutorial" class="modal hidden"> <!-- Modal oculto con CSS, controlado por JS -->
+
+        <div class="modal-blur-overlay" onclick="cerrarTutorial()"></div> <!-- Fondo que cierra modal (JS) -->
+
+        <div class="modal-contenido animate-pop-in"> <!-- Caja del modal + animación CSS -->
+
+            <button class="cerrar-modal" onclick="cerrarTutorial()" aria-label="Cerrar tutorial"> <!-- Botón cerrar (JS + accesibilidad) -->
+                <i class="fas fa-times"></i> <!-- Icono X -->
+            </button>
+            
+            <div id="tutorial-cuerpo" class="print-area"></div> <!-- JS inserta tutorial aquí -->
+        </div>
+    </div>
+    
+    <script type="module" src="js/javascript.js" defer></script> <!-- Carga archivo JS principal -->
+
+    <div id="contenedor-subir"> <!-- Contenedor botón subir -->
+        <span id="contador-tarjetas" title="Total de resultados">0</span> <!-- Contador actualizado por JS -->
+        <button id="btn-subir" title="Volver arriba"> <!-- Botón scroll arriba (JS) -->
+            <i class="fas fa-chevron-up"></i> <!-- Icono flecha -->
+        </button>
+    </div>       
+</body>
+</html>
