@@ -45,6 +45,45 @@ export const misNotas = [
         ],
         pasos: []
     },
+    { // JS: Objeto que representa una tarjeta individual
+        categoria: "cmd", // JS: Propiedad para filtrar por categoría en el menú
+        titulo: "Informe de Salud de la Batería", // JS: Título que aparecerá en la tarjeta
+        imagen: "img/cmd/baterialap.jpg", // HTML/JS: Ruta del archivo de imagen para la tarjeta
+        comando: "powercfg /batteryreport", // JS: Texto técnico del comando de Windows
+        descripcion: "Genera un reporte HTML con ciclos de carga y capacidad real de la batería.", // JS: Resumen para la tarjeta
+        contenidoTutorialHtml: `
+            <h3>🔋 Diagnóstico de Energía Avanzado</h3>
+            <p>Este comando crea un archivo HTML detallado que muestra el uso de la batería, su capacidad de fábrica y su capacidad actual.</p>
+            
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Abrir Terminal como Administrador</h4>
+                <p>Es necesario tener permisos elevados para acceder a los datos de hardware del sistema.</p>
+                
+                <h4>Paso 2: Generar el Reporte</h4>
+                <p>Escribe el siguiente comando para que Windows cree el informe en tu carpeta de usuario:</p>
+                
+                <div class="contenedor-comando">
+                    <code>powercfg /batteryreport</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                
+                <h4>Paso 3: Ver los Resultados</h4>
+                <p>Windows te dará una ruta (ej: C:\\Users\\TuUsuario\\battery-report.html). Copia esa ruta y pégala en tu navegador para ver la gráfica de ciclos y salud.</p>
+            </div>
+            
+            <p style="margin-top: 15px;"><i>Nota: Este reporte es ideal para revisar el estado de una laptop usada antes de comprarla o venderla.</i></p>
+        `,
+        links: [
+            {                
+                texto: "Video Tutorial",
+                url: "https://www.youtube.com/watch?v=ociFoDkNLzI",
+                plataforma: "youtube" // <--- NUEVO: Especifica la plataforma
+            }
+        ],
+        pasos: []
+    },
     {
         categoria: "cmd",
         titulo: "Mantenimiento y Reparación Completa",
