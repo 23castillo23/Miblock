@@ -44,46 +44,151 @@ export const misNotas = [
             }
         ],
         pasos: []
-    },
-    { // JS: Objeto que representa una tarjeta individual
-        categoria: "cmd", // JS: Propiedad para filtrar por categoría en el menú
-        titulo: "Informe de Salud de la Batería", // JS: Título que aparecerá en la tarjeta
-        imagen: "img/cmd/baterialap.jpg", // HTML/JS: Ruta del archivo de imagen para la tarjeta
-        comando: "powercfg /batteryreport", // JS: Texto técnico del comando de Windows
-        descripcion: "Genera un reporte HTML con ciclos de carga y capacidad real de la batería.", // JS: Resumen para la tarjeta
+    },    
+    {
+        categoria: "cmd",
+        titulo: "Mantenimiento y Reparación Completa",
+        imagen: "img/cmd/sfc.jpg",
+        comando: "sfc / DISM / chkdsk",
+        descripcion: "Kit de herramientas esenciales para diagnosticar y solucionar errores lógicos, físicos y de arranque en Windows.",
         contenidoTutorialHtml: `
-            <h3>🔋 Diagnóstico de Energía Avanzado</h3>
-            <p>Este comando crea un archivo HTML detallado que muestra el uso de la batería, su capacidad de fábrica y su capacidad actual.</p>
+            <h3>🛠️ Protocolo de Reparación del Sistema</h3>
+            <p>Sigue este orden lógico para solucionar desde errores leves hasta fallos críticos en el sistema operativo.</p>
             
             <div class="tutorial-pasos">
-                <h4>Paso 1: Abrir Terminal como Administrador</h4>
-                <p>Es necesario tener permisos elevados para acceder a los datos de hardware del sistema.</p>
-                
-                <h4>Paso 2: Generar el Reporte</h4>
-                <p>Escribe el siguiente comando para que Windows cree el informe en tu carpeta de usuario:</p>
-                
+                <h4>Fase 1: Reparación de Archivos (SFC)</h4>
+                <p>Escanea y reemplaza archivos dañados individualmente de forma rápida.</p>
                 <div class="contenedor-comando">
-                    <code>powercfg /batteryreport</code>
+                    <code>sfc /scannow</code>
                     <button class="btn-copiar-interno" onclick="copiarComando(this)">
                         <i class="fas fa-copy"></i> Copiar
                     </button>
                 </div>
-                
-                <h4>Paso 3: Ver los Resultados</h4>
-                <p>Windows te dará una ruta (ej: C:\\Users\\TuUsuario\\battery-report.html). Copia esa ruta y pégala en tu navegador para ver la gráfica de ciclos y salud.</p>
+                    <div class="links-seccion">
+                        <a href="https://www.youtube.com/watch?v=OlLYiFcWG6g" target="_blank" class="btn-pro-link youtube" data-tooltip="Como REPARAR Windows de Archivos Dañados SFC /Scannow">
+                            <i class="fab fa-youtube"></i> 
+                            <span class="texto-btn-cortado">Video: Como REPARAR Windows de Archivos Dañados SFC /Scannow</span>
+                        </a>
+                    </div>
+
+                <h4 style="margin-top:20px;">Fase 2: Reparación Profunda de Imagen (DISM)</h4>
+                <p>Repara la base del sistema usando los servidores de Microsoft si SFC falla.</p>
+                <div class="contenedor-comando">
+                    <code>DISM /Online /Cleanup-Image /RestoreHealth</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+
+                <details class="acordeon-tutorial" style="margin-top: 15px; border-color: #3498db;">
+                    <summary class="acordeon-header" style="background: #3498db;">
+                        <i class="fas fa-clock"></i> ¿EL ESCANEO SE QUEDÓ TRABADO EN 62.3%?
+                    </summary>
+                    <div class="tutorial-pasos warning">
+                        <p>Si DISM no avanza, es probable que los servicios de actualización estén dormidos. Ejecuta estos comandos uno por uno:</p>
+                        <div class="contenedor-comando">
+                            <code>net start bits</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+                        <div class="contenedor-comando" style="margin-top: 5px;">
+                            <code>net start dosvc</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+                        <div class="contenedor-comando" style="margin-top: 5px;">
+                            <code>net start usosvc</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+                        <div class="contenedor-comando" style="margin-top: 5px;">
+                            <code>net start trustedinstaller</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+                        <div class="contenedor-comando" style="margin-top: 5px;">
+                            <code>net start wuauserv</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+                        <p style="margin-top: 10px;"><small><i>Tip final: Si sigue sin moverse, intenta presionar la tecla <kbd>ESC</kbd> dos veces sobre la ventana de CMD para "despertar" el proceso.</i></small></p>
+                        <div class="links-seccion">
+                            <a href="https://www.youtube.com/watch?v=1d3GCF8tZqk" target="_blank" class="btn-pro-link youtube" data-tooltip="Video: Solución Error 62.3%">
+                                <i class="fab fa-youtube"></i> 
+                                <span class="texto-btn-cortado">Video: Solución Error 62.3%</span>
+                            </a>
+                        </div>                        
+                    </div>                        
+                </details>
+
+                <h4 style="margin-top:20px;">Fase 3: Integridad del Disco (CHKDSK)</h4>
+                <p>Corrige errores físicos en el disco duro o SSD. Requiere reiniciar el PC.</p>
+                <div class="contenedor-comando">
+                    <code>chkdsk C: /f</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                    <div class="links-seccion">
+                        <a href="https://www.youtube.com/watch?v=-mjcLr3Q4yA" target="_blank" class="btn-pro-link youtube" data-tooltip="Video: Reparar Errores de Disco Duro, Unidades Físicas y Externas desde Cmd">
+                            <i class="fab fa-youtube"></i> 
+                            <span class="texto-btn-cortado">Video: Reparar Errores de Disco Duro, Unidades Físicas y Externas desde Cmd</span>
+                        </a>
+                    </div>                        
             </div>
-            
-            <p style="margin-top: 15px;"><i>Nota: Este reporte es ideal para revisar el estado de una laptop usada antes de comprarla o venderla.</i></p>
+
+            <div class="tutorial-pasos warning" style="border-left-color: #f39c12; background: rgba(243, 156, 18, 0.1); margin-top: 30px;">
+                <h4 style="color: #e67e22; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-exclamation-triangle"></i> REQUISITO PARA REPARAR ARRANQUE
+                </h4>
+                <p>El comando <strong>bootrec</strong> solo funciona desde el <strong>Entorno de Recuperación</strong>. No lo ejecutes en una sesión normal.</p>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                    <strong>Cómo entrar:</strong>
+                    <ol style="margin-top: 8px; font-size: 0.9rem;">
+                        <li>Mantén presionada la tecla <kbd>Shift</kbd>.</li>
+                        <li>Haz clic en <strong>Inicio > Inicio/Apagado > Reiniciar</strong>.</li>
+                        <li>Navega a: <strong>Solucionar problemas > Opciones avanzadas > Símbolo del sistema</strong>.</li>
+                    </ol>
+                </div>
+                
+                <div class="contenedor-comando" style="margin-top: 15px;">
+                    <code>bootrec /fixmbr</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                    <div class="links-seccion">
+                        <a href="https://www.youtube.com/watch?v=KzCcvFdS0rE" target="_blank" class="btn-pro-link youtube" data-tooltip="Video: BOOTREC FIXBOOT Element Not Found - Windows Error Fixed">
+                            <i class="fab fa-youtube"></i> 
+                            <span class="texto-btn-cortado">Video: BOOTREC FIXBOOT Element Not Found - Windows Error Fixed</span>
+                        </a>
+                    </div>                       
+            </div>
+
+            <details class="acordeon-tutorial" style="margin-top: 20px;">
+                <summary class="acordeon-header">
+                    <i class="fas fa-network-wired"></i> LIMPIEZA DE CONEXIÓN (DNS)
+                </summary>
+                <div class="tutorial-pasos warning">
+                    <p>Úsalo si el internet funciona pero algunas páginas no cargan correctamente.</p>
+                    <div class="contenedor-comando">
+                        <code>ipconfig /flushdns</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+                    <div class="links-seccion">
+                        <a href="https://www.youtube.com/watch?v=ld-qI9qWt70" target="_blank" class="btn-pro-link youtube" data-tooltip="Video: Como Vaciar La Caché De DNS En Windows 10 / 11">
+                            <i class="fab fa-youtube"></i> 
+                            <span class="texto-btn-cortado">Video: Como Vaciar La Caché De DNS En Windows 10 / 11</span>
+                        </a>
+                    </div>                       
+                </div>
+                      
+            </details>
         `,
         links: [
-            {                
-                texto: "Video Tutorial",
-                url: "https://www.youtube.com/watch?v=ociFoDkNLzI",
-                plataforma: "youtube" // <--- NUEVO: Especifica la plataforma
+            {
+                texto: "Soporte Oficial Microsoft",
+                url: "https://support.microsoft.com/es-es/topic/use-la-herramienta-comprobador-de-archivos-de-sistema-para-reparar-los-archivos-de-sistema-que-faltan-o-est%C3%A1n-da%C3%B1ados-79aa86cb-ca52-166a-92a3-966e85d4094e"
             }
         ],
         pasos: []
-    },
+    },    
     {
         categoria: "cmd",
         titulo: "Mantenimiento y Reparación Completa",
