@@ -3077,7 +3077,55 @@ goto inicio
         ],
         pasos: []
     },
+    // SISTEMAS
+    {
+        categoria: "sistemas",
+        titulo: "Git para Visual Studio Code (IDE)", // Título con referencia al IDE
+        imagen: "img/sistemas/git-setup.jpg",
+        comando: "git --version",
+        descripcion: "Configuración de Git como sistema de control de versiones dentro del IDE Visual Studio Code para gestionar el historial del proyecto.",
+        contenidoTutorialHtml: `
+            <h3>🔧 Git & VS Code: El motor y la interfaz</h3>
+            <p><strong>Visual Studio Code</strong> es un <strong>IDE</strong>: tu espacio de trabajo. <strong>Git</strong> es el sistema que guarda tus cambios. Juntos te permiten no perder nunca tu trabajo.</p>
+            
+            <div class="tutorial-pasos">
+                <h4>1. ¿Para qué sirve esta unión?</h4>
+                <ul>
+                    <li><strong>VS Code:</strong> Te da los botones, los colores y la terminal.</li>
+                    <li><strong>Git:</strong> Se encarga de los comandos (add, commit, push) y del historial.</li>
+                </ul>
 
+                <h4>2. Instalación y Vinculación</h4>
+                <ul>
+                    <li>Descarga el instalador de <strong>git-scm.com</strong>.</li>
+                    <li>Al instalar, elige: <strong>"Use Visual Studio Code as Git's default editor"</strong>.</li>
+                </ul>
+
+                <h4>3. Configuración de Identidad</h4>
+                <p>Copia estos comandos en la terminal de tu IDE para que GitHub sepa quién eres:</p>
+                <div class="contenedor-comando">
+                    <code>git config --global user.name "Tu Nombre"</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+                <div class="contenedor-comando">
+                    <code>git config --global user.email "tu@correo.com"</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>                 
+
+                <h4>4. Comprobación en el IDE</h4>
+                <div class="contenedor-comando">
+                    <code>git --version</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>                 
+                <p>Si la terminal de tu IDE responde con la versión, ¡la conexión es exitosa!</p>
+            </div>
+        `,
+        links: [
+            { texto: "Descargar Git Oficial", url: "https://git-scm.com/install/windows" },
+            { texto: "¿Qué es un IDE?", url: "https://www.redhat.com/es/topics/middleware/what-is-ide" }
+        ],
+        pasos: []
+    },
     //CATEGORIA EXCEL
     {
         categoria: "excel",
