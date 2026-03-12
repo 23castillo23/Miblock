@@ -209,7 +209,7 @@ function actualizarContadoresTabs() {
 
                 // 2. FILTRO DE SEGURIDAD: Si la nota es marcada como privada, 
                 // SOLO se cuenta si el usuario logueado coincide con tu UID
-                if (n.esPrivada && (!usuarioActual || usuarioActual.uid !== '9Hv406JpA8PAbdPXMmH1wdhTd3i2')) {
+                if (n.esPrivada && (!usuarioActual || usuarioActual.uid !== 'QK9Ca6yFfphhOklgx483eBT8u8Z2')) {
                     return false; 
                 }
                 return true; 
@@ -261,7 +261,7 @@ function mostrarNotas(notasAMostrar, esRefresco = false) {
     // JS: Empieza el ciclo para procesar cada tarjeta una por una
     notasAMostrar.forEach((nota) => { 
         // ESTO ES PARTE DEL CODIGO PARA QUE SEA PRIVADO DE ESTE COMANDO esPrivada: true,
-        if (nota.esPrivada && (!usuarioActual || usuarioActual.uid !== '9Hv406JpA8PAbdPXMmH1wdhTd3i2')) {
+        if (nota.esPrivada && (!usuarioActual || usuarioActual.uid !== 'QK9Ca6yFfphhOklgx483eBT8u8Z2')) {
         return; 
     }
         const tituloEscapado = nota.titulo.replace(/'/g, "\\'");
