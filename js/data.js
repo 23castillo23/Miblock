@@ -4,8 +4,7 @@
 // =====================================================
 // Array principal que contiene objetos. Cada objeto es una "tarjeta".
 export const misNotas = [
-    //CATEGORIA DE CMD
-    
+    //CATEGORIA DE CMD    
     { // JS: Objeto que representa una tarjeta individual
         categoria: "cmd", // JS: Propiedad para filtrar por categoría en el menú
         titulo: "Informe de Salud de la Batería", // JS: Título que aparecerá en la tarjeta
@@ -915,6 +914,35 @@ goto inicio
         `,
         links: [
             { texto: "Descargar K-Lite", url: "https://www.codecguide.com/download_kl.htm" }
+        ],
+        pasos: []
+    },
+    {
+        categoria: "basicos",
+        titulo: "Microsoft Store",
+        imagen: "img/basicos/microsoft-store.jpg",
+        comando: "https://apps.microsoft.com/store/apps",
+        descripcion: "Tienda oficial de Windows para descargar, instalar y actualizar aplicaciones, herramientas y juegos de forma segura.",
+        contenidoTutorialHtml: `
+            <h3>🛍️ Centro de Aplicaciones Windows</h3>
+            <p>La Microsoft Store es el lugar más seguro para obtener software, ya que todas las apps son verificadas por Microsoft.</p>
+            
+            <div class="tutorial-pasos">
+                <h4>¿Cómo usarla efectivamente?</h4>
+                <p>Puedes buscar cualquier herramienta y mantener tus aplicaciones actualizadas automáticamente en la sección <strong>"Biblioteca"</strong>.</p>
+                
+                <div class="contenedor-comando">
+                    <code>
+                        <a href="https://apps.microsoft.com/store/apps" target="_blank" class="link-comando">https://apps.microsoft.com/store/apps</a> 
+                    </code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar Link
+                    </button>
+                </div>
+            </div>
+        `,
+        links: [
+            { texto: "Explorar la Tienda Web", url: "https://apps.microsoft.com/store/apps" }
         ],
         pasos: []
     },
