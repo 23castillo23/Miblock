@@ -489,6 +489,39 @@ export const misNotas = [
         ],
         pasos: []
     },
+    {
+        categoria: "cmd",
+        titulo: "Ver Clave de WiFi Guardada",
+        imagen: "img/cmd/wifi-pass.jpg",
+        comando: "netsh wlan show profile",
+        descripcion: "Recupera la contraseña de cualquier red WiFi a la que te hayas conectado anteriormente usando la terminal.",
+        contenidoTutorialHtml: `
+            <h3>🔑 Recuperar Contraseñas WiFi</h3>
+            <p>Si olvidaste la clave de tu red, puedes verla con este comando en el CMD:</p>
+            
+            <div class="tutorial-pasos">
+                <h4>Pasos a seguir:</h4>
+                <ol>
+                    <li>Abre el CMD como administrador.</li>
+                    <li>Escribe
+                    <div class="contenedor-comando">
+                        <code>netsh wlan show profile</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+                    para ver los nombres de las redes.</li>
+                    <li>Luego escribe: 
+                    <div class="contenedor-comando">
+                        <code>netsh wlan show profile name="NOMBRE_RED" key=clear</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+                    </li>
+                </ol>
+                <p>Busca en la sección <strong>"Contenido de la clave"</strong>; ahí aparecerá tu contraseña.</p>
+            </div>
+        `,
+        links: [],
+        pasos: []
+    },
     //CATEGORIA ATAJOS
     {
         categoria: "atajos",
