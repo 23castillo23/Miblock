@@ -512,6 +512,10 @@ function actualizarIcono(isDark) {
     }
 }
 
+// Función para abrir tu GitHub sin errores de sintaxis en el HTML
+window.irAlRepo = function() {
+    window.open('https://github.com', '_blank');
+};
 
 // JS: Función para llevar texto al portapapeles del sistema
 function copiarComando(btn) { 
