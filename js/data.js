@@ -3126,6 +3126,38 @@ goto inicio
         ],
         pasos: []
     },
+    {
+        categoria: "sistemas",
+        titulo: "Live Server: Servidor Local para Login",
+        imagen: "img/sistemas/git-setup.jpg", // Puedes usar esta o una de VS Code
+        comando: "Extensions > Live Server > Go Live",
+        descripcion: "Activa un servidor virtual local para permitir la autenticación de Google y Firebase sin errores de seguridad.",
+        contenidoTutorialHtml: `
+            <h3>🌐 Función en el Proyecto</h3>
+            <p>Por seguridad, <strong>Firebase</strong> bloquea cualquier intento de inicio de sesión si abres el archivo <code>index.html</code> directamente (haciendo doble clic). Esto sucede porque el navegador usa el protocolo <code>file://</code>, el cual no es considerado seguro por Google.</p>
+            
+            <p><strong>Live Server</strong> crea un túnel local usando el protocolo <code>http://</code> en la dirección <code>127.0.0.1:5500</code>. Al estar esta dirección autorizada en tu Consola de Firebase, el botón de Login funcionará perfectamente en tu computadora.</p>
+
+            <div class="tutorial-pasos">
+                <h4>🛠️ Guía de Activación</h4>
+                <ol>
+                    <li>En VS Code, ve al icono de <strong>Extensions</strong> (<code>Ctrl + Shift + X</code>).</li>
+                    <li>Busca e instala: <strong>Live Server</strong> (autor: Ritwick Dey).</li>
+                    <li>Una vez instalado, abre tu archivo <code>index.html</code>.</li>
+                    <li>Haz clic en el botón <strong>Go Live</strong> que aparece en la esquina inferior derecha de la barra azul de VS Code.</li>
+                </ol>
+                
+                <div class="tech-note note-info">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Paso Final:</strong> Tu navegador se abrirá automáticamente en <code>http://127.0.0.1:5500</code>. Solo desde esta dirección podrás probar el sistema de favoritos y el login con Google.</p>
+                </div>
+            </div>
+        `,
+        links: [
+            { texto: "Extensión Oficial", url: "https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" }
+        ],
+        pasos: []
+    },
     //CATEGORIA EXCEL
     {
         categoria: "excel",
@@ -3395,7 +3427,7 @@ goto inicio
                 <p>Debes modificar la función <code>mostrarNotas</code> para que verifique tu identidad antes de dibujar la tarjeta en pantalla.</p>
                 <div class="contenedor-comando">
                     <code>
-    if (nota.esPrivada && (!usuarioActual || usuarioActual.uid !== '9Hv406JpA8PAbdPXMmH1wdhTd3i2')) {<br>
+    if (nota.esPrivada && (!usuarioActual || usuarioActual.uid !== 'QK9Ca6yFfphhOklgx483eBT8u8Z2')) {<br>
     &nbsp;&nbsp;return; <br>
     }
                     </code>
@@ -3415,6 +3447,69 @@ goto inicio
         ],
         pasos: []
     },   
+    {
+        categoria: "investigacion",
+        titulo: "Manual Maestro: Migración y Cambio de Administrador",
+        esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA
+        imagen: "img/investigacion/migracion.jpg", 
+        comando: "Firebase Auth + Google Cloud Config",
+        descripcion: "Pasos críticos para restaurar el acceso a tarjetas privadas y login tras cambiar el repositorio de GitHub o el correo del administrador.",
+        contenidoTutorialHtml: `
+            <h3>🔄 Sincronización de Nuevo Entorno</h3>
+            <p>Al mover el proyecto a un nuevo repositorio (de <code>cyber911zona</code> a <code>23castillo23</code>) o cambiar de correo, el sistema de seguridad bloquea el acceso hasta que se actualicen las llaves.</p>
+
+            <div class="tutorial-pasos">
+                <h4>🛠️ Paso 1: Autorizar Nuevo Dominio (Firebase)</h4>
+                <p>Firebase solo permite logins desde sitios autorizados. Debes agregar tu nueva dirección:</p>
+                <ol>
+                    <li>Ve a <strong>Consola Firebase > Authentication > Settings</strong>.</li>
+                    <li>En <strong>Authorized domains</strong>, agrega: <code>23castillo23.github.io</code></li>
+                    <li>Asegúrate de que <code>localhost</code> y <code>127.0.0.1</code> también estén en la lista.</li>
+                </ol>
+            </div>
+
+            <div class="tutorial-pasos">
+                <h4>🔐 Paso 2: Restricciones de API (Google Cloud)</h4>
+                <p>La API Key debe permitir peticiones desde el nuevo dominio:</p>
+                <ol>
+                    <li>Entra a <strong>Google Cloud Console > Credenciales</strong>.</li>
+                    <li>Selecciona tu API Key y en <strong>Restricciones de sitios web</strong> agrega: <code>23castillo23.github.io/*</code></li>
+                    <li><strong>¡IMPORTANTE!</strong> Haz clic en el botón azul <strong>GUARDAR</strong> al final.</li>
+                </ol>
+            </div>
+
+            <div class="tutorial-pasos warning">
+                <h4>🔍 Paso 3: Actualizar el Escudo de Privacidad (UID)</h4>
+                <p>Si cambiaste de correo, tu UID es diferente. Debes actualizarlo en <code>javascript.js</code> para que la pestaña de Investigación vuelva a ser visible.</p>
+                <ol>
+                    <li>Busca tu nuevo <strong>User UID</strong> en la pestaña <strong>Users</strong> de Firebase Authentication.</li>
+                    <li>Reemplaza el ID antiguo en estos dos lugares de tu código:</li>
+                </ol>
+                
+                <h5>1. En función <code>actualizarContadoresTabs</code>:</h5>
+                <div class="contenedor-comando">
+                    <code>if (n.esPrivada && (!usuarioActual || usuarioActual.uid !== 'TU_NUEVO_UID')) {</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+
+                <h5>2. En función <code>mostrarNotas</code>:</h5>
+                <div class="contenedor-comando">
+                    <code>if (nota.esPrivada && (!usuarioActual || usuarioActual.uid !== 'TU_NUEVO_UID')) {</code>
+                    <button class="btn-copiar-interno" onclick="copiarComapiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+            </div>
+
+            <div class="tech-note note-info">
+                <i class="fas fa-lightbulb"></i>
+                <p><strong>Tip Pro:</strong> Si usas varios correos, puedes permitir múltiples UIDs en el código usando el símbolo <code>&&</code> para que no se bloqueen entre sí.</p>
+            </div>
+        `,
+        links: [
+            { texto: "Firebase Console", url: "https://console.firebase.google.com/" },
+            { texto: "Google Cloud Console", url: "https://console.cloud.google.com/apis/credentials" }
+        ],
+        pasos: []
+    },
     //CATEGORIA UTILIDADES    
     // =====================================================
     // CATEGORIA UTILIDADES
