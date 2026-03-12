@@ -3193,7 +3193,7 @@ goto inicio
                 <ul>
                     <li>Ve a <strong>Compilación > Authentication</strong>.</li>
                     <li>En <strong>Sign-in method</strong>, habilita <strong>Google</strong> con tu correo de soporte.</li>
-                    <li>En <strong>Configuración > Dominios autorizados</strong>, añade <code>localhost</code> y <code>cyber911zona.github.io</code></li>
+                    <li>En <strong>Configuración > Dominios autorizados</strong>, añade <code>localhost</code> y <code>23castillo23.github.io</code></li>
                 </ul>
 
                 <h4>3. Base de Datos y Seguridad (Firestore)</h4>
@@ -3280,7 +3280,7 @@ goto inicio
                     <li>En la parte superior, haz clic en la pestaña <strong>Settings (Configuración)</strong>.</li>
                     <li>En la columna izquierda de esa pestaña, selecciona <strong>Authorized domains (Dominios autorizados)</strong>.</li>
                     <li>Haz clic en el botón azul <strong>Add domain (Añadir dominio)</strong>.</li>
-                    <li>Escribe <code>localhost</code> y dale a <strong>Add</strong>. Repite el proceso para añadir <code>127.0.0.1</code> y <code>cyber911zona.github.io</code></li>
+                    <li>Escribe <code>localhost</code> y dale a <strong>Add</strong>. Repite el proceso para añadir <code>127.0.0.1</code> y <code>23castillo23.github.io</code></li>
                 </ol>
             </div>
 
@@ -3303,7 +3303,7 @@ goto inicio
                     <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
                 </div>
                 <div class="contenedor-comando">
-                    <code>cyber911zona.github.io/*</code>
+                    <code>23castillo23.github.io/*</code>
                     <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
                 </div>
                 <div class="contenedor-comando">
