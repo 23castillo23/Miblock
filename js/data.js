@@ -36,14 +36,14 @@ export const misNotas = [
             <p style="margin-top: 15px;"><i>Nota: Este reporte es ideal para revisar el estado de una laptop usada antes de comprarla o venderla.</i></p>
         `,
         links: [
-            {                
+            {
                 texto: "Video Tutorial",
                 url: "https://www.youtube.com/watch?v=ociFoDkNLzI",
                 plataforma: "youtube" // <--- NUEVO: Especifica la plataforma
             }
         ],
         pasos: []
-    },      
+    },
     {
         categoria: "cmd",
         titulo: "Mantenimiento y Reparación Completa",
@@ -187,7 +187,7 @@ export const misNotas = [
             }
         ],
         pasos: []
-    },    
+    },
     {
         categoria: "cmd",
         titulo: "Consultar Dirección IP (ipconfig)",
@@ -1106,7 +1106,7 @@ goto inicio
             { texto: "Sitio oficial", url: "https://tecnoprogramas.com/" }
         ],
         pasos: []
-    },    
+    },
     {
         categoria: "programas",
         titulo: "Yelitzon PC",
@@ -1214,7 +1214,7 @@ goto inicio
         ],
         pasos: []
     },
-    
+
     // Multimedia y Edición
     {
         categoria: "aplicaciones",
@@ -1355,7 +1355,7 @@ goto inicio
         ],
         pasos: []
     },
-    
+
     // CATEGORIA APLICACIONES ONLINEA
     {
         categoria: "onlinea",
@@ -1523,7 +1523,7 @@ goto inicio
         ],
         pasos: []
     },
-    
+
     // CATEGORIA WINDOWS
     {
         categoria: "windows",
@@ -1666,7 +1666,7 @@ goto inicio
             </div>
         `,
         links: [
-            { texto: "Sitio oficial", url: "https://genuine-iso-verifier.weebly.com/" }            
+            { texto: "Sitio oficial", url: "https://genuine-iso-verifier.weebly.com/" }
         ],
         pasos: []
     },
@@ -1718,14 +1718,14 @@ goto inicio
             {
                 texto: "Descargar Archivo",
                 url: "https://drive.google.com/file/d/13d3wrjsO8xqURpEtTNyag06IpMqc7B_3/view?usp=drive_link"
-            }                        
+            }
         ],
         pasos: []
-    }, 
+    },
     {
         categoria: "windows",
-        titulo: "Activar Hyper-V y Crear Máquina Virtual",        
-        imagen: "img/windows/MaquinaVirtual.jpg", 
+        titulo: "Activar Hyper-V y Crear Máquina Virtual",
+        imagen: "img/windows/MaquinaVirtual.jpg",
         comando: "OptionalFeatures",
         descripcion: "Guía técnica ultra-detallada para habilitar el hipervisor nativo y configurar paso a paso tu primer entorno virtual.",
         contenidoTutorialHtml: `
@@ -1815,8 +1815,8 @@ goto inicio
     },
     {
         categoria: "windows",
-        titulo: "Instalar y Configurar VirtualBox (2026)",        
-        imagen: "img/windows/virtualbox_card.jpg", 
+        titulo: "Instalar y Configurar VirtualBox (2026)",
+        imagen: "img/windows/virtualbox_card.jpg",
         comando: "https://www.virtualbox.org/wiki/Downloads",
         descripcion: "Guía paso a paso para instalar Oracle VM VirtualBox y configurar máquinas virtuales con soporte para Windows 11 (25H2).",
         contenidoTutorialHtml: `
@@ -2055,9 +2055,9 @@ goto inicio
         ],
         pasos: []
     },
-    
+
     //CATEGORIA TUTORIAL
-    
+
     {
         categoria: "tutoriales",
         titulo: "Eliminar Clave de Windows",
@@ -2182,7 +2182,7 @@ goto inicio
         categoria: "tutoriales",
         titulo: "Saltar Correo en Windows 11",
         imagen: "img/tutoriales/saltarcuenta.jpg",
-        comando: "oobe\\bypassnro", 
+        comando: "oobe\\bypassnro",
         descripcion: "Instala Windows 11 sin cuenta obligatoria de Microsoft para poder crear una cuenta local de usuario.",
         contenidoTutorialHtml: `
             <h3>⏭️ Omitir cuenta de Microsoft</h3>
@@ -2340,7 +2340,7 @@ goto inicio
             },
             {
                 texto: "Video Tutorial 2",
-                url: "https://www.youtube.com/shorts/1wKjAcat7FM", 
+                url: "https://www.youtube.com/shorts/1wKjAcat7FM",
                 plataforma: "youtube"
             }
         ],
@@ -2564,7 +2564,7 @@ goto inicio
             { texto: "Manual de PDF", url: "https://drive.google.com/file/d/1rHUsdqXC-5nmUxs04-RCeA8GHeD2XKZm/view?usp=drive_link" }
         ],
         pasos: []
-    },    
+    },
     {
         categoria: "tutoriales",
         titulo: "Control Total: Accesos Remotos (3 Opciones)",
@@ -2653,7 +2653,7 @@ goto inicio
         links: [],
         pasos: []
     },
-            
+
     //CATEGORIA PROGRAMACION
     // =====================================================
     // CATEGORIA PROGRAMACIÓN
@@ -2949,7 +2949,7 @@ goto inicio
         `,
         links: [{ texto: "Abrir Compilador Web", url: "https://www.programiz.com/java-programming/online-compiler/" }],
         pasos: []
-    },   
+    },
     {
         categoria: "programacion",
         titulo: "PostgreSQL & pgAdmin 4",
@@ -3282,8 +3282,7 @@ goto inicio
             </details>
         `,
         links: [
-            { texto: "Descargar Git Oficial", url: "https://git-scm.com/install/windows" },
-            { texto: "¿Qué es un IDE?", url: "https://www.redhat.com/es/topics/middleware/what-is-ide" }
+            { texto: "Descargar Git Oficial", url: "https://git-scm.com/install/windows" }            
         ],
         pasos: []
     },
@@ -3316,6 +3315,74 @@ goto inicio
         `,
         links: [
             { texto: "Extensión Oficial", url: "https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" }
+        ],
+        pasos: []
+    },
+    {
+        categoria: "sistemas",
+        titulo: "Terminal y Git: Guía de Navegación",
+        imagen: "img/sistemas/terminal-git.jpg", 
+        comando: "dir / git status",
+        descripcion: "Diccionario rápido de comandos para navegar por carpetas y gestionar el historial de MiBlock mediante Git.",
+        contenidoTutorialHtml: `
+            <h3>📂 1. Navegación por Carpetas (Terminal)</h3>
+            <p>Usa estos comandos para moverte por tu computadora como un profesional:</p>
+            
+            <div class="tutorial-pasos">
+                <ul>
+                    <li><strong><code>dir</code></strong>: Lista todo lo que hay en la carpeta actual.</li>
+                    <li><strong><code>cd [nombre]</code></strong>: Entra en una carpeta.</li>
+                    <li><strong><code>cd ..</code></strong>: Retrocede una carpeta (sale).</li>
+                    <li><strong><code>mkdir [nombre]</code></strong>: Crea una carpeta nueva.</li>
+                    <li><strong><code>cls</code></strong>: Limpia toda la pantalla de la terminal.</li>
+                </ul>
+                <p><i>Tip: Escribe las primeras letras de una carpeta y pulsa <b>TAB</b> para auto-completar el nombre.</i></p>
+            </div>
+
+            <hr style="border: 1px solid var(--border-glass); margin: 25px 0;">
+
+            <h3>🌿 2. Comandos Esenciales de Git</h3>
+            <p>Estos son los comandos que mantienen viva nuestra base de datos en internet:</p>
+
+            <div class="tutorial-pasos">
+                <h4>🚀 Guardar y Subir Cambios</h4>
+                <div class="contenedor-comando">
+                    <code>git status</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Revisar cambios</button>
+                </div>
+                <div class="contenedor-comando">
+                    <code>git add .</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Preparar todo</button>
+                </div>
+                <div class="contenedor-comando">
+                    <code>git commit -m "Cambios realizados"</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Firmar guardado</button>
+                </div>
+                <div class="contenedor-comando">
+                    <code>git push</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Subir a GitHub</button>
+                </div>
+
+                <h4>🔄 Sincronización y Ramas</h4>
+                <ul>
+                    <li><strong><code>git pull</code></strong>: Baja los cambios nuevos de internet. <strong>(Hacer siempre al iniciar el día)</strong>.</li>
+                    <li><strong><code>git branch</code></strong>: Te dice en qué rama estás parado.</li>
+                    <li><strong><code>git checkout -b [nombre]</code></strong>: Crea y entra a una rama nueva.</li>
+                </ul>
+            </div>
+
+            <div class="tutorial-pasos warning">
+                <h4>🚨 Botón de Pánico</h4>
+                <p>Si algo sale mal y quieres borrar el último guardado local:</p>
+                <div class="contenedor-comando">
+                    <code>git reset --hard HEAD~1</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+                <p><strong>Cuidado:</strong> Esto borra el código que no hayas subido a GitHub.</p>
+            </div>
+        `,
+        links: [
+            
         ],
         pasos: []
     },
@@ -3449,7 +3516,7 @@ goto inicio
         links: [
             { texto: "Firebase Console", url: "https://console.firebase.google.com/" },
             { texto: "GitHub Pages Settings", url: "https://github.com/settings/pages" },
-            { texto: "Documentación Firebase Auth", url: "https://firebase.google.com/docs/auth/web/google-signin", plataforma: "google" }                    
+            { texto: "Documentación Firebase Auth", url: "https://firebase.google.com/docs/auth/web/google-signin", plataforma: "google" }
         ],
         pasos: []
     },
@@ -3607,12 +3674,12 @@ goto inicio
             { texto: "Documentación UID Firebase", url: "https://firebase.google.com/docs/auth/admin/manage-users", plataforma: "google" }
         ],
         pasos: []
-    },   
+    },
     {
         categoria: "investigacion",
         titulo: "Manual Maestro: Migración y Cambio de Administrador",
         esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA
-        imagen: "img/investigacion/migracion.jpg", 
+        imagen: "img/investigacion/migracion.jpg",
         comando: "Firebase Auth + Google Cloud Config",
         descripcion: "Pasos críticos para restaurar el acceso a tarjetas privadas y login tras cambiar el repositorio de GitHub o el correo del administrador.",
         contenidoTutorialHtml: `
@@ -3764,7 +3831,7 @@ goto inicio
         `,
         links: [],
         pasos: []
-    },    
+    },
     {
         categoria: "utilidades",
         titulo: "Atajos de teclado para Windows",
@@ -3892,8 +3959,9 @@ goto inicio
                 texto: "Lista Completa de Microsoft",
                 url: "https://support.microsoft.com/es-es/windows/métodos-abreviados-de-teclado-de-windows-dcc61a57-8ff0-cffe-9796-cb9706c75eec"
             },
-            {   texto: "Manual Word Original", 
-                url: "https://docs.google.com/document/d/1VcbOgtIhIHOAZeEHkfTZuuAsXDJzU-v_/edit?usp=drive_link" 
+            {
+                texto: "Manual Word Original",
+                url: "https://docs.google.com/document/d/1VcbOgtIhIHOAZeEHkfTZuuAsXDJzU-v_/edit?usp=drive_link"
             }
         ],
         pasos: []
@@ -4007,7 +4075,7 @@ goto inicio
     },
     {
         categoria: "utilidades",
-        titulo: "Formatos de Texto en WhatsApp",        
+        titulo: "Formatos de Texto en WhatsApp",
         imagen: "img/utilidades/texto formato.jpg",
         comando: "Símbolos de formato",
         descripcion: "Guía completa de formatos: negritas, cursivas, listas, citas y nuevos comandos de código.",
@@ -4100,18 +4168,18 @@ goto inicio
             </details>
         `, // HTML/JS: Contenido con acordeones inyectado en el modal
         links: [ // JS: Enlaces de referencia externa
-            { 
-                texto: "Web Oficial (GitHub)", 
-                url: "https://github.com/microsoft/PowerToys" 
+            {
+                texto: "Web Oficial (GitHub)",
+                url: "https://github.com/microsoft/PowerToys"
             },
-            { 
-                texto: "Video Tutorial Completo", 
+            {
+                texto: "Video Tutorial Completo",
                 url: "https://www.youtube.com/watch?v=bEGfn3riLRg",
                 plataforma: "youtube"
             }
         ],
         pasos: [] // JS: Campo vacío por uso de HTML personalizado
     },
-    
-            
+
+
 ];
