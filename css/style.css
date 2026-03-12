@@ -1386,27 +1386,64 @@ code a.link-comando:hover {
 }
 
 /* =====================================================
-   10. AJUSTES PARA DISPOSITIVOS MÓVILES
+   10. AJUSTES PARA DISPOSITIVOS MÓVILES (OPTIMIZADO)
    ===================================================== */
 
-/* CSS: Reglas que se activan en pantallas menores a 768px (Tablets y celulares) */
 @media (max-width: 768px) { 
     header { 
-        padding: 2.5rem 1rem; /* CSS: Cabecera más pequeña */
+        padding: 2.5rem 1rem; 
     }
 
     header h1 { 
-        font-size: 2rem; /* CSS: Título reducido */
+        font-size: 2rem; 
     }
 
-    /* CSS: Ajuste de la rejilla de tarjetas para pantallas estrechas */
+    /* Ajuste de la rejilla de tarjetas */
     .grid-container, #lista-recursos { 
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* CSS: Tarjetas más delgadas */
-        gap: 15px; /* CSS: Menos espacio entre ellas */
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+        gap: 15px; 
         padding: 0 10px; 
     }
 
-    /* CSS: Ajuste de ubicación del botón flotante */
+    /* --- AJUSTES ESPECÍFICOS PARA EL MODAL (TUS CAMBIOS) --- */
+    
+    /* 1. Reducimos el margen interno para ganar espacio lateral */
+    .modal-contenido {
+        padding: 25px 15px !important; 
+    }
+
+    /* 2. Título arriba y botones abajo para que no choquen */
+    .tutorial-header {
+        flex-direction: column; 
+        align-items: flex-start;
+        gap: 15px;
+        padding-right: 45px; /* Reducimos el espacio de la 'X' */
+        padding-bottom: 20px;
+    }
+
+    /* 3. Título más pequeño para que no empuje todo hacia afuera */
+    /* Usamos !important para ganar al estilo inline de javascript.js */
+    .tutorial-header h2 {
+        font-size: 1.5rem !important; 
+        line-height: 1.2;
+    }
+
+    /* 4. Contenedor de botones a lo ancho del celular */
+    .controles-tutorial {
+        width: 100% !important;
+        justify-content: flex-start;
+        display: flex;
+        gap: 8px;
+    }
+
+    /* 5. Botones Leer y PDF con el mismo tamaño y centrados */
+    .btn-pdf {
+        padding: 10px 12px;
+        font-size: 0.75rem;
+        flex: 1; 
+        justify-content: center;
+    }
+
     #contenedor-subir { 
         bottom: 20px; 
         right: 20px; 
