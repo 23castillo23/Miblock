@@ -166,3 +166,32 @@ Crea espacios seguros para no romper el código principal (`main`).
 
 **El atajo de emergencia (Fuerza):**
 * `git push -f origin main` (Solo si quieres que tu PC mande sobre GitHub).
+
+
+1. Sincronizar TU rama local con la de la nube:
+git pull origin rama-vikthor
+
+2. Resolver conflictos:
+Si tocaste las mismas líneas de código, VS Code te pedirá elegir con qué versión quedarte (usa Accept Current Change si tu versión es la buena).
+
+3. Subir los cambios finales:
+git push origin rama-vikthor
+
+4. El Atajo de Emergencia (Fuerza en la Rama)
+Si sabes que el código de tu laptop es el que vale y no te importa "pisar" lo que haya en la nube de esa rama:
+git push -f origin rama-vikthor
+
+## El Camino Rápido (Merge en la Terminal)
+Usa esto si quieres hacerlo todo desde VS Code sin entrar a la web.
+
+Cámbiate a la rama principal:
+git checkout main
+
+Asegúrate de que main esté al día:
+git pull origin main
+
+Trae los cambios de tu rama a main:
+git merge rama-vikthor
+
+Sube el resultado final a GitHub:
+git push origin main

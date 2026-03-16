@@ -3282,7 +3282,7 @@ goto inicio
             </details>
         `,
         links: [
-            { texto: "Descargar Git Oficial", url: "https://git-scm.com/install/windows" }            
+            { texto: "Descargar Git Oficial", url: "https://git-scm.com/install/windows" }
         ],
         pasos: []
     },
@@ -3321,7 +3321,7 @@ goto inicio
     {
         categoria: "sistemas",
         titulo: "Terminal y Git: Guía de Navegación",
-        imagen: "img/sistemas/terminal-git.jpg", 
+        imagen: "img/sistemas/terminal-git.jpg",
         comando: "dir / git status",
         descripcion: "Diccionario rápido de comandos para navegar por carpetas y gestionar el historial de MiBlock mediante Git.",
         contenidoTutorialHtml: `
@@ -3382,7 +3382,7 @@ goto inicio
             </div>
         `,
         links: [
-            
+
         ],
         pasos: []
     },
@@ -3735,6 +3735,165 @@ goto inicio
         links: [
             { texto: "Firebase Console", url: "https://console.firebase.google.com/" },
             { texto: "Google Cloud Console", url: "https://console.cloud.google.com/apis/credentials" }
+        ],
+        pasos: []
+    },
+    {
+        categoria: "investigacion",
+        titulo: "Manual Maestro: Configuración Global de Firebase",
+        esPrivada: false,
+        imagen: "img/investigacion/firebase.jpg",
+        comando: "Firebase: SDK v11.0.1 (Firestore)",
+        descripcion: "Guía definitiva para conectar cualquier proyecto web con la nube de Google. Configura la base de datos Firestore y activa el modo de prueba para desarrollo interactivo.",
+        contenidoTutorialHtml: `
+        <h3>🚀 Conexión de Aplicaciones a la Nube</h3>
+        <p>Sigue estos pasos para transformar un HTML estático en una aplicación dinámica con base de datos en tiempo real.</p>
+
+        <div class="tutorial-pasos">
+            <h4>🏗️ Paso 1: Creación del Proyecto</h4>
+            <p>El primer paso ocurre en la nube de Google.</p>
+            <ol>
+                <li>Ingresa a <strong>Firebase Console</strong>.</li>
+                <li>Haz clic en <strong>"Agregar proyecto"</strong>.</li>
+                <li>Escribe el nombre: <code>MiProyectoFamiliar</code>.</li>
+                <li>Desactiva Google Analytics para mayor rapidez en proyectos de práctica.</li>
+            </ol>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>🔑 Paso 2: Obtener Credenciales (Config)</h4>
+            <p>Registra tu app para obtener las llaves de acceso.</p>
+            <ol>
+                <li>Haz clic en el icono de <strong>Web (</>)</strong> en el panel principal.</li>
+                <li>Registra tu app como <code>WebAlbum</code>.</li>
+                <li><strong>Copia el objeto firebaseConfig:</strong> Este contiene tu apiKey y projectId únicos.</li>
+            </ol>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>🔥 Paso 3: Activar Firestore Database</h4>
+            <p>Configura el almacén de datos para tus comentarios.</p>
+            <ol>
+                <li>Ve a <strong>Build > Firestore Database</strong>.</li>
+                <li>Haz clic en <strong>"Crear base de datos"</strong>.</li>
+                <li>Ubicación: Selecciona <code>nam5 (us-central)</code>.</li>
+                <li><strong>IMPORTANTE:</strong> Selecciona <strong>"Comenzar en modo de prueba"</strong> para permitir lectura/escritura inmediata.</li>
+            </ol>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>💻 Paso 4: Integración en el HTML</h4>
+            <p>Pega este script de módulo al final de tu <code>&lt;body&gt;</code>:</p>
+            <div class="contenedor-comando">
+                <pre>
+&lt;script type="module"&gt;
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "TU_API_KEY",
+    authDomain: "TU_PROYECTO.firebaseapp.com",
+    projectId: "TU_PROYECTO",
+    ...
+  };
+
+  const app = initializeApp(firebaseConfig);
+  window._db = getFirestore(app);
+  window._f = { collection, addDoc, query, orderBy, onSnapshot, serverTimestamp };
+&lt;/script&gt;</pre>
+            </div>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>🛠️ Paso 5: Lógica de Escritura (JS)</h4>
+            <p>Usa esta función en tu <code>script.js</code> para guardar datos:</p>
+            <div class="contenedor-comando">
+                <code>
+                const { collection, addDoc, serverTimestamp } = window._f;<br>
+                await addDoc(collection(window._db, "comentarios"), { ... });
+                </code>
+            </div>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>📅 Paso 6: Mantenimiento de Reglas</h4>
+            <p>Si los datos dejan de cargar tras 30 días, ve a la pestaña <strong>Reglas</strong> en Firestore y actualiza la fecha en la línea:</p>
+            <p><code>allow read, write: if request.time < timestamp.date(2026, 4, 15);</code></p>
+        </div>
+    `,
+        links: [
+            { texto: "Consola de Firebase", url: "https://console.firebase.google.com/" },
+            { texto: "Documentación Firestore", url: "https://firebase.google.com/docs/firestore", plataforma: "google" }
+        ],
+        pasos: []
+    },
+    {
+        categoria: "investigacion",
+        titulo: "Manual Maestro: Almacenamiento Dinámico (Cloudinary)",
+        esPrivada: false,
+        imagen: "img/investigacion/cloudinary.jpg",
+        comando: "API: Cloudinary Media Fetch & Upload",
+        descripcion: "Gestiona imágenes familiares de forma profesional. Aprende a configurar el almacenamiento en la nube, optimizar URLs para móviles y habilitar la subida directa de archivos desde tu página.",
+        contenidoTutorialHtml: `
+        <h3>☁️ Gestión de Medios Inteligente</h3>
+        <p>Este sistema permite que tu aplicación no dependa del almacenamiento local, permitiendo subir y transformar fotos en tiempo real.</p>
+
+        <div class="tutorial-pasos">
+            <h4>⚙️ Paso 1: Configuración de Seguridad (Upload Preset)</h4>
+            <p>Para subir fotos desde el navegador sin llaves secretas, necesitamos un 'permiso no firmado'.</p>
+            <ol>
+                <li>Ve a <strong>Settings (⚙️) > Upload</strong>.</li>
+                <li>En <strong>Upload presets</strong>, haz clic en <strong>Add upload preset</strong>.</li>
+                <li>Nombre: <code>preset_familia</code> (cópialo).</li>
+                <li><strong>Signing Mode:</strong> Cámbialo de 'Signed' a <strong>'Unsigned'</strong>.</li>
+                <li><em>Opcional:</em> Define una carpeta destino como <code>fotos_familia</code>.</li>
+            </ol>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>🚀 Paso 2: Lógica de Subida (JavaScript)</h4>
+            <p>Usa la API de Fetch para enviar el archivo directamente a la nube.</p>
+            <div class="contenedor-comando">
+                <pre>
+async function subirFoto(archivo) {
+  const formData = new FormData();
+  formData.append("file", archivo);
+  formData.append("upload_preset", "preset_familia");
+
+  const res = await fetch("https://api.cloudinary.com/v1_1/TU_CLOUD/image/upload", {
+    method: "POST",
+    body: formData
+  });
+  return await res.json(); // Retorna la URL segura
+}</pre>
+            </div>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>📸 Paso 3: Selección de Archivos (HTML)</h4>
+            <p>Crea el botón para que tu familia elija fotos desde su celular.</p>
+            <div class="contenedor-comando">
+                <code>&lt;input type="file" id="fotos" accept="image/*"&gt;</code>
+            </div>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>✨ Paso 4: Transformaciones por URL</h4>
+            <p>No edites las fotos, deja que la URL lo haga por ti para ahorrar datos:</p>
+            <ul>
+                <li><strong>Optimización Auto:</strong> Añade <code>f_auto,q_auto</code> después de <code>/upload/</code>.</li>
+                <li><strong>Recorte Cuadrado:</strong> Añade <code>w_300,h_300,c_fill</code> para miniaturas perfectas.</li>
+            </ul>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>💡 Integración con Firebase</h4>
+            <p>El flujo ideal es: <strong>Subir a Cloudinary → Obtener URL → Guardar esa URL en Firestore</strong>. Así, tu base de datos solo guarda texto pesado, no imágenes.</p>
+        </div>
+    `,
+        links: [
+            { texto: "Media Library de Cloudinary", url: "https://cloudinary.com/console/media_library" },
+            { texto: "Documentación de Transformaciones", url: "https://cloudinary.com/documentation/image_transformations", plataforma: "google" }
         ],
         pasos: []
     },
