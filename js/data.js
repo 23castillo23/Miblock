@@ -3897,6 +3897,69 @@ async function subirFoto(archivo) {
         ],
         pasos: []
     },
+    {
+        categoria: "investigacion",
+        titulo: "Manual Maestro: Automatización por Etiquetas (Tags)",
+        esPrivada: false,
+        imagen: "img/investigacion/cloudinary01.jpg",
+        comando: "Cloudinary: Bulk Tagging & Resource List",
+        descripcion: "Aprende a agrupar cientos de imágenes bajo una sola etiqueta para que tu código las detecte automáticamente sin tener que copiar links uno por uno.",
+        contenidoTutorialHtml: `
+        <h3>🏷️ Agrupación Inteligente de Activos</h3>
+        <p>El uso de <strong>Tags</strong> es la base para crear galerías automáticas. Permite que el código consulte una lista dinámica en lugar de una lista estática manual.</p>
+
+        <div class="tutorial-pasos">
+            <h4>🔍 Paso 1: Selección Masiva</h4>
+            <p>Antes de etiquetar, debemos marcar los archivos que formarán parte del grupo.</p>
+            <ol>
+                <li>Entra a tu <strong>Media Library</strong> y abre la carpeta deseada (ej: <code>dibujos</code>).</li>
+                <li>Selecciona la primera imagen haciendo clic en el círculo de su esquina superior izquierda.</li>
+                <li>Usa el atajo <code>Ctrl + A</code> o selecciona el resto manualmente. La barra azul superior aparecerá.</li>
+            </ol>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>🏷️ Paso 2: Aplicar el 'Add Tag'</h4>
+            <p>Este es el paso que crea el identificador para tu código.</p>
+            <ol>
+                <li>En la barra azul superior, haz clic en el icono de la <strong>etiqueta</strong> o en el botón <strong>More (...)</strong>.</li>
+                <li>Selecciona la opción <strong>"Add Tags"</strong>.</li>
+                <li>Escribe el nombre de tu etiqueta (ej: <code>mis_dibujos</code>) y presiona <strong>Enter</strong>.</li>
+                <li>Haz clic en <strong>Update</strong> para procesar todos los archivos a la vez.</li>
+            </ol>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>🔓 Paso 3: Abrir la 'Puerta' de Seguridad</h4>
+            <p>Por defecto, Cloudinary bloquea la entrega de listas de archivos. Debes habilitarla así:</p>
+            <ol>
+                <li>Ve a <strong>Settings (⚙️) > Upload</strong>.</li>
+                <li>Baja hasta la sección <strong>Security</strong>.</li>
+                <li>Busca la casilla <strong>"Resource list"</strong> y asegúrate de que esté <strong>DESMARCADA</strong>.</li>
+                <li>Haz clic en <strong>Save Changes</strong> al final de la página.</li>
+            </ol>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>✅ Paso 4: Prueba de Funcionamiento</h4>
+            <p>Verifica que Cloudinary esté entregando los datos pegando esto en tu navegador:</p>
+            <div class="contenedor-comando">
+                <code>https://res.cloudinary.com/TU_CLOUD/image/list/mis_dibujos.json</code>
+            </div>
+            <p style="margin-top:10px;">Si ves un código tipo texto con los nombres de tus archivos, <strong>¡la conexión es exitosa!</strong></p>
+        </div>
+
+        <div class="tutorial-pasos">
+            <h4>💡 Tip Pro: Nombres Limpios</h4>
+            <p>Para que tu código se vea mejor, renombra tus archivos como <code>dibujo_01</code>, <code>dibujo_02</code> antes de subirlos. Cloudinary usará esos nombres en el campo <code>public_id</code> del JSON.</p>
+        </div>
+    `,
+        links: [
+            { texto: "Gestión de Tags en Cloudinary", url: "https://cloudinary.com/documentation/tag_management" },
+            { texto: "Referencia de Resource List API", url: "https://cloudinary.com/documentation/admin_api#get_resources_by_tag", plataforma: "google" }
+        ],
+        pasos: []
+    },
     //CATEGORIA UTILIDADES    
     // =====================================================
     // CATEGORIA UTILIDADES
