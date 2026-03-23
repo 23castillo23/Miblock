@@ -46,6 +46,298 @@ export const misNotas = [
     },
     {
         categoria: "cmd",
+        titulo: "Consultar Dirección IP (ipconfig)",
+        imagen: "img/cmd/ip.jpg",
+        comando: "ipconfig",
+        descripcion: "Identifica la dirección IP, máscara de subred y puerta de enlace de todos los adaptadores de red.",
+        contenidoTutorialHtml: `
+            <h3>🌐 Identificación de Red Local</h3>
+            <p>Este comando es vital para verificar si tu configuración de IP estática se aplicó correctamente en tu red local.</p>
+            
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Ejecución en CMD</h4>
+                <p>Abre el Símbolo del Sistema y escribe el comando básico:</p>
+                <div class="contenedor-comando">
+                <code>ipconfig</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+
+                <details class="acordeon-tutorial">
+                    <summary class="acordeon-header">
+                        <i class="fas fa-search"></i> CLIC PARA VER CÓMO INTERPRETAR LOS DATOS
+                    </summary>
+                    <div class="tutorial-pasos warning">
+                        <ul>
+                            <li><strong>Dirección IPv4:</strong> Es el número de identificación de tu computadora en la red ej: <code>192.168.1.1</code></li>
+                            <li><strong>Máscara de subred:</strong> Define el tamaño de la red (usualmente). <code>255.255.255.0</code></li>
+                            <li><strong>Puerta de enlace:</strong> Es la dirección del router o equipo que provee internet.</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <h4>Paso 2: Información Detallada (/all)</h4>
+                <p>Si necesitas saber la <strong>Dirección Física (MAC)</strong> o los servidores DNS, usa la variante completa:</p>
+                <div class="contenedor-comando">
+                    <code>ipconfig /all</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+            </div>
+            <p style="margin-top: 15px;"><i>Tip: Si el comando muestra "Medio desconectado", verifica que tu cable Ethernet esté bien conectado en ambos extremos.</i></p>
+        `,
+        links: [
+            {
+                texto: "Video tutorial",
+                url: "https://www.youtube.com/shorts/aeXvAgZ1enI",
+                plataforma: "youtube"
+            }
+        ],
+        pasos: []
+    },
+    {
+        categoria: "cmd",
+        titulo: "Guía Definitiva: Dominio Total de la Terminal",
+        imagen: "img/cmd/cmd1.jpg",
+        comando: "ls / dir / cls / cd / git",
+        descripcion: "La navaja suiza definitiva. Navegación multiplataforma, gestión de archivos y trucos de productividad para la consola.",
+        contenidoTutorialHtml: `
+        <h3>🚀 Master Class: Comandos de Consola</h3>
+        <p>Usa esta guía para moverte como un rayo. Recuerda: <strong>CMD</strong> es el clásico de Windows, pero <strong>PowerShell/Bash</strong> aceptan comandos de Linux.</p>
+
+        <div class="tutorial-pasos">
+            <h4 style="color: #3498db;"><i class="fas fa-broom"></i> 1. Limpieza y Navegación</h4>
+            
+            <p><strong>Limpiar Pantalla (cls):</strong> Borra todo el desorden para empezar de cero.</p>
+            <div class="contenedor-comando">
+                <code>cls</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Listar archivos (dir / ls):</strong></p>
+            <div class="contenedor-comando">
+                <code>dir</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <div class="contenedor-comando" style="margin-top:5px;">
+                <code>ls</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>Nota: ls es el estándar en Linux/Mac y funciona en la terminal de VS Code (PowerShell).</small></p>
+
+            <p><strong>Moverte entre carpetas:</strong></p>
+            <div class="contenedor-comando">
+                <code>cd NombreCarpeta</code>
+            </div>
+            <div class="contenedor-comando" style="margin-top:5px;">
+                <code>cd ..</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>Tip: Usa <code>cd \</code> para volver al inicio del disco y <code>D:</code> para cambiar de disco duro.</small></p>
+
+            <hr>
+
+            <h4 style="color: #2ecc71;"><i class="fas fa-folder-plus"></i> 2. Gestión de Archivos</h4>
+            <div class="contenedor-comando">
+                <code>mkdir Proyecto</code> 
+                <span>(Crear carpeta)</span>
+            </div>
+            <div class="contenedor-comando" style="margin-top:5px;">
+                <code>echo. > archivo.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                <span>(Crear archivo vacío)</span>
+            </div>
+
+            <p><strong>Mover, Copiar y Renombrar:</strong></p>
+            <div class="contenedor-comando">
+                <code>copy file.txt backup\</code>
+            </div>
+            <div class="contenedor-comando" style="margin-top:5px;">
+                <code>move file.txt destino\</code>
+            </div>
+            <div class="contenedor-comando" style="margin-top:5px;">
+                <code>ren antiguo.txt nuevo.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+           
+            <h4 style="color: #e74c3c;"><i class="fas fa-trash-alt"></i> 2. Eliminación de Carpetas (rmdir)</h4>
+            <p>¡Atención! Estos comandos son permanentes. Aprende sus variantes:</p>
+            
+                <p><strong>Eliminar (¡Sin Papelera!):</strong></p>
+            <div class="contenedor-comando">
+                <code>del archivo.txt</code>
+            </div>
+
+            <p><strong>A. Borrar carpeta vacía:</strong></p>
+            <div class="contenedor-comando">
+                <code>rmdir NombreCarpeta</code>
+            </div>
+
+            <p><strong>B. Borrar carpeta con archivos (Recursivo):</strong></p>
+            <div class="contenedor-comando">
+                <code>rmdir /s NombreCarpeta</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>💡 El <strong>/s</strong> le dice a Git: "Borra la carpeta Y todo lo que tenga adentro". La PC te pedirá confirmación.</small></p>
+
+            <p><strong>C. Borrar sin preguntar (Modo Silencioso):</strong></p>
+            <div class="contenedor-comando">
+                <code>rmdir /s /q NombreCarpeta</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>⚠️ El <strong>/q</strong> (Quiet) evita que la PC te pregunte "S/N". Úsalo solo si estás 100% seguro.</small></p>
+
+
+            <hr>
+
+            <h4 style="color: #f1c40f;"><i class="fas fa-search"></i> 3. Buscar e Inspeccionar</h4>
+            <p><strong>Ver contenido sin abrir:</strong> <code>type archivo.txt</code> o <code>more archivo.txt</code></p>
+            <p><strong>Buscar archivos:</strong> <code>dir /s nombre.txt</code> o <code>dir *.md</code></p>
+
+            <hr>
+
+            <h4 style="color: #9b59b6;"><i class="fab fa-git-alt"></i> 4. Developer Flow</h4>
+            <div class="contenedor-comando">
+                <code>start .</code> <span>(Abrir en carpeta de Windows)</span>
+            </div>
+            <div class="contenedor-comando" style="margin-top:5px;">
+                <code>code .</code> 
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <span>(Abrir en VS Code)</span>
+            <p><strong>Status de Git:</strong> <code>git log --oneline</code> y <code>git diff</code></p>
+
+            <hr>
+
+            <h4 style="color: #e67e22;"><i class="fas fa-bolt"></i> 5. Atajos y Trucos</h4>
+            <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>⌨️ <strong>TAB:</strong> Autocompleta nombres (úsalo SIEMPRE).</li>
+                    <li>⬆️ / ⬇️: Repite comandos anteriores.</li>
+                    <li>🛑 <strong>Ctrl + C:</strong> Detiene cualquier comando que se haya trabado.</li>
+                    <li>🌳 <strong>tree /f:</strong> Dibuja el árbol de carpetas de tu proyecto.</li>
+                    <li>📜 <strong>doskey /history:</strong> Lista de todo lo que has escrito.</li>
+                    <li>🚪 <strong>exit:</strong> Cerrar la terminal.</li>
+                </ul>
+            </div>
+        </div>
+    `,
+        links: [
+            { texto: "Cheat Sheet Completa", url: "https://ss64.com/nt/" }
+        ],
+        pasos: []
+    },
+    {
+        categoria: "cmd",
+        titulo: "Guía Maestra: Terminal Linux (Bash)",
+        imagen: "img/cmd/terminal.jpg",
+        comando: "ls / cd / rm / sudo / chmod",
+        descripcion: "Domina el estándar de los servidores y el desarrollo profesional. Comandos esenciales para navegar y gestionar sistemas basados en Unix.",
+        contenidoTutorialHtml: `
+        <h3>🐧 Master Class: Terminal Linux</h3>
+        <p>En Linux, la terminal se llama <strong>Bash</strong> o <strong>Zsh</strong>. Casi todo se maneja con minúsculas y las opciones se activan con un guion <code>-</code>.</p>
+
+        <div class="tutorial-pasos">
+            <h4 style="color: #3498db;"><i class="fas fa-map-marker-alt"></i> 1. ¿Dónde estoy y qué hay?</h4>
+            
+            <p><strong>Saber ruta actual (pwd):</strong> Print Working Directory.</p>
+            <div class="contenedor-comando">
+                <code>pwd</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Listar con detalles (ls):</strong></p>
+            <div class="contenedor-comando">
+                <code>ls -l</code> <span>(Lista detallada: tamaño, fecha)</span>
+            </div>
+            <div class="contenedor-comando" style="margin-top:5px;">
+                <code>ls -a</code> <span>(Ver archivos ocultos como .git)</span>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Limpiar (clear):</strong> El equivalente a cls de Windows.</p>
+            <div class="contenedor-comando">
+                <code>clear</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 style="color: #2ecc71;"><i class="fas fa-file-code"></i> 2. Crear y Manipular</h4>
+            <p><strong>Crear archivo vacío (touch):</strong></p>
+            <div class="contenedor-comando">
+                <code>touch nuevo-archivo.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Copiar (cp) y Mover/Renombrar (mv):</strong></p>
+            <div class="contenedor-comando">
+                <code>cp archivo.txt copia.txt</code>
+            </div>
+            <div class="contenedor-comando" style="margin-top:5px;">
+                <code>mv viejo.txt nuevo.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 style="color: #e74c3c;"><i class="fas fa-skull-crossbones"></i> 3. Eliminación (rm)</h4>
+            <p>En Linux NO hay papelera. Si borras algo, desaparece para siempre.</p>
+            
+            <p><strong>A. Borrar archivo:</strong> <code>rm archivo.txt</code></p>
+            
+            <p><strong>B. Borrar carpeta (Recursivo -r):</strong></p>
+            <div class="contenedor-comando">
+                <code>rm -r NombreCarpeta</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>💡 El <strong>-r</strong> permite entrar a la carpeta y borrar todo su contenido.</small></p>
+
+            <p><strong>C. Borrado forzado (-f):</strong></p>
+            <div class="contenedor-comando" style="border: 1px solid #e74c3c;">
+                <code>rm -rf NombreCarpeta</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>⚠️ El <strong>-f</strong> significa "Force". No pide permiso ni confirma nada. <strong>Úsalo con extremo cuidado.</strong></small></p>
+
+            <hr>
+
+            <h4 style="color: #f1c40f;"><i class="fas fa-shield-alt"></i> 4. Permisos y Sudo</h4>
+            <p><strong>Ejecutar como administrador (sudo):</strong> "SuperUser Do".</p>
+            <div class="contenedor-comando">
+                <code>sudo apt update</code>
+            </div>
+
+            <p><strong>Cambiar permisos (chmod):</strong></p>
+            <div class="contenedor-comando">
+                <code>chmod 777 archivo.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>💡 777 significa que TODOS pueden leer, escribir y ejecutar.</small></p>
+
+            <hr>
+
+            <h4 style="color: #e67e22;"><i class="fas fa-info-circle"></i> 5. Atajos Maestros</h4>
+            <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>📖 <strong>man [comando]:</strong> Abre el manual. (Ej: <code>man ls</code>).</li>
+                    <li>📜 <strong>history:</strong> Muestra todos los comandos que has escrito.</li>
+                    <li>🔍 <strong>grep "texto" archivo:</strong> Busca una palabra dentro de un archivo.</li>
+                    <li>⚡ <strong>Ctrl + L:</strong> Limpia la pantalla rápido (como clear).</li>
+                    <li>📋 <strong>cat archivo:</strong> Muestra el contenido en pantalla rápido.</li>
+                </ul>
+            </div>
+        </div>
+    `,
+        links: [
+            { texto: "Linux Journey (Curso gratis)", url: "https://linuxjourney.com/" }
+        ],
+        pasos: []
+    },
+    {
+        categoria: "cmd",
         titulo: "Mantenimiento y Reparación Completa",
         imagen: "img/cmd/sfc.jpg",
         comando: "sfc / DISM / chkdsk",
@@ -186,150 +478,6 @@ export const misNotas = [
                 url: "https://support.microsoft.com/es-es/topic/use-la-herramienta-comprobador-de-archivos-de-sistema-para-reparar-los-archivos-de-sistema-que-faltan-o-est%C3%A1n-da%C3%B1ados-79aa86cb-ca52-166a-92a3-966e85d4094e"
             }
         ],
-        pasos: []
-    },
-    {
-        categoria: "cmd",
-        titulo: "Consultar Dirección IP (ipconfig)",
-        imagen: "img/cmd/ip.jpg",
-        comando: "ipconfig",
-        descripcion: "Identifica la dirección IP, máscara de subred y puerta de enlace de todos los adaptadores de red.",
-        contenidoTutorialHtml: `
-            <h3>🌐 Identificación de Red Local</h3>
-            <p>Este comando es vital para verificar si tu configuración de IP estática se aplicó correctamente en tu red local.</p>
-            
-            <div class="tutorial-pasos">
-                <h4>Paso 1: Ejecución en CMD</h4>
-                <p>Abre el Símbolo del Sistema y escribe el comando básico:</p>
-                <div class="contenedor-comando">
-                <code>ipconfig</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
-                        <i class="fas fa-copy"></i> Copiar
-                    </button>
-                </div>
-
-                <details class="acordeon-tutorial">
-                    <summary class="acordeon-header">
-                        <i class="fas fa-search"></i> CLIC PARA VER CÓMO INTERPRETAR LOS DATOS
-                    </summary>
-                    <div class="tutorial-pasos warning">
-                        <ul>
-                            <li><strong>Dirección IPv4:</strong> Es el número de identificación de tu computadora en la red ej: <code>192.168.1.1</code></li>
-                            <li><strong>Máscara de subred:</strong> Define el tamaño de la red (usualmente). <code>255.255.255.0</code></li>
-                            <li><strong>Puerta de enlace:</strong> Es la dirección del router o equipo que provee internet.</li>
-                        </ul>
-                    </div>
-                </details>
-
-                <h4>Paso 2: Información Detallada (/all)</h4>
-                <p>Si necesitas saber la <strong>Dirección Física (MAC)</strong> o los servidores DNS, usa la variante completa:</p>
-                <div class="contenedor-comando">
-                    <code>ipconfig /all</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
-                        <i class="fas fa-copy"></i> Copiar
-                    </button>
-                </div>
-            </div>
-            <p style="margin-top: 15px;"><i>Tip: Si el comando muestra "Medio desconectado", verifica que tu cable Ethernet esté bien conectado en ambos extremos.</i></p>
-        `,
-        links: [
-            {
-                texto: "Video tutorial",
-                url: "https://www.youtube.com/shorts/aeXvAgZ1enI",
-                plataforma: "youtube"
-            }
-        ],
-        pasos: []
-    },
-    {
-        categoria: "cmd",
-        titulo: "Exploración y Navegación en CMD",
-        imagen: "img/cmd/cmd1.jpg",
-        comando: "cd / dir / cls",
-        descripcion: "Comandos fundamentales para moverte entre directorios, listar contenidos y mantener limpia la consola.",
-        contenidoTutorialHtml: `
-            <h3>📂 Navegación de Directorios</h3>
-            <p>Domina el movimiento fluido por las carpetas del sistema.</p>
-            
-            <div class="tutorial-pasos">
-                <p><strong>Listar archivos (dir):</strong> Muestra el contenido de la carpeta actual.</p>
-                <div class="contenedor-comando">
-                    <code>dir /p</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div>
-                <p><small>Tip: <code>/p</code> detiene la lista si es muy larga.</small></p>
-
-                <p><strong>Cambiar carpeta (cd):</strong></p>
-                <div class="contenedor-comando">
-                    <code>cd Descargas</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div>
-                <div class="contenedor-comando" style="margin-top:5px;">
-                    <code>cd ..</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div>
-                <p><small>Tip: <code>cd ..</code> te regresa un nivel atrás.</small></p>
-
-                <p><strong>Limpiar pantalla (cls):</strong> Borra todo el texto acumulado.</p>
-                <div class="contenedor-comando">
-                    <code>cls</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div>
-            </div>
-        `,
-        links: [{ texto: "Video Tutorial", url: "https://www.youtube.com/watch?v=erKosEQaaFc&t=909s", plataforma: "youtube" }],
-        pasos: []
-    },
-    {
-        categoria: "cmd",
-        titulo: "Administración de Carpetas y Archivos",
-        imagen: "img/cmd/archivos2.jpg",
-        comando: "mkdir / rmdir / copy / del",
-        descripcion: "Gestión completa de la estructura del disco: crear, duplicar, renombrar y eliminar archivos o directorios.",
-        contenidoTutorialHtml: `
-            <h3>🛠️ Gestión de Estructuras</h3>
-            <p>Comandos para organizar y limpiar tus datos desde la terminal.</p>
-            
-            <div class="tutorial-pasos">
-                <h4>Fase A: Carpetas (Directorios)</h4>
-                <p><strong>Crear (mkdir):</strong> Usa comillas si el nombre lleva espacios.</p>
-                <div class="contenedor-comando">
-                    <code>mkdir "Nueva Carpeta 2024"</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div>
-
-                <p><strong>Borrar (rmdir):</strong></p>
-                <div class="contenedor-comando">
-                    <code>rmdir /s /q NombreCarpeta</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div>
-                <div style="background: rgba(231, 76, 60, 0.1); padding: 10px; border-radius: 6px; margin-top: 5px; border-left: 3px solid #e74c3c;">
-                    <ul style="font-size: 0.8rem; list-style: none; padding: 0;">
-                        <li><strong>/s</strong> : Borra la carpeta y todo su contenido.</li>
-                        <li><strong>/q</strong> : Modo silencioso (sin confirmación).</li>
-                    </ul>
-                </div>
-
-                <h4 style="margin-top:20px;">Fase B: Archivos</h4>
-                <p><strong>Duplicar (copy) / Renombrar (ren):</strong></p>
-                <div class="contenedor-comando">
-                    <code>copy nota.txt C:\\Backup</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div>
-
-                <details class="acordeon-tutorial" style="margin-top: 15px; border-color: #e74c3c;">
-                    <summary class="acordeon-header" style="background: #e74c3c;"><i class="fas fa-trash"></i> BORRADO CON COMODINES (*)</summary>
-                    <div class="tutorial-pasos warning">
-                        <p>Elimina todos los archivos de un tipo (ej: imágenes JPG):</p>
-                        <div class="contenedor-comando">
-                            <code>del *.jpg</code>
-                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                        </div>
-                    </div>
-                </details>
-            </div>
-        `,
-        links: [],
         pasos: []
     },
     {
@@ -3075,6 +3223,120 @@ goto inicio
             { texto: "Video: Publicar Web", url: "https://www.youtube.com/shorts/GYBhmIDTe0g", plataforma: "youtube" },
             { texto: "Video: Eliminar Repo", url: "https://www.youtube.com/watch?v=7PhypMDoWrc", plataforma: "youtube" }
         ],
+        pasos: []
+    },
+    {
+        categoria: "programacion",
+        titulo: "Claude: Copiloto de Lógica y Arquitectura",
+        imagen: "img/programacion/claude.jpg",
+        comando: "Prompt Engineering / Artifacts / Proyectos",
+        descripcion: "Asistente avanzado de IA especializado en razonamiento complejo, depuración de código y generación de documentación técnica.",
+        contenidoTutorialHtml: `
+        <h3>🤖 Dominando a Claude</h3>
+        <p>Claude no solo escribe código; entiende la lógica detrás de él. Úsalo para planificar antes de escribir.</p>
+
+        <div class="tutorial-pasos">
+            <h4 style="color: #d97757;"><i class="fas fa-magic"></i> 1. Artifacts (Vista Previa)</h4>
+            <p>Cuando Claude genera una web (HTML/CSS/JS) o un diagrama, usa la ventana de <strong>Artifacts</strong>.</p>
+            <div style="background: rgba(217, 119, 87, 0.1); padding: 10px; border-radius: 8px; border-left: 3px solid #d97757;">
+                <p>💡 <strong>Tip:</strong> Puedes pedirle: <em>"Modifica el Artifact para que el botón sea rojo"</em> y lo hará en tiempo real sin repetir todo el código.</p>
+            </div>
+
+            <hr>
+
+            <h4 style="color: #34495e;"><i class="fas fa-box-open"></i> 2. Project Knowledge</h4>
+            <p>Si tienes la versión Pro, usa los <strong>"Projects"</strong> para subir toda tu guía de pasos y código.</p>
+            <div class="contenedor-comando">
+                <code>Subir archivo: GUIA_PASOS.md</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>Esto hace que Claude responda basado 100% en tus reglas y no en código genérico.</small></p>
+
+            <hr>
+
+            <h4 style="color: #2980b9;"><i class="fas fa-terminal"></i> 3. Prompts Efectivos</h4>
+            <p><strong>Para Debugging:</strong></p>
+            <div class="contenedor-comando">
+                <code>"Analiza este error de consola y revisa si mi conexión a Firebase en index.html es correcta."</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 style="color: #e67e22;"><i class="fas fa-keyboard"></i> 4. Atajos Rápidos</h4>
+            <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>⌨️ <strong>Ctrl + K:</strong> Abre un nuevo chat rápidamente.</li>
+                    <li>📎 <strong>Shift + Enter:</strong> Sube una imagen o archivo de código.</li>
+                    <li>📋 <strong>Copiar Código:</strong> Botón directo en la esquina superior derecha de cada bloque.</li>
+                </ul>
+            </div>
+        </div>
+    `,
+        links: [{ texto: "Web de Claude", url: "https://claude.ai"}],
+        pasos: []
+    },
+    {
+        categoria: "programacion",
+        titulo: "Cursor: El Editor de Código del Futuro",
+        imagen: "img/programacion/cursor.jpg",
+        comando: "Ctrl+K / Ctrl+L / Ctrl+I / @Context",
+        descripcion: "Basado en VS Code, pero con IA integrada en el corazón. Permite editar, chatear y crear archivos completos con lenguaje natural.",
+        contenidoTutorialHtml: `
+        <h3>🚀 Potencia tu flujo con Cursor</h3>
+        <p>Cursor "lee" todo tu proyecto. No necesitas copiar y pegar código para que la IA sepa qué estás haciendo.</p>
+
+        <div class="tutorial-pasos">
+            <h4 style="color: #3498db;"><i class="fas fa-edit"></i> 1. Edición In-line (Ctrl + K)</h4>
+            <p>Sombrea un código o pulsa en una línea vacía y presiona <code>Ctrl + K</code>.</p>
+            <div class="contenedor-comando">
+                <code>"Crea una función que guarde comentarios en Firebase usando window._db"</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>💡 Cursor escribirá el código directamente en tu archivo. Dale a <strong>"Accept"</strong> para confirmar.</small></p>
+
+            <hr>
+
+            <h4 style="color: #9b59b6;"><i class="fas fa-comments"></i> 2. Chat Global (Ctrl + L)</h4>
+            <p>Para preguntar sobre todo el proyecto o errores complejos.</p>
+            <p><strong>Uso del @ (Símbolo Maestro):</strong></p>
+            <ul style="font-size: 0.85rem;">
+                <li><strong>@Files:</strong> Dale a la IA un archivo específico para leer.</li>
+                <li><strong>@Codebase:</strong> Escanea TODO tu proyecto para responder.</li>
+                <li><strong>@Docs:</strong> Consulta documentación oficial (ej: Firebase).</li>
+            </ul>
+
+            <hr>
+
+            <h4 style="color: #2ecc71;"><i class="fas fa-rocket"></i> 3. Composer (Ctrl + I)</h4>
+            <p>¿Quieres crear varios archivos a la vez? Usa el <strong>Composer</strong>.</p>
+            <div class="contenedor-comando" style="border: 1px solid #2ecc71;">
+                <code>"Crea la estructura de carpetas para un álbum familiar con CSS y JS"</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 style="color: #f1c40f;"><i class="fas fa-terminal"></i> 4. Terminal Inteligente</h4>
+            <p>En la terminal, presiona <code>Ctrl + K</code> para pedirle comandos.</p>
+            <div class="contenedor-comando">
+                <code>"¿Cuál era el comando para subir cambios a mi rama-vikthor?"</code>
+            </div>
+            <p><small>Cursor te escribirá el <code>git push...</code> automáticamente.</small></p>
+
+            <hr>
+
+            <h4 style="color: #e74c3c;"><i class="fas fa-bolt"></i> 5. Atajos Esenciales</h4>
+            <div style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;">
+                <ul style="font-size: 0.9rem; line-height: 1.6;">
+                    <li>⌨️ <strong>Ctrl + Shift + J:</strong> Abre el chat de la terminal.</li>
+                    <li>🖱️ <strong>Cmd/Ctrl + Click:</strong> Navega al archivo que la IA te menciona.</li>
+                    <li>🔍 <strong>Cmd + Shift + L:</strong> Agrega el código seleccionado al chat.</li>
+                </ul>
+            </div>
+        </div>
+    `,
+        links: [{ texto: "Descargar Cursor", url: "https://cursor.sh" }],
         pasos: []
     },
     // SISTEMAS
