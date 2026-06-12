@@ -1,0 +1,257 @@
+/* ============================================================
+   OPTIMIZACION.CSS
+   Clases utilitarias generadas desde los estilos inline de data.js
+   
+   CÓMO USAR:
+   Añade este link en tu index.html DESPUÉS del link de style.css:
+   <link rel="stylesheet" href="css/optimizacion.css">
+   
+   PARA CAMBIAR ALGO:
+   Si quieres cambiar el padding de todos los bloques de código,
+   solo cambia .p-10 aquí → se aplica en los ~27 lugares del data.js
+   Si quieres cambiar el color de "peligro", cambia --color-peligro
+   en las variables de arriba → afecta h4, notas y bordes a la vez.
+   ============================================================ */
+
+
+/* ============================================================
+   VARIABLES DE COLOR SEMÁNTICAS
+   Cambia un valor aquí → cambia en TODO el portal
+   ============================================================ */
+:root {
+    /* Colores de estado usados en títulos h4 y bloques nota */
+    --color-info:        #3498db;   /* azul informativo */
+    --color-exito:       #2ecc71;   /* verde éxito */
+    --color-peligro:     #e74c3c;   /* rojo peligro/error */
+    --color-alerta:      #f1c40f;   /* amarillo alerta */
+    --color-naranja:     #e67e22;   /* naranja advertencia */
+    --color-morado:      #9b59b6;   /* morado/especial */
+    --color-amarillo:    #f39c12;   /* amarillo dorado */
+
+    /* Fondos semitransparentes de los bloques nota */
+    --nota-info-bg:        rgba(52, 152, 219, 0.1);
+    --nota-primary-bg:     rgba(99, 102, 241, 0.1);
+    --nota-exito-bg:       rgba(46, 204, 113, 0.1);
+    --nota-peligro-bg:     rgba(231, 76, 60, 0.1);
+    --nota-advertencia-bg: rgba(243, 156, 18, 0.1);
+
+    /* Grosor del borde izquierdo de los bloques nota */
+    --nota-borde-grosor: 4px;
+
+    /* Padding interno de los bloques nota */
+    --nota-padding: 10px;
+
+    /* Border-radius de los bloques nota */
+    --nota-radio: 4px;
+
+    /* Colores de sintaxis de código (usados con class="cod-*") */
+    --cod-amarillo: #dcdcaa;
+    --cod-naranja:  #ce9178;
+    --cod-azul:     #9cdcfe;
+    --cod-gris:     #d4d4d4;
+}
+
+
+/* ============================================================
+   UTILIDADES DE ESPACIADO
+   Reemplazan los style="margin-top: Xpx" del data.js
+   ============================================================ */
+
+/* margin-top */
+.mt-5  { margin-top:  5px  !important; }
+.mt-10 { margin-top: 10px  !important; }
+.mt-15 { margin-top: 15px  !important; }
+.mt-20 { margin-top: 20px  !important; }
+
+/* margin-bottom */
+.mb-8  { margin-bottom:  8px !important; }
+.mb-10 { margin-bottom: 10px !important; }
+.mb-15 { margin-bottom: 15px !important; }
+
+/* margin 0 */
+.m-0 { margin: 0 !important; }
+
+/* padding */
+.p-5  { padding:  5px !important; }
+.p-8  { padding:  8px !important; }
+.p-10 { padding: 10px !important; }
+
+/* text-align */
+.t-center { text-align: center !important; }
+
+/* font-weight */
+.fw-bold { font-weight: bold !important; }
+
+
+/* ============================================================
+   COLORES SEMÁNTICOS PARA TÍTULOS H4
+   Reemplazan los style="color: #hex" en los h4 del data.js
+   ============================================================ */
+.color-info       { color: var(--color-info)       !important; }
+.color-exito      { color: var(--color-exito)      !important; }
+.color-peligro    { color: var(--color-peligro)    !important; }
+.color-alerta     { color: var(--color-alerta)     !important; }
+.color-naranja    { color: var(--color-naranja)    !important; }
+.color-morado     { color: var(--color-morado)     !important; }
+.color-amarillo   { color: var(--color-amarillo)   !important; }
+
+
+/* ============================================================
+   COLORES DE SINTAXIS
+   Para fragmentos de código con resaltado de color
+   ============================================================ */
+.cod-amarillo { color: var(--cod-amarillo) !important; }
+.cod-naranja  { color: var(--cod-naranja)  !important; }
+.cod-azul     { color: var(--cod-azul)     !important; }
+.cod-gris     { color: var(--cod-gris)     !important; }
+
+
+/* ============================================================
+   BLOQUES NOTA / CALLOUT
+   Reemplazan los div con style="background: rgba(...)..."
+   
+   Uso en data.js:
+     <div class="nota-info">    → azul informativo
+     <div class="nota-primary"> → índigo (color principal)
+     <div class="nota-exito">   → verde éxito
+     <div class="nota-peligro"> → rojo peligro
+     <div class="nota-advertencia"> → naranja advertencia
+   
+   Para cambiar el aspecto de TODOS los bloques nota a la vez,
+   edita las variables --nota-* arriba.
+   ============================================================ */
+
+/* Base compartida por todos los bloques nota */
+.nota-info,
+.nota-primary,
+.nota-exito,
+.nota-peligro,
+.nota-advertencia {
+    padding:      var(--nota-padding);
+    border-left:  var(--nota-borde-grosor) solid;
+    border-radius: var(--nota-radio);
+    margin-top:   15px;
+}
+
+/* Colores individuales */
+.nota-info {
+    background:   var(--nota-info-bg);
+    border-color: var(--color-info);
+}
+
+.nota-primary {
+    background:   var(--nota-primary-bg);
+    border-color: var(--primary, #6366f1);
+}
+
+.nota-exito {
+    background:   var(--nota-exito-bg);
+    border-color: var(--color-exito);
+}
+
+.nota-peligro {
+    background:   var(--nota-peligro-bg);
+    border-color: var(--color-peligro);
+}
+
+.nota-advertencia {
+    background:   var(--nota-advertencia-bg);
+    border-color: var(--color-amarillo);
+}
+
+
+/* ============================================================
+   TIPOGRAFÍA UTILITARIA
+   ============================================================ */
+
+/* Texto pequeño con line-height cómoda (antes style="font-size: 0.9rem; line-height: 1.6;") */
+.txt-sm {
+    font-size:   0.9rem  !important;
+    line-height: 1.6     !important;
+}
+
+
+/* ============================================================
+   LISTAS
+   ============================================================ */
+
+/* Lista sin bullets ni padding (antes style="list-style: none; padding-left: 0;") */
+.lista-limpia {
+    list-style:   none  !important;
+    padding-left: 0     !important;
+}
+
+
+/* ============================================================
+   BLOQUES Y CONTENEDORES
+   ============================================================ */
+
+/* Fondo sutil blanco semi-transparente (antes style="background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px;") */
+.bloque-sutil {
+    background:    rgba(255, 255, 255, 0.05) !important;
+    padding:       10px                      !important;
+    border-radius: 8px                       !important;
+}
+
+
+/* ============================================================
+   SEPARADORES
+   ============================================================ */
+
+/* Línea degradada con color primario (antes style="height: 2px; background: linear-gradient(...); margin: 30px 0;") */
+.separador-grad {
+    height: 2px;
+    margin: 30px 0;
+    border: none;
+}
+
+.separador-grad {
+    background: linear-gradient(to right, var(--primary, #6366f1), transparent);
+}
+
+.separador-grad.separador-secondary {
+    background: linear-gradient(to right, var(--secondary, #0ea5e9), transparent);
+}
+
+.separador-grad.separador-verde {
+    background: linear-gradient(to right, #10b981, transparent);
+}
+
+
+/* ============================================================
+   BORDES UTILITARIOS
+   ============================================================ */
+
+/* Borde inferior con color primario (antes style="border-bottom: 2px solid var(--primary); padding-bottom: 10px;") */
+.borde-primary {
+    border-bottom:  2px solid var(--primary, #6366f1) !important;
+    padding-bottom: 10px                              !important;
+}
+
+/* Borde inferior con color secundario */
+.borde-secondary {
+    border-bottom:  2px solid var(--secondary, #0ea5e9) !important;
+    padding-bottom: 10px                                !important;
+}
+
+/* Borde inferior muy sutil */
+.borde-sutil {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Borde inferior con variable glass */
+.borde-glass {
+    border-bottom: 1px solid var(--border-glass) !important;
+}
+
+
+/* ============================================================
+   TABLAS
+   ============================================================ */
+
+/* Tabla base responsiva (antes style="width: 100%; border-collapse: collapse; font-size: 0.9rem;") */
+.tabla-base {
+    width:           100%     !important;
+    border-collapse: collapse !important;
+    font-size:       0.9rem   !important;
+}
