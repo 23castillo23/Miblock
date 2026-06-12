@@ -308,6 +308,7 @@ export const datos_investigacion = [
 {
         categoria: "investigacion",
         titulo: "Manual Maestro: Configuración Global de Firebase",
+        esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA
         esPrivada: false,
         imagen: "img/investigacion/fire23base.jpg",
         comando: "Firebase: SDK v11.0.1 (Firestore)",
@@ -397,6 +398,7 @@ export const datos_investigacion = [
 {
         categoria: "investigacion",
         titulo: "Manual Maestro: Almacenamiento Dinámico (Cloudinary)",
+        esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA
         esPrivada: false,
         imagen: "img/investigacion/cloudinary.jpg",
         comando: "API: Cloudinary Media Fetch & Upload",
@@ -467,6 +469,7 @@ async function subirFoto(archivo) {
 {
         categoria: "investigacion",
         titulo: "Manual Maestro: Automatización por Etiquetas (Tags)",
+        esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA
         esPrivada: false,
         imagen: "img/investigacion/cloudinary01.jpg",
         comando: "Cloudinary: Bulk Tagging & Resource List",

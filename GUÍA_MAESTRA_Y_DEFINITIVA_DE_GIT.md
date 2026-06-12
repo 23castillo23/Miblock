@@ -206,7 +206,7 @@ Cómo subir un proyecto local a GitHub
 - Haz clic en Create repository.
 
 2. Comandos en la Terminal (Local)
-Abre la terminal o CMD y navega hasta la carpeta de tu proyecto. Luego, ejecuta los siguientes comandos:
+Abre la terminal en VS Code y navega hasta la carpeta de tu proyecto. Luego, ejecuta los siguientes comandos:
 
 Inicializar el repositorio:
 > git init
@@ -217,7 +217,7 @@ Preparar todos los archivos:
 > git add .
 ## El punto . indica que quieres agregar todos los archivos de la carpeta.
 
-Crear el primer registro:
+Crear el primer "commit" (punto de guardado con descripción):
 > git commit -m "Primer commit: Subida inicial del proyecto"
 
 Nombrar la rama principal:
