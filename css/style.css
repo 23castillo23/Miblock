@@ -541,14 +541,14 @@ header p {
 .tab.active.windows {
     background: #54d8f0;
     box-shadow: 0 4px 12px rgba(84, 216, 240, 0.4);
-    color: #1e293b;
+    
 }
 
 /* CSS: Verde para Online */
 .tab.active.linux {
     background: #055474;
     box-shadow: 0 4px 12px rgba(8, 115, 134, 0.4);
-    color: #1e293b;
+    
 }
 
 /* CSS: Celeste para Windows */

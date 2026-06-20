@@ -4,7 +4,7 @@ export const datos_investigacion = [
 {
         categoria: "investigacion",
         titulo: "Manual Maestro: Reconstrucción del Proyecto",
-        esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA
+        esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA false = no lo oculta
         imagen: "img/investigacion/googleCloud.jpg",
         comando: "Full-Stack: Firebase + PWA",
         descripcion: "Guía técnica completa paso a paso: configuración de Google Cloud, estructura de archivos local, lógica de sincronización y despliegue en GitHub.",
@@ -307,9 +307,8 @@ export const datos_investigacion = [
     },
 {
         categoria: "investigacion",
-        titulo: "Manual Maestro: Configuración Global de Firebase",
-        esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA
-        esPrivada: false,
+        titulo: "Manual Maestro: Configuración Global de Firebase",        
+        esPrivada: true,
         imagen: "img/investigacion/fire23base.jpg",
         comando: "Firebase: SDK v11.0.1 (Firestore)",
         descripcion: "Guía definitiva para conectar cualquier proyecto web con la nube de Google. Configura la base de datos Firestore y activa el modo de prueba para desarrollo interactivo.",
@@ -398,8 +397,7 @@ export const datos_investigacion = [
 {
         categoria: "investigacion",
         titulo: "Manual Maestro: Almacenamiento Dinámico (Cloudinary)",
-        esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA
-        esPrivada: false,
+        esPrivada: true,
         imagen: "img/investigacion/cloudinary.jpg",
         comando: "API: Cloudinary Media Fetch & Upload",
         descripcion: "Gestiona imágenes familiares de forma profesional. Aprende a configurar el almacenamiento en la nube, optimizar URLs para móviles y habilitar la subida directa de archivos desde tu página.",
@@ -469,8 +467,7 @@ async function subirFoto(archivo) {
 {
         categoria: "investigacion",
         titulo: "Manual Maestro: Automatización por Etiquetas (Tags)",
-        esPrivada: true, // ESTO HACE QUE LA TARJETA SEA PRIVADA
-        esPrivada: false,
+        esPrivada: true,
         imagen: "img/investigacion/cloudinary01.jpg",
         comando: "Cloudinary: Bulk Tagging & Resource List",
         descripcion: "Aprende a agrupar cientos de imágenes bajo una sola etiqueta para que tu código las detecte automáticamente sin tener que copiar links uno por uno.",

@@ -9,39 +9,146 @@ export const datos_sistemas = [
         descripcion: "Configuración de Git como sistema de control de versiones dentro del IDE Visual Studio Code para gestionar el historial del proyecto.",
         contenidoTutorialHtml: `
             <h3>🔧 Git & VS Code: El motor y la interfaz</h3>
-            <p><strong>Visual Studio Code</strong> es un <strong>IDE</strong>: tu espacio de trabajo. <strong>Git</strong> es el sistema que guarda tus cambios. Juntos te permiten no perder nunca tu trabajo.</p>
-            
-            <div class="tutorial-pasos">
-                <h4>1. ¿Para qué sirve esta unión?</h4>
-                <ul>
-                    <li><strong>VS Code:</strong> Te da los botones, los colores y la terminal.</li>
-                    <li><strong>Git:</strong> Se encarga de los comandos (add, commit, push) y del historial.</li>
-                </ul>
+                    <p><strong>Visual Studio Code</strong> es tu espacio de trabajo. <strong>Git</strong> es el sistema local que guarda el historial de tus cambios, y <strong>GitHub</strong> es la plataforma en la nube donde respaldas y compartes esos proyectos. Juntos te permiten no perder nunca tu trabajo.</p>
 
-                <h4>2. Instalación y Vinculación</h4>
-                <ul>
-                    <li>Descarga el instalador de <strong>git-scm.com</strong>.</li>
-                    <li>Al instalar, elige: <strong>"Use Visual Studio Code as Git's default editor"</strong>.</li>
-                </ul>
+                    <div class="tutorial-pasos">
+                        <h4>🛠️ PASO 1 — Instalar Git en el Sistema</h4>
+                        <p>Ve a la página oficial de Git y descarga la última versión del instalador para Windows: <a href="https://git-scm.com/download/win" target="_blank" class="link-comando">https://git-scm.com/download/win</a></p>
+                        <p>👉 Aquí tienes los pasos precisos y recomendados para completar la instalación de Git, seleccionando las mejores opciones para un entorno de programación moderno:</p>
+                        
+                        <ol>
+                            <li class="mb-8"><strong>Information / License:</strong> Haz clic en Next.</li>
+                            <li class="mb-8"><strong>Select Destination Location:</strong> Deja la carpeta por defecto y haz clic en Next.</li>
+                            <li class="mb-8"><strong>Select Components:</strong> Deja las opciones que vienen marcadas por defecto y haz clic en Next.</li>
+                            <li class="mb-8"><strong>Select Start Menu Folder:</strong> Solo le indica al instalador que cree una carpeta llamada "Git" en tu menú de inicio de Windows. Haz clic en Next.</li>
+                            <li class="mb-8"><strong>Choosing the default editor used by Git:</strong> Abre el menú desplegable y selecciona <em>Use Visual Studio Code as Git's default editor</em>. El instalador debería detectarlo, pero si por algún motivo necesitas verificar o introducir la ruta manualmente, esta es: <code>C:\\Users\\Castillo09\\AppData\\Local\\Programs\\Microsoft VS Code</code>
+                                <div style="background: rgba(231, 76, 60, 0.1); border-left: 4px solid #e74c3c; padding: 10px; margin: 10px 0;">
+                                    <p class="m-0"><small>📌 <strong>El mensaje en rojo que dice "(WARNING!) This will be installed only for this user." es completamente normal.</strong> Aparece simplemente porque tienes Visual Studio Code instalado de forma local en tu carpeta de usuario, y no como una instalación global para todo el sistema. Esto no afecta en nada su funcionamiento, está perfecto así. Simplemente haz clic en Next para continuar.</small></p>
+                                </div>
+                            </li>
+                            <li class="mb-8"><strong>Adjusting the name of the initial branch:</strong> Selecciona <em>Override the default branch name for new repositories</em> y asegúrate de que diga <strong>main</strong>. Haz clic en Next.</li>
+                            <li class="mb-8"><strong>Adjusting your PATH environment:</strong> Selecciona <em>Git from the command line and also from 3rd-party software</em>. Haz clic en Next.</li>
+                            <li class="mb-8"><strong>Choosing the SSH executable:</strong> Selecciona <em>Use bundled OpenSSH</em> y haz clic en Next.</li>
+                            <li class="mb-8"><strong>Choosing HTTPS transport backend:</strong> Selecciona <em>Use the OpenSSL library</em> y haz clic en Next.
+                                <div class="bloque-sutil mt-5">
+                                    <p class="m-0"><small>💡 <strong>¿Por qué seleccionamos la librería OpenSSL?</strong> La otra opción está diseñada para redes empresariales restrictivas. Al elegir OpenSSL, mantienes el estándar general que usa Git y aseguras que las descargas funcionen igual en Windows 11, Zorin OS o Linux Mint.</small></p>
+                                </div>
+                            </li>
+                            <li class="mb-8"><strong>Configuring the line ending conversions:</strong> Selecciona <em>Checkout Windows-style, commit Unix-style line endings</em>. Esta configuración es crucial para mantener la compatibilidad de los saltos de línea en tus archivos de texto y código cuando reinicies el equipo. Haz clic en Next.</li>
+                            <li class="mb-8"><strong>Configuring the terminal emulator to use with Git Bash:</strong> Selecciona <em>Use MinTTY (the default terminal of MSYS2)</em> y haz clic en Next.</li>
+                            <li class="mb-8"><strong>Choose the default behavior of git pull:</strong> Selecciona <em>Default (fast-forward or merge)</em> y haz clic en Next.</li>
+                            <li class="mb-8"><strong>Choose a credential helper:</strong> Selecciona <em>Git Credential Manager</em>. Esto te facilitará mucho iniciar sesión cuando vincules tus repositorios locales con GitHub o GitLab. Haz clic en Next.</li>
+                            <li class="mb-8"><strong>Configuring extra options:</strong> Marca únicamente la casilla <em>Enable file system caching</em> y haz clic en el botón Install.</li>
+                            <li class="mb-8"><strong>Completing the Git Setup Wizard:</strong> Una vez que termine de cargar la barra verde, desmarca la casilla <em>View Release Notes</em> y haz clic en Finish.</li>
+                        </ol>
 
-                <h4>3. Configuración de Identidad</h4>
-                <p>Copia estos comandos en la terminal de tu IDE para que GitHub sepa quién eres:</p>
-                <div class="contenedor-comando">
-                    <code>git config --global user.name "Tu Nombre"</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div>
-                <div class="contenedor-comando">
-                    <code>git config --global user.email "tu@correo.com"</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div> 
+                        <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 15px 0; border-radius: 8px;">
+                            <p class="mb-10"><strong>🔍 Procedimiento de Verificación</strong><br>Para constatar que Git está correctamente integrado con el entorno global del sistema, sigue de forma ordenada este flujo de actualización:</p>
+                            <ol>
+                                <li><strong>Cierra Visual Studio Code:</strong> Cierra completamente todas las ventanas activas.</li>
+                                <li><strong>Reinicia el Editor:</strong> Vuelve a abrir tu espacio de trabajo.</li>
+                                <li><strong>Despliega la Terminal:</strong> Abre una nueva consola interna desde el menú superior pulsando en Terminal > New Terminal.</li>
+                                <li><strong>Ejecuta el comando:</strong> Escribe con precisión la siguiente instrucción y presiona Enter:</li>
+                            </ol>
+                            <div class="contenedor-comando mt-5">
+                                <code>git --version</code>
+                                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                            </div>
+                            <p class="mt-5"><small>Si la configuración se completó satisfactoriamente, la consola desplegará una cadena de texto confirmando la versión activa. Si aparece algo como <em>git version 2.54.0.windows.1</em>, ¡Git está listo!</small></p>
+                        </div>
 
-                <h4>4. Comprobación en el IDE</h4>
-                <div class="contenedor-comando">
-                    <code>git --version</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
-                </div> 
-                <p>Si la terminal de tu IDE responde con la versión, ¡la conexión es exitosa!</p>
-            </div>
+                        <hr>
+
+                        <h4>Paso 2: Configurar tu Identidad Global</h4>
+                        <p>Git necesita saber quién eres. Esto solo se hace una vez por computadora. Abre la terminal de VS Code y ejecuta (usando el mismo correo de tu cuenta de GitHub):</p>
+                        <div class="contenedor-comando">
+                            <code>git config --global user.name "Tu Nombre"</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+                        <div class="contenedor-comando mt-5">
+                            <code>git config --global user.email "tu@correo.com"</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+
+                        <hr>
+
+                        <h4>Paso 3: Crear Repositorio en GitHub</h4>
+                        <ol>
+                            <li>Inicia sesión en GitHub y haz clic en <strong>New repository</strong>.</li>
+                            <li>Escribe el nombre del proyecto.</li>
+                            <li>🚨 <strong>MUY IMPORTANTE:</strong> Deja todo lo demás vacío (NO marques Add a README, .gitignore, ni License).</li>
+                            <li>Haz clic en <strong>Create repository</strong> y deja esa pantalla abierta.</li>
+                        </ol>
+
+                        <hr>
+
+                        <h4>Paso 4: Inicializar y Subir Proyecto Local</h4>
+                        <p>En VS Code, abre la carpeta de tu proyecto. En la terminal ejecuta paso a paso:</p>
+
+                        <p><strong>1. Inicializar Git:</strong> (Crea la carpeta oculta .git)</p>
+                        <div class="contenedor-comando">
+                            <code>git init</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+
+                        <p><strong>2. Preparar archivos:</strong> (El punto indica "agregar todo")</p>
+                        <div class="contenedor-comando mt-5">
+                            <code>git add .</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+
+                        <p><strong>3. Crear punto de guardado:</strong> (Commit inicial)</p>
+                        <div class="contenedor-comando mt-5">
+                            <code>git commit -m "Primer commit: Subida inicial del proyecto"</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+
+                        <p><strong>4. Conectar con GitHub:</strong> (Copia la URL exacta de tu pantalla de GitHub)</p>
+                        <div class="contenedor-comando mt-5">
+                            <code>git remote add origin https://github.com/TuUsuario/TuRepositorio.git</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+
+                        <p><strong>5. Forzar nombre de la rama principal a "main":</strong></p>
+                        <div class="contenedor-comando mt-5">
+                            <code>git branch -M main</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+
+                        <p><strong>6. Empujar archivos a la nube:</strong> (Solo se usa la primera vez)</p>
+                        <div class="contenedor-comando mt-5">
+                            <code>git push -u origin main</code>
+                            <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                        </div>
+
+                        <div class="bloque-sutil mt-5">
+                            <p>🔐 <strong>Autorización:</strong> Al ejecutar el último comando, se abrirá el navegador pidiendo autorización. Haz clic en <em>"Sign in with your browser"</em>. ¡Y listo! Tu código ya está en GitHub.</p>
+                        </div>
+
+                        <hr>
+
+                        <h4 class="color-exito">🌐 Paso Extra: Desplegar sitio con GitHub Pages</h4>
+                        <p>Obtén un link público para que cualquiera vea tu proyecto sin instalar nada:</p>
+                        <ol>
+                            <li>Ve a tu repositorio en GitHub y haz clic en <strong>Settings</strong>.</li>
+                            <li>Busca <strong>Pages</strong> en el menú izquierdo.</li>
+                            <li>En "Branch", cambia <em>None</em> a <strong>main</strong> y haz clic en <strong>Save</strong>.</li>
+                            <li>Espera un par de minutos, recarga y verás un mensaje verde con tu URL pública.</li>
+                        </ol>
+                        <p><small>⚠️ Nota: Si tu proyecto usa servicios externos como Firebase, sus funciones seguirán operativas. Sin embargo, revisa bien las rutas locales de tus archivos si notas algún error.</small></p>
+
+                        <hr>
+
+                        <h4 class="color-naranja">🔄 El Flujo de Trabajo Diario</h4>
+                        <p>Para futuras actualizaciones en tu código, este será tu pan de cada día:</p>
+                        <ul class="lista-limpia txt-sm">
+                            <li><strong><code>git branch</code></strong> → Verifica que estás trabajando en la rama <em>main</em>.</li>
+                            <li><strong><code>git status</code></strong> → Tu radar. Te dice qué archivos modificaste.</li>
+                            <li><strong><code>git add .</code></strong> → Prepara todos los cambios detectados.</li>
+                            <li><strong><code>git commit -m "..."</code></strong> → Toma la foto de los cambios y les pone etiqueta.</li>
+                            <li><strong><code>git push</code></strong> → Envía la nueva foto directamente a la nube.</li>
+                        </ul>
+                    </div>
             
             <details class="acordeon-tutorial">
                 <summary class="acordeon-header">

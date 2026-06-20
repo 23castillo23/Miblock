@@ -3,6 +3,285 @@
 export const datos_linux = [
 {
         categoria: "linux",
+        titulo: "Guía Maestra: Terminal Linux (Bash)",
+        imagen: "img/linux/terminal.jpg",
+        comando: "ls / cd / rm / sudo / chmod",
+        descripcion: "Domina el estándar de los servidores y el desarrollo profesional. Comandos esenciales para navegar y gestionar sistemas basados en Unix.",
+        contenidoTutorialHtml: `
+        <h3>🐧 Master Class: Terminal Linux</h3>
+        <p>En Linux, la terminal se llama <strong>Bash</strong> o <strong>Zsh</strong>. Casi todo se maneja con minúsculas y las opciones se activan con un guion. <code>-</code></p>
+
+        <div class="tutorial-pasos">
+            <h4 class="color-info"><i class="fas fa-map-marker-alt"></i> 1. Navegación y Ubicación</h4>
+            
+            <p><strong>Saber ruta actual (pwd):</strong> Proviene de: <em>Print Working Directory</em> (Imprimir directorio de trabajo).<br>
+            ¿Para qué sirve?: Te dice exactamente en qué ruta o carpeta estás ubicado actualmente.</p>
+            <div class="contenedor-comando">
+                <code>pwd</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Listar (ls):</strong> Proviene de: <em>List</em> (Listar).<br>
+            ¿Para qué sirve?: Muestra (lista) todos los archivos y carpetas que hay dentro del directorio donde te encuentras.</p>
+            <div class="contenedor-comando">
+                <code>ls -l</code> <span>(Lista detallada: tamaño, fecha)</span>
+            </div>
+            <div class="contenedor-comando" class="mt-5">
+                <code>ls -a</code> 
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>                
+            </div>
+            <span>(Ver archivos ocultos como .git)</span>
+            <p><strong>Moverse (cd):</strong> Proviene de: <em>Change Directory</em> (Cambiar directorio).<br>
+            ¿Para qué sirve?: Es el comando para moverte. Si pones cd Descargas, entras a esa carpeta. Si pones cd .. te regresas una carpeta hacia atrás.</p>
+            <div class="contenedor-comando">
+                <code>cd Descargas</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Limpiar (clear):</strong> Proviene de: <em>Clear</em> (Limpiar).<br>
+            ¿Para qué sirve?: Limpia todo el texto de tu pantalla en la terminal para que no te abrumes con tanta información y empieces desde arriba.</p>
+            <div class="contenedor-comando">
+                <code>clear</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 class="color-exito"><i class="fas fa-file-code"></i> 2. Creación y Modificación</h4>
+            
+            <p><strong>Crear archivo vacío (touch):</strong> Proviene de: <em>Touch</em> (Tocar).<br>
+            ¿Para qué sirve?: "Toca" un archivo para actualizar su fecha de modificación. Sin embargo, su uso principal para principiantes es crear un archivo nuevo vacío (ejemplo: touch texto.txt).</p>
+            <div class="contenedor-comando">
+                <code>touch texto.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Crear carpeta (mkdir):</strong> Proviene de: <em>Make Directory</em> (Hacer directorio).<br>
+            ¿Para qué sirve?: Crea una carpeta nueva.</p>
+            <div class="contenedor-comando">
+                <code>mkdir nueva_carpeta</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Copiar (cp):</strong> Proviene de: <em>Copy</em> (Copiar).<br>
+            ¿Para qué sirve?: Copia un archivo de un lugar a otro. (Ojo: si quieres copiar una carpeta entera, necesitas usarlo con una "bandera" así: cp -r, que significa copiar de forma Recursiva).</p>
+            <div class="contenedor-comando">
+                <code>cp archivo.txt copia.txt</code>
+            </div>
+
+            <p><strong>Mover/Renombrar (mv):</strong> Proviene de: <em>Move</em> (Mover).<br>
+            ¿Para qué sirve?: Tiene dos usos: mover un archivo de una carpeta a otra, o renombrar un archivo (es decir, lo "mueves" al mismo lugar pero con otro nombre).</p>
+            <div class="contenedor-comando" class="mt-5">
+                <code>mv viejo.txt nuevo.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 class="color-peligro"><i class="fas fa-skull-crossbones"></i> 3. Eliminación</h4>
+            <p>En Linux NO hay papelera. Si borras algo, desaparece para siempre.</p>
+            
+            <p><strong>Borrar carpeta vacía (rmdir):</strong> Proviene de: <em>Remove Directory</em> (Remover directorio).<br>
+            ¿Para qué sirve?: Borra una carpeta, pero solo si está vacía.</p>
+            <div class="contenedor-comando">
+                <code>rmdir carpeta_vacia</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Borrar archivos (rm):</strong> Proviene de: <em>Remove</em> (Remover/Eliminar).<br>
+            ¿Para qué sirve?: Borra archivos. Si quieres borrar una carpeta que tiene cosas adentro, usas rm -r (Remove Recursive). ¡Úsalo con cuidado porque no hay papelera de reciclaje en la terminal!</p>
+            <div class="contenedor-comando">
+                <code>rm archivo.txt</code>
+            </div>
+            <div class="contenedor-comando" class="mt-5">
+                <code>rm -r NombreCarpeta</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <div class="contenedor-comando" class="mt-5">
+                <code>rm -rf NombreCarpeta</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>⚠️ El <strong>-f</strong> significa "Force". No pide permiso ni confirma nada. <strong>Úsalo con extremo cuidado.</strong></small></p>
+
+            <hr>
+
+            <h4 class="color-alerta"><i class="fas fa-shield-alt"></i> 4. Permisos y Sudo</h4>
+            <p><strong>Ejecutar como administrador (sudo):</strong> Proviene de: <em>SuperUser DO</em> (El superusuario hace...).<br>
+            ¿Para qué sirve?: Te da permisos de administrador temporalmente. Si intentas instalar un programa o modificar algo del sistema y te dice "Permiso denegado", pones sudo antes del comando para decirle a la máquina: "Oye, sé lo que hago, soy el jefe".</p>
+            <div class="contenedor-comando">
+                <code>sudo apt update</code>
+            </div>
+
+            <p><strong>Cambiar permisos (chmod):</strong></p>
+            <div class="contenedor-comando">
+                <code>chmod 777 archivo.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>💡 777 significa que TODOS pueden leer, escribir y ejecutar.</small></p>
+
+            <hr>
+
+            <h4 class="color-naranja"><i class="fas fa-info-circle"></i> 5. Comandos Extra y Atajos Maestros</h4>
+            
+            <p><strong>Manual (man):</strong> Proviene de: <em>Manual</em>.<br>
+            ¿Para qué sirve?: Te muestra el manual completo de cualquier comando. Si no sabes cómo usar ls, escribes man ls y te explicará todas sus opciones. Para salir presionas la letra q (de quit).</p>
+            <div class="contenedor-comando">
+                <code>man ls</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Ver texto (cat):</strong> Proviene de: <em>Concatenate</em> (Concatenar o unir).<br>
+            ¿Para qué sirve?: Te permite ver el texto que hay dentro de un archivo directamente en la terminal sin tener que abrir un editor (ejemplo: cat archivo.txt).</p>
+            <div class="contenedor-comando">
+                <code>cat archivo.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <div class="bloque-sutil mt-5">
+                <ul class="txt-sm">
+                    <li>📜 <strong>history:</strong> Muestra todos los comandos que has escrito.</li>
+                    <li>🔍 <strong>grep "texto" archivo:</strong> Busca una palabra dentro de un archivo.</li>
+                    <li>⚡ <strong>Ctrl + L:</strong> Limpia la pantalla rápido (como clear).</li>
+                </ul>
+            </div>
+
+            <hr>
+
+            <h4 class="color-info"><i class="fas fa-microchip"></i> 6. Sistema y Rendimiento</h4>
+            <p><strong>Monitor de recursos (top):</strong> Table of Processes. Administrador de tareas en terminal.</p>
+            <div class="contenedor-comando">
+                <code>top</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>💡 Presiona <strong>'q'</strong> para salir del monitor.</small></p>
+
+            <p><strong>Forzar cierre de un programa (kill):</strong> Mata procesos trabados.</p>
+            <div class="contenedor-comando">
+                <code>kill [PID_del_proceso]</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Espacio en disco (df) y Uso de carpeta (du):</strong> Disk Free / Disk Usage.</p>
+            <div class="contenedor-comando">
+                <code>df -h</code> <span>(Muestra el espacio libre en tus discos)</span>
+            </div>
+            <div class="contenedor-comando" class="mt-5">
+                <code>du -sh carpeta/</code> 
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <span>(Muestra cuánto pesa una carpeta exacta)</span>
+
+            <p><strong>Memoria RAM (free):</strong> Muestra RAM libre y en uso.</p>
+            <div class="contenedor-comando">
+                <code>free -h</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 class="color-info"><i class="fas fa-globe"></i> 7. Redes e Internet</h4>
+            <p><strong>Ver IP local e interfaces (ip a):</strong> IP Address.</p>
+            <div class="contenedor-comando">
+                <code>ip a</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Probar conexión (ping):</strong> Packet Internet Groper.</p>
+            <div class="contenedor-comando">
+                <code>ping google.com</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <p><small>💡 Presiona <strong>Ctrl + C</strong> para detener el ping.</small></p>
+
+            <p><strong>Descargar de internet (wget):</strong> Web Get.</p>
+            <div class="contenedor-comando">
+                <code>wget https://ejemplo.com/archivo.zip</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 class="color-exito"><i class="fas fa-box-open"></i> 8. Gestión de Paquetes (Apt)</h4>
+            <p><strong>Actualizar lista e instalar programas nuevos:</strong> Advanced Packaging Tool.</p>
+            <div class="contenedor-comando">
+                <code>sudo apt update && sudo apt upgrade</code> <span>(Actualiza todo tu sistema)</span>
+            </div>
+            <div class="contenedor-comando" class="mt-5">
+                <code>sudo apt install nombre_programa
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            </code> <span>(Ej: sudo apt install vlc)</span>
+
+            <hr>
+
+            <h4 class="color-alerta"><i class="fas fa-users"></i> 9. Usuarios y Permisos Avanzados</h4>
+            <p><strong>Cambiar a otro usuario o Root (su):</strong> Substitute User.</p>
+            <div class="contenedor-comando">
+                <code>su -</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Cambiar propietario (chown):</strong> Change Owner.</p>
+            <div class="contenedor-comando">
+                <code>sudo chown usuario:grupo archivo.txt</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Cambiar contraseña (passwd):</strong> Password.</p>
+            <div class="contenedor-comando">
+                <code>passwd</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 class="color-info"><i class="fas fa-clock"></i> 10. Fecha, Hora y Reloj (Dual Boot)</h4>
+            <p><strong>Ver y configurar estado del tiempo (timedatectl):</strong></p>
+            <div class="contenedor-comando">
+                <code>timedatectl</code> <span>(Muestra la configuración actual)</span>
+            </div>
+            <div class="contenedor-comando" class="mt-5">
+                <code>timedatectl set-local-rtc 1 --adjust-system-clock</code> 
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+            <span>(Arregla la desincronización de hora en Dual Boot)</span>
+
+            <p><strong>Ver fecha y hora en terminal (date):</strong></p>
+            <div class="contenedor-comando">
+                <code>date</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Leer la hora física de la tarjeta madre (hwclock):</strong></p>
+            <div class="contenedor-comando">
+                <code>hwclock --show</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <p><strong>Mostrar calendario mensual (cal):</strong></p>
+            <div class="contenedor-comando">
+                <code>cal</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+
+            <hr>
+
+            <h4 class="color-info"><i class="fas fa-search"></i> 11. Búsqueda Avanzada de Archivos</h4>
+            <p><strong>Encontrar archivos perdidos o escondidos (find):</strong></p>
+            <div class="contenedor-comando">
+                <code>find / -name "archivo.txt"</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+            </div>
+        </div>
+    `,
+        links: [
+            { texto: "Linux Journey (Curso gratis)", url: "https://linuxjourney.com/" },
+            { texto: "Video: Solución desincronización de hora Dual Boot", url: "https://www.youtube.com/watch?v=L906Kti3gzE&t=343s", plataforma: "youtube" }
+        ],
+        pasos: []
+    },
+{
+        categoria: "linux",
         titulo: "Instalación y Optimización de Zorin OS",
         imagen: "img/linux/zorinos.jpg",
         comando: "Zorin OS 18 Core & Pro",
@@ -202,8 +481,8 @@ export const datos_linux = [
                 <ul class="txt-sm">
                     <li>📁 Abre el explorador > <strong>Otras ubicaciones</strong>.</li>
                     <li>🖥️ En <strong>Redes</strong>, haz doble clic en el nombre de la PC 1.</li>
-                    <li>🔑 <strong>Usuario:</strong> El nombre que te dio <code>whoami</code>.</li>
-                    <li>🔒 <strong>Contraseña:</strong> La que creaste con <code>smbpasswd</code>.</li>
+                    <li>🔑 <strong>Usuario:</strong> El nombre que te dio <code>whoami</code></li>
+                    <li>🔒 <strong>Contraseña:</strong> La que creaste con <code>smbpasswd</code></li>
                     <li>📌 Selecciona "Recordar para siempre" para no repetir el proceso.</li>
                 </ul>
             </div>
@@ -212,5 +491,166 @@ export const datos_linux = [
         links: [],
         pasos: []
     },
-    // CATEGORIA WINDOWS
+{
+    categoria: "linux",
+    titulo: "Instalación y Configuración de Linux Mint",
+    imagen: "img/linux/linuxmint.jpg",
+    comando: "Linux Mint 22 Cinnamon",
+    descripcion: "Manual paso a paso para descargar, crear el USB de arranque e instalar Linux Mint, uno de los sistemas más estables y seguros basados en Ubuntu.",
+    contenidoTutorialHtml: `
+        <h3>🌿 El sistema operativo elegante, moderno y cómodo</h3>
+        <p>Linux Mint es famoso por su estabilidad y por ofrecer un escritorio tradicional muy familiar que funciona rápido en cualquier computadora.</p>
+        
+        <div class="tutorial-pasos">
+            <h4>Paso 1: Descarga de la Imagen ISO</h4>
+            <p>Ve al sitio oficial y selecciona tu entorno de escritorio. Se recomienda <strong>Cinnamon</strong> por ser el principal y más completo:</p>
+            <ul>
+                <li><strong>Cinnamon Edition:</strong> La más popular, moderna y con efectos visuales completos.</li>
+                <li><strong>MATE Edition:</strong> Consume menos recursos, ideal para equipos de gama media.</li>
+                <li><strong>Xfce Edition:</strong> Ultra ligera, perfecta para revivir computadoras muy viejas.</li>
+            </ul>
+            <div class="contenedor-comando">
+                <code>
+                    <a href="https://linuxmint.com/download.php" target="_blank" class="link-comando">https://linuxmint.com/download.php</a>
+                </code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar Link</button>
+            </div>
+
+            <h4>Paso 2: Crear el USB de Arranque</h4>
+            <p>Usa herramientas como <a href="https://rufus.ie/es/" target="_blank" class="link-comando"><strong>Rufus</strong></a> 
+            o <a href="https://etcher.balena.io/" target="_blank" class="link-comando"><strong>balenaEtcher</strong></a> para grabar la ISO descargada en una memoria USB de al menos 8GB.</p>
+
+            <div class="links-seccion">
+                <a href="https://www.youtube.com/shorts/XKEcNDvPRtM" target="_blank" class="btn-pro-link youtube" data-tooltip="Video: Cómo crear memoria booteable con Balena Etcher">
+                    <i class="fab fa-youtube"></i> 
+                    <span class="texto-btn-cortado">Video: Cómo crear memoria booteable con Balena Etcher</span>
+                </a>
+            </div>
+
+            <h4>Paso 3: Proceso de Instalación</h4>
+            <ol>
+                <li><strong>Arranque (Boot):</strong> Conecta el USB, enciende la PC y presiona la tecla de booteo (F12, F9, Esc) para arrancar desde la memoria.</li>
+                
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-10"><strong>⚠️ Opciones en el menú de arranque (Grub):</strong></p>
+                    <ul class="lista-limpia">
+                        <li class="mb-8">🔵 <strong>Start Linux Mint (Cinnamon):</strong> Inicia el sistema en modo "Vivo". Te permite probar el sistema, revisar si detecta tu Wi-Fi y probar el entorno sin alterar tus archivos.</li>
+                        <li>🟢 <strong>Start in compatibility mode:</strong> Úsala si la pantalla se queda congelada o distorsionada con la opción anterior. Arranca con drivers gráficos genéricos seguros.</li>
+                    </ul>
+                </div>
+
+                <li><strong>Bienvenida:</strong> Dentro del escritorio de prueba, haz doble clic en el icono del disco que dice <kbd>Install Linux Mint</kbd>.</li>
+                <li><strong>Idioma y Teclado:</strong> Selecciona "Español" y luego la distribución de teclado adecuada (ej. Spanish - Windows) para que las teclas coincidan.</li>
+                <li><strong>Códecs Multimedia:</strong> Marca la casilla "Instalar códecs multimedia". Es vital para poder reproducir videos, MP3 y formatos de páginas web sin problemas.</li>
+                <li><strong>Tipo de Instalación:</strong>
+                    <ul>
+                        <li><strong>Instalar junto a ellos:</strong> Ideal para conservar Windows (Dual Boot). El instalador reducirá tu espacio para hacerle lugar a Mint.</li>
+                        <li><strong>Borrar disco e instalar:</strong> Borra todo el almacenamiento e instala Linux Mint como sistema único.</li>
+                    </ul>
+                </li>
+                <li><strong>Datos de Usuario:</strong> Selecciona tu ubicación en el mapa y configura tu nombre de usuario, nombre del equipo y contraseña.</li>
+                <li><strong>Finalización:</strong> Espera que termine el copiado de archivos, haz clic en <kbd>Reiniciar ahora</kbd>, retira la memoria USB y presiona <kbd>Enter</kbd>.</li>
+            </</ol>
+
+            <h4>Paso 4: Primeros Pasos y Actualizaciones</h4>
+            <p>Al iniciar, se abrirá la "Pantalla de Bienvenida". Ve a la sección <strong>"Primeros pasos"</strong> para configurar los "Instantáneas del sistema" (Timeshift) y ejecutar el "Administrador de actualizaciones" para dejar tu sistema al día.</p>
+        </div>
+        <p class="m-0"><i class="fas fa-rocket"></i> <strong>Tip de Software:</strong> Linux Mint incluye la <strong>Tienda de Software</strong> (Software Manager) con soporte nativo para Flatpak, permitiéndote instalar aplicaciones modernas como VS Code, Spotify o Discord con un solo clic.</p>
+    `,
+    links: [
+        { texto: "Página de Descarga", url: "https://linuxmint.com/download.php" },
+        { texto: "Video: Cómo instalar Linux Mint", url: "https://www.youtube.com/watch?v=ek11Jn48x8A", plataforma: "youtube" }
+    ],
+    pasos: []
+},
+{
+    categoria: "linux",
+    titulo: "Sincronización de Fecha y Hora en Dual Boot (Windows/Linux)",
+    imagen: "img/linux/dualboot-clock.jpg",
+    comando: "timedatectl set-local-rtc 1 --adjust-system-clock",
+    descripcion: "Solución al conflicto de desfase horario entre Windows y distribuciones Linux (Mint/Zorin) causado por la interpretación del reloj de hardware (RTC).",
+    contenidoTutorialHtml: `
+        <h3>🕒 Solución al Desfase Horario en Dual Boot</h3>
+        <p>Cuando tienes Windows y Linux en la misma máquina, Windows asume que el reloj de la placa base (RTC) está en <strong>Tiempo Local</strong>, mientras que Linux asume que está en <strong>UTC</strong>. Esto provoca que al cambiar de sistema, la hora siempre esté incorrecta.</p>
+        
+        <div class="tutorial-pasos">
+            <h4>Paso 1: Diagnóstico en Linux</h4>
+            <p>Inicia en tu distribución Linux (Mint o Zorin) y abre la terminal. Verifica el estado actual del reloj con el siguiente comando:</p>
+            <div class="contenedor-comando">
+                <code>timedatectl</code>
+            </div>
+            <p>Observa la línea <code>RTC in local TZ</code>. Si dice <strong>no</strong>, el sistema está en modo UTC y es la causa del problema.</p>
+
+            <h4>Paso 2: Aplicar la Corrección</h4>
+            <p>Ejecuta este comando para forzar a Linux a usar el tiempo local, igualando el comportamiento de Windows:</p>
+            <div class="contenedor-comando">
+                <code>sudo timedatectl set-local-rtc 1 --adjust-system-clock</code>
+            </div>
+            <p>Al ser un cambio de configuración del sistema, es posible que te pida tu contraseña de superusuario.</p>
+
+            <h4>Paso 3: Verificación</h4>
+            <p>Vuelve a ejecutar <code>timedatectl</code> y confirma que ahora la línea indique:</p>
+            <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; padding: 10px; border-radius: 5px;">
+                <code>RTC in local TZ: yes</code>
+            </div>
+
+            <h4>Paso 4: Sincronización Final en Windows</h4>
+            <ol>
+                <li>Reinicia la computadora e inicia sesión en <strong>Windows</strong>.</li>
+                <li>Ve a <strong>Configuración > Hora e idioma > Fecha y hora</strong>.</li>
+                <li>Haz clic en el botón <strong>"Sincronizar ahora"</strong>.</li>
+                <li>Windows corregirá la hora en el reloj de la placa base y, gracias al cambio en Linux, ya no se volverá a desconfigurar al alternar sistemas.</li>
+            </ol>
+        </div>
+
+        <p><i class="fas fa-info-circle"></i> <strong>Nota técnica:</strong> Linux mostrará una advertencia indicando que el modo 'local-rtc' no es el estándar recomendado para servidores, pero es la configuración ideal y más estable para entornos de escritorio en Dual Boot.</p>
+    `,
+    links: [
+        
+    ],
+    pasos: []
+},
+{
+    "categoria": "linux",
+    "titulo": "Configurar Windows como Predeterminado en el Menú GRUB",
+    "imagen": "img/linux/bootorder.jpg",
+    "comando": "nano /etc/default/grub",
+    "descripcion": "Manual paso a paso para editar el gestor de arranque GRUB y configurar Windows 11 para que inicie automáticamente por defecto fijando su posición.",
+    "contenidoTutorialHtml": `
+        <h3>⚙️ Control total sobre qué sistema inicia primero</h3>
+        <p>Aquí tienes los pasos exactos para configurar el gestor de arranque (GRUB) y hacer que Windows inicie automáticamente por defecto fijando su posición en la lista.</p>
+        
+        <div class="tutorial-pasos">
+            <h4>Paso 1: Editar la configuración</h4>
+            <p>Abre el archivo de texto principal de GRUB desde la terminal para modificar sus reglas de inicio.</p>
+            
+            <div class="contenedor-comando">
+                <code>sudo nano /etc/default/grub</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar Comando</button>
+            </div>
+
+            <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                <p class="mb-10"><strong>🛠️ Fijar Windows por posición:</strong></p>
+                <p>Dentro del archivo de texto, busca la línea que dice <code>GRUB_DEFAULT=0</code> y cambia el número por la fila exacta donde aparece Windows en tu menú negro al encender el equipo.</p>
+                <p class="mb-0"><em>¡Importante: En la lista de GRUB siempre se empieza a contar desde el cero! (Ejemplo: Si Windows es la tercera opción en tu pantalla, debes poner <code>GRUB_DEFAULT=2</code>).</em></p>
+            </div>
+
+            <h4>Paso 2: Guardar y salir</h4>
+            <p>Presiona <kbd>Ctrl</kbd> + <kbd>O</kbd>, luego <kbd>Enter</kbd> para confirmar que quieres guardar, y finalmente <kbd>Ctrl</kbd> + <kbd>X</kbd> para salir del editor de texto y volver a la terminal normal.</p>
+            
+            <h4>Paso 3: Aplicar los cambios (¡Paso obligatorio!)</h4>
+            <p>El sistema necesita compilar y actualizar tus nuevas reglas. Si cierras la terminal sin ejecutar este comando final, no habrá ningún cambio al reiniciar tu computadora.</p>
+
+            <div class="contenedor-comando">
+                <code>sudo update-grub</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar Comando</button>
+            </div>
+        </div>
+    `,
+    "links": [
+        
+    ],
+    "pasos": []
+}
+    
 ];
