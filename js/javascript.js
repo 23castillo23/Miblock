@@ -4,6 +4,18 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// ==============================================================
+// VERIFICACIÓN DE ACCESO
+// Si el usuario no tiene sesión activa, lo manda a pedir acceso.
+// La clave 'comandos_user' la guarda acceso-comandos.html
+// cuando el login con Google es aprobado.
+// ==============================================================
+if (!localStorage.getItem('comandos_user')) {
+    window.location.href = 'acceso-comandos.html';
+}
+// ==============================================================
+
 // =====================================================
 // LAZY LOADING — carga de datos por categoría
 // =====================================================
