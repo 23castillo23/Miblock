@@ -4,6 +4,18 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// ==============================================================
+// VERIFICACIÓN DE ACCESO
+// Si el usuario no tiene sesión activa, lo manda a pedir acceso.
+// La clave 'comandos_user' la guarda acceso-comandos.html
+// cuando el login con Google es aprobado.
+// ==============================================================
+if (!localStorage.getItem('comandos_user')) {
+    window.location.href = 'acceso-comandos.html';
+}
+// ==============================================================
+
 // =====================================================
 // LAZY LOADING — carga de datos por categoría
 // =====================================================
@@ -947,7 +959,29 @@ window.iniciarSesion = iniciarSesion;
 // JS: Ejecutar una vez al cargar para que los números aparezcan de inmediato
 document.addEventListener('DOMContentLoaded', () => {
     actualizarContadoresTabs();
+
+    const btnCerrarAcceso = document.getElementById('btn-cerrar-acceso');
+    if (btnCerrarAcceso && localStorage.getItem('comandos_user')) {
+        btnCerrarAcceso.style.display = 'flex';
+    }
 });
+
+// ── CERRAR SESIÓN DEL SISTEMA DE ACCESO POR CORREO ───────────
+function cerrarAcceso() {
+    const modal = document.getElementById('modal-cerrar-acceso');
+    if (modal) modal.style.display = 'flex';
+}
+function cancelarCerrarAcceso() {
+    const modal = document.getElementById('modal-cerrar-acceso');
+    if (modal) modal.style.display = 'none';
+}
+function confirmarCerrarAcceso() {
+    localStorage.removeItem('comandos_user');
+    window.location.href = 'acceso-comandos.html';
+}
+window.cerrarAcceso = cerrarAcceso;
+window.cancelarCerrarAcceso = cancelarCerrarAcceso;
+window.confirmarCerrarAcceso = confirmarCerrarAcceso;
 
 // JS: El resto de conexiones para tus botones
 window.toggleFavorito = toggleFavorito;

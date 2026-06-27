@@ -67,6 +67,13 @@
                     <!-- Llama login JS -->
                     <i class="fas fa-user-circle"></i> <!-- Icono usuario -->
                 </button>
+
+                <!-- Botón EXCLUSIVO para cerrar sesión del sistema de acceso por correo -->
+                <button id="btn-cerrar-acceso" onclick="cerrarAcceso()"
+                    data-tooltip="Cerrar sesión"
+                    style="color:#f59e0b; display:none;">
+                    <i class="fas fa-lock-open"></i>
+                </button>
             </div>
         </div>
     </header>
@@ -93,6 +100,65 @@
             </button>
 
             <div id="tutorial-cuerpo" class="print-area"></div> <!-- JS inserta tutorial aquí -->
+        </div>
+    </div>
+
+    <!-- ── MODAL CERRAR SESIÓN — va aquí para cubrir toda la pantalla ── -->
+    <div id="modal-cerrar-acceso" style="
+        display:none; position:fixed; inset:0; z-index:99999;
+        align-items:center; justify-content:center;">
+        <!-- Fondo oscuro -->
+        <div onclick="cancelarCerrarAcceso()" style="
+            position:absolute; inset:0;
+            background:rgba(0,0,0,0.75);
+            backdrop-filter:blur(8px);
+            -webkit-backdrop-filter:blur(8px);"></div>
+        <!-- Caja centrada -->
+        <div style="
+            position:relative; z-index:1;
+            background:linear-gradient(135deg,#1e293b,#0f172a);
+            border:1px solid rgba(245,158,11,0.3);
+            border-radius:20px;
+            padding:2rem 2rem 1.5rem;
+            max-width:360px; width:90%;
+            box-shadow:0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(245,158,11,0.1);
+            text-align:center;
+            font-family:'Inter',sans-serif;">
+            <div style="
+                width:64px; height:64px; border-radius:50%;
+                background:rgba(245,158,11,0.15);
+                border:2px solid rgba(245,158,11,0.4);
+                display:flex; align-items:center; justify-content:center;
+                margin:0 auto 1.2rem;
+                font-size:1.6rem; color:#f59e0b;">
+                <i class="fas fa-lock-open"></i>
+            </div>
+            <h3 style="color:#f1f5f9; font-family:'Poppins',sans-serif; font-size:1.1rem; margin-bottom:0.5rem;">
+                ¿Cerrar sesión?
+            </h3>
+            <p style="color:#94a3b8; font-size:0.85rem; line-height:1.6; margin-bottom:1.5rem;">
+                Tendrás que volver a iniciar sesión con tu cuenta aprobada para acceder.
+            </p>
+            <div style="display:flex; gap:10px; justify-content:center;">
+                <button onclick="cancelarCerrarAcceso()" style="
+                    flex:1; padding:0.6rem 1rem;
+                    background:rgba(255,255,255,0.06);
+                    border:1px solid rgba(255,255,255,0.1);
+                    border-radius:10px; color:#94a3b8;
+                    font-family:'Inter',sans-serif; font-size:0.85rem;
+                    cursor:pointer;">
+                    Cancelar
+                </button>
+                <button onclick="confirmarCerrarAcceso()" style="
+                    flex:1; padding:0.6rem 1rem;
+                    background:linear-gradient(135deg,#f59e0b,#d97706);
+                    border:none; border-radius:10px; color:#fff;
+                    font-family:'Inter',sans-serif; font-size:0.85rem;
+                    font-weight:600; cursor:pointer;
+                    box-shadow:0 4px 15px rgba(245,158,11,0.3);">
+                    Sí, cerrar sesión
+                </button>
+            </div>
         </div>
     </div>
 
