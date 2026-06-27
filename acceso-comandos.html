@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#6366f1">
+  <title>Acceso · Guía de Comandos y Tutoriales</title>
+  <link rel="icon" type="image/png" href="img/iconos/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&family=Fira+Code&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ── Variables (igual que style.css) ── */
+    :root {
+      --primary:      #6366f1;
+      --primary-dark: #4f46e5;
+      --secondary:    #0ea5e9;
+      --accent:       #8b5cf6;
+      --text-main:    #f1f5f9;
+      --text-muted:   #94a3b8;
+      --bg-body:      #0f172a;
+      --bg-card:      rgba(15, 23, 42, 0.6);
+      --bg-header:    rgba(0, 0, 0, 0.3);
+      --border-glass: 1px solid rgba(255, 255, 255, 0.08);
+      --shadow-md:    0 8px 20px rgba(0,0,0,0.3);
+      --shadow-lg:    0 20px 40px rgba(0,0,0,0.4);
+      --font-heading: 'Poppins', sans-serif;
+      --font-body:    'Inter', sans-serif;
+      --font-code:    'Fira Code', monospace;
+      --radius-md:    16px;
+      --radius-lg:    24px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg-body);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* ── Canvas matrix (igual que index.html) ── */
+    #matrix-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    /* ── Header ── */
+    .ac-header {
+      position: relative;
+      z-index: 10;
+      background: var(--bg-header);
+      backdrop-filter: blur(12px);
+      border-bottom: var(--border-glass);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ac-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+
+    .ac-logo-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: #fff;
+      box-shadow: 0 4px 12px rgba(99,102,241,0.4);
+    }
+
+    .ac-logo-texto strong {
+      display: block;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      color: var(--text-main);
+    }
+
+    .ac-logo-texto small {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .btn-volver {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: rgba(255,255,255,0.06);
+      border: var(--border-glass);
+      color: var(--text-muted);
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-family: var(--font-body);
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-volver:hover {
+      background: rgba(99,102,241,0.15);
+      border-color: rgba(99,102,241,0.4);
+      color: var(--text-main);
+    }
+
+    /* ── Main ── */
+    .ac-main {
+      flex: 1;
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    @media (max-width: 700px) {
+      .ac-main { grid-template-columns: 1fr; padding: 2rem 1.2rem; gap: 2rem; }
+    }
+
+    /* ── Lado izquierdo ── */
+    .ac-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(99,102,241,0.12);
+      border: 1px solid rgba(99,102,241,0.3);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      margin-bottom: 1.2rem;
+    }
+
+    .ac-titulo {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 30%, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .ac-desc {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Beneficios */
+    .ac-beneficios { display: flex; flex-direction: column; gap: 1rem; }
+
+    .ac-beneficio {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.9rem;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.03);
+      border: var(--border-glass);
+      border-radius: var(--radius-md);
+      transition: background 0.2s;
+    }
+
+    .ac-beneficio:hover { background: rgba(99,102,241,0.06); }
+
+    .ac-ben-icono {
+      width: 36px; height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(139,92,246,0.2));
+      border: 1px solid rgba(99,102,241,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+      color: var(--primary);
+    }
+
+    .ac-ben-texto strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-bottom: 0.1rem;
+    }
+
+    .ac-ben-texto span {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+    }
+
+    /* ── Panel ── */
+    .ac-panel {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(20px);
+      border: var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Brillo decorativo en la esquina */
+    .ac-panel::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      background: radial-gradient(circle, rgba(99,102,241,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Tabs */
+    .ac-tabs {
+      display: flex;
+      background: rgba(255,255,255,0.04);
+      border: var(--border-glass);
+      border-radius: 12px;
+      padding: 4px;
+      margin-bottom: 1.8rem;
+      gap: 4px;
+    }
+
+    .ac-tab {
+      flex: 1;
+      padding: 0.55rem;
+      border: none;
+      border-radius: 9px;
+      font-family: var(--font-body);
+      font-size: 0.84rem;
+      font-weight: 500;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.2s ease;
+    }
+
+    .ac-tab.active {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 2px 10px rgba(99,102,241,0.35);
+    }
+
+    /* Panes */
+    .ac-pane { display: none; }
+    .ac-pane.active { display: block; animation: fadeUp 0.25s ease; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Form */
+    .ac-form-grupo { margin-bottom: 1.1rem; }
+
+    .ac-form-grupo label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.45rem;
+    }
+
+    .ac-form-grupo input,
+    .ac-form-grupo textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.7rem 0.95rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text-main);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: none;
+    }
+
+    .ac-form-grupo input::placeholder,
+    .ac-form-grupo textarea::placeholder { color: var(--text-muted); }
+
+    .ac-form-grupo input:focus,
+    .ac-form-grupo textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+    }
+
+    .btn-solicitar {
+      width: 100%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 0.85rem;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      margin-top: 0.3rem;
+      box-shadow: 0 4px 15px rgba(99,102,241,0.35);
+    }
+
+    .btn-solicitar:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-solicitar:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* Separador */
+    .ac-sep {
+      display: flex; align-items: center; gap: 0.8rem;
+      margin: 1.3rem 0;
+      color: var(--text-muted);
+      font-size: 0.78rem;
+    }
+    .ac-sep::before, .ac-sep::after {
+      content: ''; flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* Botón Google */
+    .btn-google {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 0.8rem;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 0.7rem;
+      transition: all 0.2s;
+      color: var(--text-main);
+    }
+
+    .btn-google:hover {
+      background: rgba(99,102,241,0.15);
+      border-color: rgba(99,102,241,0.4);
+      box-shadow: 0 4px 15px rgba(99,102,241,0.2);
+    }
+
+    .btn-google svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+    /* Estados */
+    .ac-estado {
+      display: none;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      animation: fadeUp 0.3s ease;
+    }
+
+    .ac-estado.visible { display: block; }
+
+    .ac-estado-emoji { font-size: 2.8rem; margin-bottom: 0.6rem; }
+
+    .ac-estado h3 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .ac-estado p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .estado-pendiente { color: #f1c40f; }
+    .estado-ok        { color: #2ecc71; }
+
+    /* Nota */
+    .ac-nota {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin-top: 1rem;
+      line-height: 1.5;
+    }
+
+    .ac-nota a { color: var(--primary); text-decoration: none; }
+
+    /* Chip de info */
+    .ac-info-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      border: var(--border-glass);
+      border-radius: 8px;
+      padding: 0.4rem 0.75rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .ac-info-chip i { color: var(--primary); }
+
+    /* Footer */
+    footer {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      border-top: var(--border-glass);
+      background: rgba(0,0,0,0.2);
+    }
+
+    footer a { color: var(--primary); text-decoration: none; }
+
+    /* ── Modo claro ── */
+    body.light-mode {
+      --text-main:    #1e293b;
+      --text-muted:   #64748b;
+      --bg-body:      #f3f4f6;
+      --bg-header:    rgba(255,255,255,0.9);
+      --border-glass: 1px solid rgba(0,0,0,0.08);
+      --shadow-lg:    0 20px 40px rgba(0,0,0,0.12);
+    }
+    body.light-mode .ac-panel {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(20px);
+    }
+    body.light-mode .ac-form-grupo input,
+    body.light-mode .ac-form-grupo textarea {
+      background: rgba(0,0,0,0.04);
+      border-color: rgba(0,0,0,0.12);
+      color: var(--text-main);
+    }
+    body.light-mode .ac-form-grupo input::placeholder,
+    body.light-mode .ac-form-grupo textarea::placeholder { color: var(--text-muted); }
+    body.light-mode .ac-tabs { background: rgba(0,0,0,0.05); }
+    body.light-mode .btn-google { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.12); }
+    body.light-mode .ac-titulo { background: linear-gradient(135deg, #1e293b 30%, var(--accent)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    body.light-mode #matrix-bg { opacity: 0.06; }
+    body.light-mode .ac-beneficio { background: rgba(0,0,0,0.03); }
+    body.light-mode .ac-info-chip { background: rgba(0,0,0,0.04); }
+
+    /* Botón tema */
+    .btn-tema {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(255,255,255,0.06); border: var(--border-glass);
+      color: var(--text-muted); display: flex; align-items: center;
+      justify-content: center; cursor: pointer; font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+    .btn-tema:hover {
+      background: rgba(99,102,241,0.15);
+      border-color: rgba(99,102,241,0.4);
+      color: var(--primary);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-body); }
+    ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+  </style>
+</head>
+<body class="dark-mode">
+
+  <!-- Canvas matrix igual que el index -->
+  <canvas id="matrix-bg"></canvas>
+
+  <!-- Header -->
+  <header class="ac-header">
+    <a href="index.html" class="ac-logo">
+      <div class="ac-logo-icon">
+        <i class="fas fa-terminal"></i>
+      </div>
+      <div class="ac-logo-texto">
+        <strong>Guía de Comandos</strong>
+        <small>Base de conocimiento Windows</small>
+      </div>
+    </a>
+    <div style="display:flex;align-items:center;gap:0.6rem;">
+      <button class="btn-tema" id="btnTema" title="Cambiar tema">
+        <i class="fas fa-moon" id="iconaTema"></i>
+      </button>
+      <a href="index.html" class="btn-volver">
+        <i class="fas fa-arrow-left"></i> Volver
+      </a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="ac-main">
+
+    <!-- Lado izquierdo -->
+    <div class="ac-left">
+      <span class="ac-eyebrow">
+        <i class="fas fa-lock"></i> Acceso exclusivo
+      </span>
+
+      <h1 class="ac-titulo">Tu base de<br>conocimiento<br>te espera</h1>
+
+      <p class="ac-desc">
+        Solicita acceso para explorar todos los comandos, tutoriales y guías.
+        Una vez aprobado, entras con un clic usando tu cuenta Google.
+      </p>
+
+      <div class="ac-beneficios">
+        <div class="ac-beneficio">
+          <div class="ac-ben-icono"><i class="fas fa-terminal"></i></div>
+          <div class="ac-ben-texto">
+            <strong>Comandos CMD y PowerShell</strong>
+            <span>Guías completas con ejemplos reales</span>
+          </div>
+        </div>
+        <div class="ac-beneficio">
+          <div class="ac-ben-icono"><i class="fas fa-book-open"></i></div>
+          <div class="ac-ben-texto">
+            <strong>Tutoriales paso a paso</strong>
+            <span>Windows, Linux, programación y más</span>
+          </div>
+        </div>
+        <div class="ac-beneficio">
+          <div class="ac-ben-icono"><i class="fas fa-tools"></i></div>
+          <div class="ac-ben-texto">
+            <strong>Herramientas y utilidades</strong>
+            <span>Aplicaciones y recursos esenciales</span>
+          </div>
+        </div>
+        <div class="ac-beneficio">
+          <div class="ac-ben-icono"><i class="fas fa-sync-alt"></i></div>
+          <div class="ac-ben-texto">
+            <strong>Actualización constante</strong>
+            <span>Contenido nuevo regularmente</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel -->
+    <div class="ac-panel">
+
+      <!-- Tabs -->
+      <div class="ac-tabs">
+        <button class="ac-tab active" data-tab="solicitar">
+          <i class="fas fa-paper-plane"></i> Solicitar acceso
+        </button>
+        <button class="ac-tab" data-tab="ingresar">
+          <i class="fas fa-sign-in-alt"></i> Ya tengo acceso
+        </button>
+      </div>
+
+      <!-- PANE: Solicitar -->
+      <div class="ac-pane active" id="pane-solicitar">
+
+        <div id="formSolicitud">
+          <div class="ac-info-chip">
+            <i class="fas fa-info-circle"></i>
+            Tu solicitud será revisada y aprobada manualmente
+          </div>
+
+          <div class="ac-form-grupo">
+            <label for="sol-nombre"><i class="fas fa-user"></i> Tu nombre</label>
+            <input type="text" id="sol-nombre" placeholder="Ej: Carlos Pérez" maxlength="60" required>
+          </div>
+
+          <div class="ac-form-grupo">
+            <label for="sol-email"><i class="fas fa-envelope"></i> Tu correo electrónico</label>
+            <input type="email" id="sol-email" placeholder="tu@correo.com" required>
+          </div>
+
+          <div class="ac-form-grupo">
+            <label for="sol-motivo"><i class="fas fa-comment"></i> ¿Para qué necesitas acceso?</label>
+            <textarea id="sol-motivo" rows="3" placeholder="Cuéntame brevemente…" maxlength="300"></textarea>
+          </div>
+
+          <button class="btn-solicitar" id="btnSolicitar">
+            <i class="fas fa-paper-plane"></i> Enviar solicitud
+          </button>
+
+          <p class="ac-nota">
+            Al enviar aceptas que tu correo sea guardado para gestionar el acceso.
+          </p>
+        </div>
+
+        <!-- Estado enviado -->
+        <div class="ac-estado" id="estadoSolicitud">
+          <div class="ac-estado-emoji">✅</div>
+          <h3>¡Solicitud enviada!</h3>
+          <p>Revisaré tu solicitud y te avisaré cuando esté aprobada.<br>
+          Una vez aprobado, regresa y entra con tu cuenta Google.</p>
+        </div>
+
+      </div>
+
+      <!-- PANE: Ingresar -->
+      <div class="ac-pane" id="pane-ingresar">
+
+        <div id="panelLogin">
+          <div class="ac-info-chip">
+            <i class="fas fa-shield-alt"></i>
+            Solo usuarios aprobados pueden acceder
+          </div>
+
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:1.3rem;line-height:1.6;">
+            Si tu solicitud ya fue aprobada, entra con la misma cuenta Google que registraste.
+          </p>
+
+          <button class="btn-google" id="btnGoogle">
+            <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+              <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+              <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+              <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.18 1.48-4.97 2.31-8.16 2.31-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+            </svg>
+            Continuar con Google
+          </button>
+
+          <!-- Estado: verificando -->
+          <div class="ac-estado" id="estadoLogin">
+            <div class="ac-estado-emoji">🔍</div>
+            <h3>Verificando acceso…</h3>
+            <p>Revisando si tu cuenta está aprobada.</p>
+          </div>
+
+          <!-- Estado: pendiente -->
+          <div class="ac-estado" id="estadoDenegado">
+            <div class="ac-estado-emoji">⏳</div>
+            <h3 class="estado-pendiente">Pendiente de aprobación</h3>
+            <p>Tu cuenta aún no ha sido aprobada.<br>
+            Si ya enviaste la solicitud, espera la confirmación.</p>
+            <button onclick="document.querySelector('[data-tab=solicitar]').click()"
+              style="margin-top:1rem;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;border-radius:8px;padding:.5rem 1.2rem;font-family:var(--font-body);font-size:.85rem;font-weight:600;cursor:pointer;">
+              Enviar solicitud
+            </button>
+          </div>
+        </div>
+
+        <p class="ac-nota" style="margin-top:1.2rem;">
+          ¿Aún no tienes acceso?
+          <a href="#" onclick="document.querySelector('[data-tab=solicitar]').click();return false;">
+            Solicítalo aquí
+          </a>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <i class="fas fa-terminal" style="color:var(--primary);margin-right:4px;"></i>
+    Guía de Comandos y Tutoriales ·
+    <a href="index.html">Volver al inicio</a>
+  </footer>
+
+  <!-- ── TEMA OSCURO / CLARO ── -->
+  <script>
+    (function () {
+      const btn   = document.getElementById('btnTema');
+      const icona = document.getElementById('iconaTema');
+      const body  = document.body;
+
+      // Leer preferencia guardada (usa la misma clave que el index.html)
+      const temaGuardado = localStorage.getItem('theme');
+      if (temaGuardado === 'light') {
+        body.classList.remove('dark-mode');
+        body.classList.add('light-mode');
+        icona.className = 'fas fa-moon';
+      } else {
+        // Por defecto: oscuro (igual que index.html)
+        body.classList.add('dark-mode');
+        body.classList.remove('light-mode');
+        icona.className = 'fas fa-sun';
+      }
+
+      btn.addEventListener('click', () => {
+        const esDark = body.classList.toggle('dark-mode');
+        body.classList.toggle('light-mode', !esDark);
+        icona.className = esDark ? 'fas fa-sun' : 'fas fa-moon';
+        localStorage.setItem('theme', esDark ? 'dark' : 'light');
+      });
+    })();
+  </script>
+
+  <!-- ── ANIMACIÓN MATRIX ── -->
+  <script>
+    (function () {
+      const canvas = document.getElementById('matrix-bg');
+      const ctx    = canvas.getContext('2d');
+      const chars  = '01アイウエオカキクケコサシスセソ';
+      let cols, drops;
+
+      function resize() {
+        canvas.width  = window.innerWidth;
+        canvas.height = window.innerHeight;
+        cols  = Math.floor(canvas.width / 20);
+        drops = Array(cols).fill(1);
+      }
+
+      function draw() {
+        ctx.fillStyle = 'rgba(15,23,42,0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#6366f1';
+        ctx.font      = '14px Fira Code, monospace';
+
+        drops.forEach((y, i) => {
+          const char = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(char, i * 20, y * 20);
+          if (y * 20 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
+        });
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+      setInterval(draw, 50);
+    })();
+  </script>
+
+  <!-- ── FIREBASE ── -->
+  <script type="module">
+    import { initializeApp }   from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+    import { getFirestore, doc, setDoc, getDoc, serverTimestamp }
+                               from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+    import { getAuth, GoogleAuthProvider, signInWithPopup }
+                               from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+
+    const firebaseConfig = {
+      apiKey:            "AIzaSyBUHP2Gi25IxYZw1NgQrZh17lY92g2c-Kc",
+      authDomain:        "comandosytutoriales.firebaseapp.com",
+      projectId:         "comandosytutoriales",
+      storageBucket:     "comandosytutoriales.firebasestorage.app",
+      messagingSenderId: "597611163587",
+      appId:             "1:597611163587:web:92c172a7a59109bb341776"
+    };
+
+    // Nombre de las colecciones en Firestore (puedes cambiarlos)
+    const COL_USUARIOS    = 'usuarios_comandos';
+    const COL_SOLICITUDES = 'solicitudes_comandos';
+
+    const app      = initializeApp(firebaseConfig);
+    const db       = getFirestore(app);
+    const auth     = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    // ── Si ya hay sesión activa, redirigir ──
+    if (localStorage.getItem('comandos_user')) {
+      window.location.href = 'index.html';
+    }
+
+    // ── Tabs ──
+    document.querySelectorAll('.ac-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.ac-tab').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.ac-pane').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('pane-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ── Enviar solicitud ──
+    document.getElementById('btnSolicitar').addEventListener('click', async () => {
+      const nombre = document.getElementById('sol-nombre').value.trim();
+      const email  = document.getElementById('sol-email').value.trim().toLowerCase();
+      const motivo = document.getElementById('sol-motivo').value.trim();
+
+      if (!nombre || !email) {
+        alert('Por favor llena tu nombre y correo.');
+        return;
+      }
+
+      const btn = document.getElementById('btnSolicitar');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando…';
+
+      try {
+        await setDoc(doc(db, COL_SOLICITUDES, email), {
+          nombre, email,
+          motivo: motivo || '(sin motivo)',
+          estado: 'pendiente',
+          creadoEn: serverTimestamp()
+        });
+
+        const yaExiste = await getDoc(doc(db, COL_USUARIOS, email));
+        if (!yaExiste.exists()) {
+          await setDoc(doc(db, COL_USUARIOS, email), {
+            nombre, email,
+            aprobado: false,
+            creadoEn: serverTimestamp()
+          });
+        }
+
+        document.getElementById('formSolicitud').style.display = 'none';
+        document.getElementById('estadoSolicitud').classList.add('visible');
+
+      } catch (err) {
+        console.error(err);
+        alert('Error al enviar. Intenta de nuevo.');
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar solicitud';
+      }
+    });
+
+    // ── Login con Google ──
+    document.getElementById('btnGoogle').addEventListener('click', async () => {
+      document.getElementById('btnGoogle').style.display = 'none';
+      document.getElementById('estadoLogin').classList.add('visible');
+
+      try {
+        const result = await signInWithPopup(auth, provider);
+        await verificarAcceso(result.user);
+      } catch (err) {
+        console.error(err);
+        document.getElementById('estadoLogin').classList.remove('visible');
+        document.getElementById('btnGoogle').style.display = 'flex';
+        alert('Error al iniciar sesión. Intenta de nuevo.');
+      }
+    });
+
+    // ── Verificar acceso ──
+    async function verificarAcceso(user) {
+      const email = user.email.toLowerCase();
+      try {
+        const snap = await getDoc(doc(db, COL_USUARIOS, email));
+
+        if (snap.exists() && snap.data().aprobado === true) {
+          localStorage.setItem('comandos_user', JSON.stringify({
+            nombre: user.displayName || snap.data().nombre,
+            email,
+            foto: user.photoURL || ''
+          }));
+          window.location.href = 'index.html';
+        } else {
+          document.getElementById('estadoLogin').classList.remove('visible');
+          document.getElementById('estadoDenegado').classList.add('visible');
+          await auth.signOut();
+        }
+      } catch (err) {
+        console.error(err);
+        document.getElementById('estadoLogin').classList.remove('visible');
+        document.getElementById('btnGoogle').style.display = 'flex';
+      }
+    }
+  </script>
+
+</body>
+</html>
