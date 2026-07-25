@@ -197,5 +197,51 @@ export const datos_excel = [
     links: [],
     pasos: []
 },
+{
+    categoria: "excel",
+    titulo: "Colorear Filas Alternadas (Que No Se Rompan al Borrar)",
+    imagen: "img/excel/Excel.jpg",
+    comando: "=RESIDUO(FILA(),2)=1",
+    descripcion: "Aplica un color alterno a las filas de una tabla usando Formato Condicional con fórmula, para que el patrón de colores se mantenga correcto aunque agregues o elimines filas.",
+    contenidoTutorialHtml: `
+        <h3>🎨 Filas de Colores Alternados (a prueba de borrados)</h3>
+        <p>Si pintas las filas a mano (una sí, una no), el patrón se rompe en cuanto borras o agregas una fila, porque el color se queda pegado a la fila física y no a su posición real. La solución es usar una <strong>fórmula</strong> en el Formato Condicional, que Excel recalcula automáticamente cada vez que la tabla cambia.</p>
+        
+        <div class="tutorial-pasos">
+            <h4>Paso 1: Seleccionar el rango de la tabla</h4>
+            <p>Selecciona todas las celdas de tu tabla de datos, desde la primera fila hasta la última (por ejemplo <code>A9:Z207</code>). No incluyas los encabezados si no quieres que también se coloreen.</p>
+
+            <h4>Paso 2: Abrir Formato Condicional</h4>
+            <p>Ve a la pestaña <strong>Inicio → Formato condicional → Nueva regla</strong>, y elige la opción <strong>"Utilice una fórmula que determine las celdas para aplicar formato"</strong>.</p>
+
+            <h4>Paso 3: Escribir la fórmula (filas impares)</h4>
+            <p>En el campo de fórmula escribe:</p>
+            <div class="contenedor-comando">
+                <code>=RESIDUO(FILA(),2)=1</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                    <i class="fas fa-copy"></i> Copiar Fórmula
+                </button>
+            </div>
+            <p>Haz clic en <strong>Formato → Relleno</strong>, elige un color y acepta.</p>
+
+            <h4>Paso 4: Repetir para filas pares</h4>
+            <p>Crea una segunda regla con esta fórmula y un color distinto:</p>
+            <div class="contenedor-comando">
+                <code>=RESIDUO(FILA(),2)=0</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                    <i class="fas fa-copy"></i> Copiar Fórmula
+                </button>
+            </div>
+
+            <h4>Paso 5: Confirmar el rango "Se aplica a"</h4>
+            <p>En el <strong>Administrador de reglas de formato condicionales</strong>, revisa que el campo <strong>"Se aplica a"</strong> cubra todas tus filas de datos reales (ej. <code>=$A$9:$Z$207</code>). Si el rango es muy corto, no se verá ningún color aunque la fórmula esté bien.</p>
+
+            <h4>Nota: Excel en inglés</h4>
+            <p>Si tu Excel está en inglés, las fórmulas equivalentes son <code>=ISODD(ROW())</code> y <code>=ISEVEN(ROW())</code>.</p>
+        </div>
+    `,
+    links: [],
+    pasos: []
+},
     // INVESTIGACION
 ];
