@@ -243,5 +243,49 @@ export const datos_excel = [
     links: [],
     pasos: []
 },
+{
+    categoria: "excel",
+    titulo: "Crear Lista Desplegable (Validación de Datos)",
+    imagen: "img/excel/Excel.jpg",
+    comando: "Datos > Validación de datos",
+    descripcion: "Crea un menú desplegable en una celda para que solo se puedan elegir valores de una lista predefinida, evitando errores de captura.",
+    contenidoTutorialHtml: `
+        <h3>📋 Lista Desplegable con Validación de Datos</h3>
+        <p>Sirve para limitar lo que se puede escribir en una celda, mostrando una flechita con opciones para elegir en vez de escribir libremente.</p>
+
+        <div class="tutorial-pasos">
+            <h4>Paso 1: Preparar la lista de opciones</h4>
+            <p>Escribe las opciones que quieres que aparezcan en el desplegable, una por celda, en una columna o zona <strong>separada de tus datos principales</strong> (idealmente en otra hoja llamada, por ejemplo, "Catálogos"). Esto evita que se borren si algún día eliminas filas de tu tabla principal.</p>
+
+            <h4>Paso 2: Seleccionar la celda destino</h4>
+            <p>Selecciona la celda (o el rango de celdas) donde quieres que aparezca el desplegable.</p>
+
+            <h4>Paso 3: Abrir Validación de Datos</h4>
+            <p>Ve a la pestaña <strong>Datos → Validación de datos</strong>.</p>
+            <div class="contenedor-comando">
+                <code>Datos > Validación de datos</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                    <i class="fas fa-copy"></i> Copiar Ruta
+                </button>
+            </div>
+
+            <h4>Paso 4: Configurar la lista</h4>
+            <p>En la pestaña <strong>Configuración</strong>:</p>
+            <ul>
+                <li>En <strong>"Permitir"</strong>, elige <strong>"Lista"</strong></li>
+                <li>En <strong>"Origen"</strong>, selecciona el rango donde están tus opciones (ej. <code>='Catalogos'!$A$2:$A$10</code>)</li>
+                <li>Verifica que esté marcada la casilla <strong>"Celda con lista desplegable en la celda"</strong></li>
+            </ul>
+
+            <h4>Paso 5: Aceptar</h4>
+            <p>Da clic en <strong>Aceptar</strong>. Ahora esa celda mostrará una flechita para elegir directamente de tu lista.</p>
+
+            <h4>Tip: Rango con nombre</h4>
+            <p>Para que sea más fácil de reutilizar, puedes nombrar el rango de opciones (<strong>Fórmulas → Administrador de nombres → Nuevo</strong>) y usar ese nombre directamente como "Origen" en vez de la referencia de celdas.</p>
+        </div>
+    `,
+    links: [],
+    pasos: []
+},
     // INVESTIGACION
 ];
