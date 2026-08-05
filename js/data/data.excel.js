@@ -287,5 +287,71 @@ export const datos_excel = [
     links: [],
     pasos: []
 },
+{
+    categoria: "excel",
+    titulo: "Alertar Espacios de Más (Formato Condicional)",
+    imagen: "img/excel/Excel.jpg",
+    comando: "=ESPACIOS(B2)<>B2",
+    descripcion: "Resalta automáticamente cualquier celda que tenga espacios de más (al inicio, al final, o dobles entre palabras), sin corregir el dato, solo para que lo detectes y lo revises tú mismo.",
+    contenidoTutorialHtml: `
+        <h3>⚠️ Detectar Espacios de Más con Formato Condicional</h3>
+        <p>Los espacios de más (al inicio, al final, o dobles entre palabras) son invisibles a simple vista, pero rompen fórmulas de separación de texto (como separar nombre y apellidos). Esta regla los pone en evidencia sin modificar el dato original.</p>
+
+        <div class="tutorial-pasos">
+            <h4>Paso 1: Seleccionar el rango a vigilar</h4>
+            <p>Selecciona la columna (o rango) donde quieres detectar espacios de más, por ejemplo <code>B2:B17</code>.</p>
+
+            <h4>Paso 2: Nueva regla de Formato Condicional</h4>
+            <p>Ve a <strong>Inicio → Formato condicional → Nueva regla → "Utilice una fórmula que determine las celdas para aplicar formato"</strong>.</p>
+
+            <h4>Paso 3: Escribir la fórmula</h4>
+            <div class="contenedor-comando">
+                <code>=ESPACIOS(B2)<>B2</code>
+                <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                    <i class="fas fa-copy"></i> Copiar Fórmula
+                </button>
+            </div>
+            <p><strong>Cómo se lee:</strong> <code>ESPACIOS(B2)</code> limpia el texto quitando espacios de más. Si el resultado limpio es diferente (<code>&lt;&gt;</code>) al texto original, quiere decir que sí tenía espacios de sobra — y ahí se activa el color.</p>
+
+            <h4>Paso 4: Elegir el color de advertencia</h4>
+            <p><strong>Formato → Relleno</strong>, elige un color llamativo (rojo o naranja) → Aceptar → Aceptar.</p>
+
+            <h4>Importante: la celda de referencia</h4>
+            <p>Siempre escribe en la fórmula la <strong>primera celda</strong> del rango que seleccionaste en el Paso 1 (si tu rango empieza en B2, la fórmula lleva B2; si empezara en B9, llevaría B9). Excel ajusta solo el número de fila para las demás celdas del rango.</p>
+        </div>
+    `,
+    links: [],
+    pasos: []
+},
+{
+    categoria: "excel",
+    titulo: "Resaltar Celdas con un Valor Específico (Ej. H/M)",
+    imagen: "img/excel/Excel.jpg",
+    comando: "Inicio > Formato condicional > Resaltar reglas de celdas",
+    descripcion: "Pinta de un color distinto las celdas que contienen un valor determinado (por ejemplo, un '1' en una columna de Hombres y otro color en la de Mujeres), para identificar de un vistazo qué categoría marca cada fila.",
+    contenidoTutorialHtml: `
+        <h3>🎨 Resaltar un Valor Específico por Columna</h3>
+        <p>Útil cuando usas columnas de "marca" (como H / M, Sí / No, Activo / Baja) y quieres identificar de un vistazo qué filas tienen cada valor, con un color distinto por columna.</p>
+
+        <div class="tutorial-pasos">
+            <h4>Paso 1: Seleccionar la primera columna a resaltar</h4>
+            <p>Selecciona el rango de la columna, por ejemplo la columna <strong>H (Hombres)</strong>: <code>L2:L17</code>.</p>
+
+            <h4>Paso 2: Crear la regla</h4>
+            <p>Ve a <strong>Inicio → Formato condicional → Resaltar reglas de celdas → Igual a...</strong> (o "El valor de la celda está entre..." si prefieres un rango de números).</p>
+
+            <h4>Paso 3: Definir el valor y el color</h4>
+            <p>Escribe el valor que buscas (ej. <code>1</code>), y elige un color de relleno — por ejemplo <strong>azul</strong> para Hombres.</p>
+
+            <h4>Paso 4: Repetir para la segunda columna</h4>
+            <p>Selecciona ahora la columna <strong>M (Mujeres)</strong>: <code>M2:M17</code>, repite el mismo proceso, pero con un color distinto — por ejemplo <strong>rosa</strong>.</p>
+
+            <h4>Resultado</h4>
+            <p>Cada columna queda con su propio color cuando tiene el valor marcado, permitiéndote distinguir de un vistazo cuántos registros son de cada categoría sin tener que leer cada celda.</p>
+        </div>
+    `,
+    links: [],
+    pasos: []
+},
     // INVESTIGACION
 ];

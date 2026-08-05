@@ -651,6 +651,215 @@ export const datos_linux = [
         
     ],
     "pasos": []
+},
+{
+        categoria: "linux",
+        titulo: "Instalación y Personalización de Voyager Linux",
+        imagen: "img/linux/voyager.jpg",
+        comando: "Voyager Linux (Ubuntu / Debian)",
+        descripcion: "Manual paso a paso para descargar e instalar Voyager, la distribución francesa famosa por su increíble estética preconfigurada y sus widgets de escritorio.",
+        contenidoTutorialHtml: `
+            <h3>🌌 El Linux para los amantes de la estética</h3>
+            <p>Voyager Linux destaca por ofrecer un entorno de escritorio (XFCE o GNOME) altamente personalizado desde el primer minuto, lleno de efectos, paneles y widgets Conky sin necesidad de configurar nada manualmente.</p>
+            
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Descarga de la Imagen ISO</h4>
+                <p>Ve al sitio oficial y elige la base que prefieras:</p>
+                <ul>
+                    <li><strong>Voyager Ubuntu (LTS):</strong> Basada en la última versión de soporte extendido de Ubuntu. Ideal para máxima compatibilidad.</li>
+                    <li><strong>Voyager Debian:</strong> Basada en Debian estable. Perfecta si buscas un sistema ultra robusto y ligero.</li>
+                </ul>
+                <div class="contenedor-comando">
+                    <code>
+                        <a href="https://voyagerlive.org/" target="_blank" class="link-comando">https://voyagerlive.org/</a>
+                    </code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar Link</button>
+                </div>
+
+                <h4>Paso 2: Crear el USB de Arranque</h4>
+                <p>Usa herramientas como <a href="https://rufus.ie/es/" target="_blank" class="link-comando" class="fw-bold"><strong>Rufus</strong></a> 
+                o <a href="https://etcher.balena.io/" target="_blank" class="link-comando" class="fw-bold"><strong>balenaEtcher</strong></a> para grabar la ISO en una memoria USB de al menos 8GB.</p>
+
+                <div class="links-seccion">
+                    <a href="https://www.youtube.com/shorts/XKEcNDvPRtM" target="_blank" class="btn-pro-link youtube" data-tooltip="Video: Cómo crear memoria booteable con Balena Etcher">
+                        <i class="fab fa-youtube"></i> 
+                        <span class="texto-btn-cortado">Video: Cómo crear memoria booteable con Balena Etcher</span>
+                    </a>
+                </div>
+
+                <h4>Paso 3: Proceso de Instalación</h4>
+                <ol>
+                    <li><strong>Arranque:</strong> Enciende la PC y presiona la tecla de acceso a la BIOS (F2, F12, Del) para arrancar desde tu memoria USB. Se recomienda desactivar <em>Secure Boot</em>.</li>
+                    
+                    <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                        <p class="mb-10"><strong>⚠️ Al iniciar el USB verás el menú de GRUB:</strong></p>
+                        <ul class="lista-limpia">
+                            <li class="mb-8">🔵 <strong>Try or Install Voyager:</strong> Selecciona esta opción. Cargará el sistema en modo "Live" (Prueba) donde podrás ver su espectacular diseño antes de instalarlo.</li>
+                            <li>⚙️ <strong>Modo Seguro/Safe Graphics:</strong> Úsalo solo si la primera opción te da problemas de video o pantalla negra.</li>
+                        </ul>
+                    </div>
+
+                    <li><strong>Bienvenida:</strong> Una vez en el escritorio de Voyager, busca el icono de <strong>"Instalar Voyager"</strong> (suele usar el instalador Calamares o Ubiquity). Selecciona idioma Español.</li>
+                    <li><strong>Teclado y Red:</strong> Selecciona <strong>Spanish</strong> o <strong>Spanish (Latin American)</strong> según tu teclado. Conéctate a WiFi para descargar actualizaciones durante la instalación.</li>
+                    <li><strong>Particionado:</strong> 
+                        <ul>
+                            <li><strong>Instalar junto a Windows:</strong> El sistema creará un espacio (Dual Boot) sin borrar tus datos.</li>
+                            <li><strong>Borrar disco entero:</strong> Elimina todo e instala Voyager como tu único sistema operativo.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Usuario:</strong> Selecciona tu región en el mapa y crea tu nombre de equipo, usuario y contraseña.</li>
+                    <li><strong>Finalización:</strong> Espera a que termine la copia de archivos. Al finalizar, reinicia la computadora y retira el USB cuando la pantalla te lo indique.</li>
+                </ol>
+
+                <h4>Paso 4: Descubre el "Box Voyager"</h4>
+                <p>La magia de esta distro está en el <strong>Box Voyager</strong> (un panel lateral de control). Ábrelo para cambiar fácilmente entre diferentes perfiles de Conky (widgets de hora y sistema), temas, iconos y comportamientos del dock inferior con un solo clic.</p>
+            </div>
+                <p class="m-0"><i class="fas fa-rocket"></i> <strong>Tip de Personalización:</strong> Voyager incluye herramientas como "Radio Tray" y perfiles gaming preinstalados. ¡Explora el menú de aplicaciones antes de instalar cosas nuevas, ya viene muy completo!</p>
+                
+            
+        `,
+        links: [
+            { texto: "Página Oficial de Descarga", url: "https://voyagerlive.org/" },
+            { texto: "Video: Review e Instalación de Voyager", url: "https://www.youtube.com/watch?v=BCD_VbTT-jg", plataforma: "youtube" }
+        ],
+        pasos: []
+},
+{
+        categoria: "linux",
+        titulo: "Instalación y Optimización de CuerdOS",
+        imagen: "img/linux/cuerdos.jpg",
+        comando: "CuerdOS (Debian Based)",
+        descripcion: "Manual paso a paso para instalar CuerdOS, la distribución de origen español basada en Debian y optimizada hasta el último píxel para ofrecer el máximo rendimiento.",
+        contenidoTutorialHtml: `
+            <h3>⚡ El Linux optimizado para la eficiencia</h3>
+            <p>CuerdOS no es solo un entorno de escritorio personalizado; incluye mejoras de rendimiento como ajuste de servicios, ZRam preconfigurado y un kernel parcheado para un mejor manejo de CPU, GPU y memoria.</p>
+            
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Descarga de la Imagen ISO</h4>
+                <p>Ve al sitio oficial y elige el "sabor" (entorno) que mejor se adapte a tus necesidades:</p>
+                <ul>
+                    <li><strong>CuerdOS Xfce:</strong> El entorno por defecto, moderno y cómodo para cualquier usuario [cite: 1.1.4].</li>
+                    <li><strong>CuerdOS Sway:</strong> Con gestor de ventanas en mosaico (Tiling WM) para los que buscan algo ultra ligero [cite: 1.1.4].</li>
+                    <li><strong>Otras versiones:</strong> LabWC, KDE, Shell, entre otras [cite: 1.1.4].</li>
+                </ul>
+                <div class="contenedor-comando">
+                    <code>
+                        <a href="https://cuerdos.github.io/index.html" target="_blank" class="link-comando">https://cuerdos.github.io/index.html</a>
+                    </code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar Link</button>
+                </div>
+
+                <h4>Paso 2: Crear el USB de Arranque</h4>
+                <p>Usa herramientas como <a href="https://rufus.ie/es/" target="_blank" class="link-comando" class="fw-bold"><strong>Rufus</strong></a> 
+                o <a href="https://etcher.balena.io/" target="_blank" class="link-comando" class="fw-bold"><strong>balenaEtcher</strong></a> para grabar la ISO en una memoria USB (se recomienda al menos 8GB).</p>
+
+                <div class="links-seccion">
+                    <a href="https://www.youtube.com/shorts/XKEcNDvPRtM" target="_blank" class="btn-pro-link youtube" data-tooltip="Video: Cómo crear memoria booteable con Balena Etcher">
+                        <i class="fab fa-youtube"></i> 
+                        <span class="texto-btn-cortado">Video: Cómo crear memoria booteable con Balena Etcher</span>
+                    </a>
+                </div>
+
+                <h4>Paso 3: Proceso de Instalación</h4>
+                <ol>
+                    <li><strong>Arranque:</strong> Enciende la PC y presiona la tecla de acceso a la BIOS (F2, F12, Del) para seleccionar el USB como prioridad.</li>
+                    
+                    <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                        <p class="mb-10"><strong>⚠️ Nota para versiones Live (como Sway o LabWC):</strong></p>
+                        <ul class="lista-limpia">
+                            <li class="mb-8">🔑 Si el sistema en modo "Live" te pide credenciales para entrar al escritorio antes de instalar, el usuario es <strong>'user'</strong> y la contraseña es <strong>'live'</strong> [cite: 1.1.4].</li>
+                        </ul>
+                    </div>
+
+                    <li><strong>Instalador (Calamares):</strong> Una vez en el entorno en vivo, busca el instalador. Selecciona el idioma Español y haz clic en Siguiente [cite: 1.1.9].</li>
+                    <li><strong>Teclado y Red:</strong> Elige la distribución de tu teclado (Ej. Spanish). Asegúrate de tener conexión a internet.</li>
+                    <li><strong>Particionado:</strong> 
+                        <ul>
+                            <li><strong>Instalar junto a Windows:</strong> Conserva tus archivos y sistemas actuales (Dual Boot).</li>
+                            <li><strong>Borrar disco e instalar:</strong> Borra todo y deja CuerdOS como sistema único. (Recomendado 15GB de espacio mínimo) [cite: 1.1.4].</li>
+                        </ul>
+                    </li>
+                    <li><strong>Usuario:</strong> Define tu zona horaria y crea tu nombre de usuario y contraseña.</li>
+                    <li><strong>Finalización:</strong> Al terminar la copia de archivos, reinicia y retira el USB.</li>
+                </ol>
+
+                <h4>Paso 4: Descubre el Ecosistema CuerdOS</h4>
+                <p>Una vez instalado, notarás que CuerdOS viene con herramientas propias que no están en Debian base [cite: 1.1.4]:</p>
+                <ul>
+                    <li>🛒 <strong>Yelena Store:</strong> Preconfigurada para instalar software (Debs y Flatpak) fácilmente [cite: 1.1.4].</li>
+                    <li>🔄 <strong>CuerdToken:</strong> El asistente de actualizaciones propio del sistema [cite: 1.1.4].</li>
+                    <li>🔋 <strong>TLP:</strong> Preconfigurado para gestionar el consumo de energía óptimamente (ideal para laptops) [cite: 1.1.4].</li>
+                </ul>
+            </div>
+                <p class="m-0"><i class="fas fa-rocket"></i> <strong>Tip de Software:</strong> CuerdOS trae Pipewire como servidor multimedia por defecto y garantiza compatibilidad con Waydroid para emulación, ¡aprovéchalos! [cite: 1.1.4]</p>
+                
+            
+        `,
+        links: [
+            { texto: "Página de Descarga", url: "https://cuerdos.github.io/index.html" },
+            { texto: "Video: Review e Instalación de CuerdOS", url: "https://www.youtube.com/watch?v=oe1ek5K5tcw", plataforma: "youtube" }
+        ],
+        pasos: []
+},
+{
+    categoria: "linux",
+    titulo: "Restaurar menú de arranque (GRUB) en Zorin OS",
+    imagen: "img/linux/restaurar-grub.jpg",
+    comando: "sudo grub-install /dev/sda (o nvme0n1) && sudo update-grub",
+    descripcion: "Guía paso a paso para identificar el disco de arranque principal y restaurar el menú gráfico del gestor de arranque (GRUB) de Zorin OS cuando otro sistema operativo lo ha sobrescrito.",
+    contenidoTutorialHtml: `
+        <h3>🖥️ Restaurar el menú de arranque original de Zorin OS</h3>
+        <p>Al instalar múltiples distribuciones Linux (como Voyager u otro sistema después de Zorin), el último sistema instalado suele tomar el control del gestor de arranque (GRUB). Para recuperar el diseño gráfico original y el control en Zorin OS, debemos reinstalar su GRUB en el disco principal.</p>
+        
+        <div class="tutorial-pasos">
+            <h4>Paso 1: Identificar el disco principal</h4>
+            <p>Inicia sesión en Zorin OS y abre la terminal. Primero, necesitamos saber exactamente en qué disco está la partición de arranque (EFI) o del sistema. Ejecuta el siguiente comando:</p>
+            <div class="contenedor-comando">
+                <code>lsblk</code>
+            </div>
+            <p>Aparecerá una lista en forma de árbol. Busca la línea que diga <strong>/boot/efi</strong> o <strong>/</strong> en la última columna (MOUNTPOINTS). Fíjate en el nombre del disco "padre" que está más a la izquierda (sin números al final):</p>
+            <ul>
+                <li>Si es un disco duro o SSD tradicional (SATA), el nombre será algo como <strong>sda</strong> o <strong>sdb</strong>.</li>
+                <li>Si es un disco SSD moderno (NVMe), el nombre será algo como <strong>nvme0n1</strong>.</li>
+            </ul>
+
+            <h4>Paso 2: Reinstalar el GRUB</h4>
+            <p>Una vez identificado tu disco, ejecuta el comando de instalación correspondiente. <strong>Importante:</strong> Recuerda no poner el número de la partición (ej. sda1 o nvme0n1p1), solo el nombre del disco entero:</p>
+            
+            <h5>Opción A: Si tu disco es SATA (sda)</h5>
+            <div class="contenedor-comando">
+                <code>sudo grub-install /dev/sda</code>
+            </div>
+
+            <h5>Opción B: Si tu disco es NVMe (nvme0n1)</h5>
+            <div class="contenedor-comando">
+                <code>sudo grub-install /dev/nvme0n1</code>
+            </div>
+
+            <p>La terminal te pedirá tu contraseña y, si todo sale bien, te devolverá un mensaje de éxito como este:</p>
+            <div style="background: rgba(34, 197, 94, 0.1); border: 1px solid #22c55e; padding: 10px; border-radius: 5px; margin-top: 10px; margin-bottom: 15px;">
+                <code>Instalación terminada. No se notificó ningún error.</code>
+            </div>
+
+            <h4>Paso 3: Actualizar la lista de Sistemas Operativos</h4>
+            <p>Ahora hay que decirle al sistema que busque y agregue al menú de arranque el resto de los sistemas instalados (Windows, Voyager, etc.). Ejecuta:</p>
+            <div class="contenedor-comando">
+                <code>sudo update-grub</code>
+            </div>
+            <p>Verás que la terminal empieza a procesar y a enlistar los sistemas operativos encontrados. El proceso finaliza cuando vuelve a aparecer tu nombre de usuario para ingresar nuevos comandos.</p>
+
+            <h4>Paso 4: Finalizar y reiniciar</h4>
+            <ol>
+                <li>Cierra la terminal.</li>
+                <li>Reinicia tu computadora.</li>
+                <li>Al encender, ya deberías ver el menú de arranque original controlando nuevamente tus sistemas.</li>
+            </ol>
+        </div>
+
+        <p><i class="fas fa-info-circle"></i> <strong>Nota técnica:</strong> Si el comando <code>lsblk</code> muestra que el sistema raíz (<strong>/</strong>) está en un disco y el arranque (<strong>/boot/efi</strong>) en otro, siempre debes instalar el GRUB apuntando al disco donde se encuentra <strong>/boot/efi</strong>.</p>
+    `,
+    links: [],
+    pasos: []
 }
     
 ];
