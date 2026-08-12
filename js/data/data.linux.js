@@ -727,7 +727,7 @@ export const datos_linux = [
 {
         categoria: "linux",
         titulo: "Instalación y Optimización de CuerdOS",
-        imagen: "img/linux/cuerdos.jpg",
+        imagen: "img/linux/CuerdOS.jpg",
         comando: "CuerdOS (Debian Based)",
         descripcion: "Manual paso a paso para instalar CuerdOS, la distribución de origen español basada en Debian y optimizada hasta el último píxel para ofrecer el máximo rendimiento.",
         contenidoTutorialHtml: `
@@ -796,8 +796,7 @@ export const datos_linux = [
             
         `,
         links: [
-            { texto: "Página de Descarga", url: "https://cuerdos.github.io/index.html" },
-            { texto: "Video: Review e Instalación de CuerdOS", url: "https://www.youtube.com/watch?v=oe1ek5K5tcw", plataforma: "youtube" }
+            { texto: "Página de Descarga", url: "https://cuerdos.github.io/index.html" }            
         ],
         pasos: []
 },
