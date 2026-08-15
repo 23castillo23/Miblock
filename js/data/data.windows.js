@@ -534,6 +534,72 @@ export const datos_windows = [
         ],
         pasos: []
     },
+    {
+        categoria: "windows",
+        titulo: "Extender o Reducir Particiones sin Formatear",
+        imagen: "img/windows/particiones.jpg",
+        comando: "https://www.partitionwizard.com/free-partition-manager.html",
+        descripcion: "Extiende o reduce las particiones de tu disco local C: sin formatear, usando MiniTool Partition Wizard Free.",
+        contenidoTutorialHtml: `
+            <h3>💽 Gestión de Particiones sin Perder Datos</h3>
+            <p>Aunque Windows trae un administrador de discos nativo, muchas veces no permite extender la unidad C: porque el espacio libre no queda "contiguo". <strong>MiniTool Partition Wizard</strong> resuelve esto moviendo y ajustando las particiones automáticamente.</p>
+            
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Descargar e Instalar</h4>
+                <p>Descarga la versión gratuita desde el sitio oficial:</p>
+                <div class="contenedor-comando">
+                    <code>
+                        <a href="https://www.partitionwizard.com/free-partition-manager.html" target="_blank" class="link-comando">https://www.partitionwizard.com/free-partition-manager.html</a>
+                    </code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar Link
+                    </button>
+                </div>
+
+                <h4>Paso 2: Reducir una Partición (Liberar espacio)</h4>
+                <p>Abre el programa y verás el mapa de todas tus particiones:</p>
+                <ul>
+                    <li>Haz clic derecho sobre la partición que tiene espacio de sobra (ej: D:).</li>
+                    <li>Selecciona <kbd>Move/Resize</kbd> (Mover/Redimensionar).</li>
+                    <li>Arrastra el borde del gráfico para reducir el tamaño y dejar espacio libre.</li>
+                    <li>Pulsa <kbd>OK</kbd>.</li>
+                </ul>
+
+                <h4>Paso 3: Extender la Unidad C:</h4>
+                <p>Con el espacio ya liberado, haz clic derecho sobre la unidad <strong>C:</strong>:</p>
+                <ul>
+                    <li>Selecciona <kbd>Move/Resize</kbd> (Mover/Redimensionar) o <kbd>Extend</kbd>.</li>
+                    <li>Arrastra el borde para que C: absorba el espacio libre recién creado.</li>
+                    <li>Pulsa <kbd>OK</kbd>.</li>
+                </ul>
+
+                <h4>Paso 4: Aplicar los Cambios</h4>
+                <p>MiniTool solo programa los cambios hasta que confirmas:</p>
+                <ul>
+                    <li>Haz clic en el botón <kbd>Apply</kbd> (parte superior izquierda).</li>
+                    <li>Confirma la advertencia. El programa reiniciará el equipo si es necesario para modificar la partición del sistema.</li>
+                </ul>
+
+                <details class="acordeon-tutorial">
+                    <summary class="acordeon-header">
+                        <i class="fas fa-info-circle"></i> ¿POR QUÉ USAR ESTO EN VEZ DEL ADMINISTRADOR DE DISCOS NATIVO?
+                    </summary>
+                    <div class="tutorial-pasos warning">
+                        <p>El Administrador de Discos de Windows (<code>diskmgmt.msc</code>) solo puede extender una partición si el espacio sin asignar está <strong>justo al lado derecho</strong>. Si hay otra partición en medio (como la de Recuperación), la opción "Extender volumen" aparece en gris y bloqueada.</p>
+                        <p>MiniTool Partition Wizard evita ese problema porque puede <strong>mover</strong> particiones enteras para dejar el espacio contiguo antes de extender, todo sin perder tus datos.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <p class="mt-15"><i>Nota: Antes de reducir o extender particiones, se recomienda hacer una copia de seguridad de tus archivos importantes por precaución.</i></p>
+        `,
+        links: [
+            { texto: "Video Tutorial Completo", url: "https://youtu.be/UdhqrlTtTcs", plataforma: "youtube" },
+            { texto: "Video Short", url: "https://www.youtube.com/shorts/OD_-EeO80Ro", plataforma: "youtube" },
+            { texto: "MiniTool Partition Wizard Free 13.9", url: "https://www.partitionwizard.com/free-partition-manager.html" }
+        ],
+        pasos: []
+    }
 
     //CATEGORIA TUTORIAL
 ];

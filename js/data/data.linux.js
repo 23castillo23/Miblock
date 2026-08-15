@@ -859,6 +859,172 @@ export const datos_linux = [
     `,
     links: [],
     pasos: []
+},
+{
+        categoria: "linux",
+        titulo: "Solución: Miniaturas de Video Ocultas o Rotas",
+        imagen: "img/linux/miniaturas.jpg",
+        comando: "ffmpegthumbnailer / rm -rf ~/.cache/thumbnails/*",
+        descripcion: "Cómo forzar al sistema a generar las vistas previas de los videos (.mp4, .mkv) instalando los códecs necesarios y limpiando la caché en diferentes entornos de escritorio.",
+        contenidoTutorialHtml: `
+            <h3>🎬 Reparar Vistas Previas de Video</h3>
+            <p>A veces los gestores de archivos muestran un icono genérico (gris o morado) en lugar de una previsualización real del video. Esto se soluciona instalando el generador de miniaturas correcto y limpiando la memoria caché corrupta.</p>
+
+            <div class="tutorial-pasos">
+                <h4 class="color-info"><i class="fas fa-download"></i> 1. Instalar Generador y Códecs</h4>
+                <p>Instala las herramientas necesarias (como ffmpegthumbnailer) para que el sistema sepa procesar y extraer las imágenes de los videos:</p>
+                <div class="contenedor-comando">
+                    <code>sudo apt update && sudo apt install ffmpegthumbnailer gstreamer1.0-libav gstreamer1.0-plugins-ugly</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+
+                <hr>
+
+                <h4 class="color-peligro"><i class="fas fa-trash-alt"></i> 2. Limpiar la Caché de Miniaturas</h4>
+                <p>Borra las miniaturas defectuosas que el sistema ya guardó para obligarlo a escanear los archivos desde cero:</p>
+                <div class="contenedor-comando">
+                    <code>rm -rf ~/.cache/thumbnails/*</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+                <p><small>⚠️ <strong>Nota:</strong> Este comando es seguro. La carpeta .cache solo almacena archivos temporales; borrarlos no eliminará tus videos reales.</small></p>
+
+                <hr>
+
+                <h4 class="color-alerta"><i class="fas fa-sync"></i> 3. Reiniciar el Gestor de Archivos</h4>
+                <p>Aquí es donde el proceso cambia según tu distribución y entorno de escritorio. Ejecuta el comando que corresponda a tu sistema para aplicar los cambios (la letra <code>-q</code> significa quit/cerrar):</p>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                    <p class="mb-10"><strong>🔹 Zorin OS Core / GNOME tradicional:</strong></p>
+                    <div class="contenedor-comando" style="margin-bottom: 20px;">
+                        <code>nautilus -q</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+
+                    <p class="mb-10"><strong>🔹 Linux Mint Cinnamon:</strong></p>
+                    <div class="contenedor-comando" style="margin-bottom: 20px;">
+                        <code>nemo -q</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+
+                    <p class="mb-10"><strong>🔹 Zorin Lite / Linux Mint XFCE / Voyager / CuerdOS XFCE:</strong></p>
+                    <div class="contenedor-comando" style="margin-bottom: 20px;">
+                        <code>thunar -q</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+
+                    <p class="mb-10"><strong>🔹 Linux Mint MATE:</strong></p>
+                    <div class="contenedor-comando">
+                        <code>caja -q</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+                </div>
+
+                <div class="bloque-sutil mt-5">
+                    <ul class="txt-sm">
+                        <li>💡 <strong>Paso Final:</strong> Vuelve a abrir tu carpeta de Videos. Dale unos segundos al sistema para procesar los archivos pesados; notarás cómo las imágenes empiezan a aparecer automáticamente.</li>
+                    </ul>
+                </div>
+            </div>
+        `,
+        links: [],
+        pasos: []
+},
+{
+        categoria: "linux",
+        titulo: "Solución: Control de Brillo Bloqueado",
+        imagen: "img/linux/brillo.jpg",
+        comando: "lspci -nnk | grep -iA3 vga",
+        descripcion: "Cómo diagnosticar tu tarjeta gráfica y aplicar la corrección adecuada a nivel de kernel o gestor de arranque para recuperar el control del brillo de la pantalla.",
+        contenidoTutorialHtml: `
+            <h3>☀️ Reparar el Control de Brillo</h3>
+            <p>El problema del brillo suele deberse a un conflicto entre el núcleo de Linux y el controlador de tu tarjeta gráfica. El primer paso es identificar tu hardware para aplicar la solución correcta.</p>
+
+            <div class="tutorial-pasos">
+                <h4 class="color-info"><i class="fas fa-search"></i> 1. Diagnosticar Tarjeta Gráfica</h4>
+                <p>Ejecuta este comando en la terminal para descubrir qué procesador gráfico está usando tu equipo (fíjate en la línea que dice <code>Kernel driver in use</code>):</p>
+                <div class="contenedor-comando">
+                    <code>lspci -nnk | grep -iA3 vga</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+
+                <hr>
+
+                <h4 class="color-alerta"><i class="fas fa-microchip"></i> Caso 1: Gráficos Intel (i915)</h4>
+                <p>Si tu diagnóstico dice <strong>i915</strong>, el controlador de Intel está limitando la energía. Desactiva el protocolo de energía DPCD creando una nueva regla:</p>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                    <p class="mb-10"><strong>A) Crea el archivo de configuración:</strong></p>
+                    <div class="contenedor-comando" style="margin-bottom: 20px;">
+                        <code>sudo nano /etc/modprobe.d/i915.conf</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+
+                    <p class="mb-10"><strong>B) Pega el siguiente parámetro y guarda (Ctrl+O, Enter, Ctrl+X):</strong></p>
+                    <div class="contenedor-comando" style="margin-bottom: 20px;">
+                        <code>options i915 enable_dpcd_backlight=0</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+
+                    <p class="mb-10"><strong>C) Actualiza el arranque para aplicar:</strong></p>
+                    <div class="contenedor-comando">
+                        <code>sudo update-initramfs -u</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h4 class="color-alerta"><i class="fas fa-microchip"></i> Caso 2: Gráficos AMD (amdgpu / radeon)</h4>
+                <p>Si tu diagnóstico dice <strong>amdgpu</strong> o <strong>radeon</strong>, debes inyectar un parámetro directamente en el gestor de arranque GRUB:</p>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                    <p class="mb-10"><strong>A) Abre el archivo principal de GRUB:</strong></p>
+                    <div class="contenedor-comando" style="margin-bottom: 20px;">
+                        <code>sudo nano /etc/default/grub</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+
+                    <p class="mb-10"><strong>B) Busca <code>GRUB_CMDLINE_LINUX_DEFAULT</code> y añade el parámetro al final de las comillas:</strong></p>
+                    <div class="contenedor-comando" style="margin-bottom: 20px;">
+                        <code>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash acpi_backlight=video"</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+
+                    <p class="mb-10"><strong>C) Actualiza GRUB:</strong></p>
+                    <div class="contenedor-comando">
+                        <code>sudo update-grub</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h4 class="color-alerta"><i class="fas fa-microchip"></i> Caso 3: Gráficos Nvidia (nvidia / nouveau)</h4>
+                <p>Si usas una tarjeta dedicada <strong>Nvidia</strong>, debes forzar el control a través del registro gráfico de X11 creando un archivo específico:</p>
+                
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px; margin-top: 10px;">
+                    <p class="mb-10"><strong>A) Crea el archivo de Nvidia:</strong></p>
+                    <div class="contenedor-comando" style="margin-bottom: 20px;">
+                        <code>sudo nano /usr/share/X11/xorg.conf.d/10-nvidia.conf</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+
+                    <p class="mb-10"><strong>B) Pega exactamente este bloque y guarda (Ctrl+O, Enter, Ctrl+X):</strong></p>
+                    <div class="contenedor-comando">
+                        <code>Section "Device"\n    Identifier "Device0"\n    Driver "nvidia"\n    VendorName "NVIDIA Corporation"\n    Option "RegistryDwords" "EnableBrightnessControl=1"\nEndSection</code>
+                        <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                    </div>
+                </div>
+
+                <div class="bloque-sutil mt-5">
+                    <ul class="txt-sm">
+                        <li>💡 <strong>Paso Final:</strong> Sin importar cuál de los 3 casos hayas aplicado, es obligatorio reiniciar tu computadora completamente para que el hardware adopte las nuevas reglas de energía.</li>
+                    </ul>
+                </div>
+            </div>
+        `,
+        links: [],
+        pasos: []
 }
     
 ];
