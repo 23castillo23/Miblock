@@ -3,32 +3,6 @@
 export const datos_programas = [
 {
         categoria: "programas",
-        titulo: "Programas Virtuales PC",
-        imagen: "img/programas/programas1.jpg",
-        comando: "https://www.programasvirtualespc.net/",
-        descripcion: "Biblioteca extensa de software, juegos y utilidades para Windows.",
-        contenidoTutorialHtml: `
-            <h3>📦 Repositorio de Software Pro</h3>
-            <p>Uno de los sitios más confiables para descargar herramientas técnicas y programas de ingeniería.</p>
-            
-            <div class="tutorial-pasos">
-                <h4>🔑 Contraseña de descompresión:</h4>
-                <p>Copia esta clave para extraer los archivos descargados:</p>
-                <div class="contenedor-comando">
-                    <code>www.programasvirtualespc.net</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
-                        <i class="fas fa-copy"></i> Copiar
-                    </button>
-                </div>
-            </div>
-        `,
-        links: [
-            { texto: "Sitio oficial", url: "https://www.programasvirtualespc.net/" }
-        ],
-        pasos: []
-    },
-{
-        categoria: "programas",
         titulo: "Descarga.xyz",
         imagen: "img/programas/programas2.jpg",
         comando: "https://www.descarga.xyz/",
@@ -124,31 +98,6 @@ export const datos_programas = [
         `,
         links: [
             { texto: "Sitio oficial", url: "https://tecnoprogramas.com/" }
-        ],
-        pasos: []
-    },
-{
-        categoria: "programas",
-        titulo: "Yelitzon PC",
-        imagen: "img/programas/programas6.jpg",
-        comando: "https://www.yelitzonpc.com/",
-        descripcion: "Canal y sitio web con tutoriales de instalación paso a paso.",
-        contenidoTutorialHtml: `
-            <h3>🎥 Tutoriales e Instaladores</h3>
-            <p>Recurso complementado con guías visuales para asegurar una instalación correcta de cada programa.</p>
-            
-            <div class="tutorial-pasos">
-                <h4>🔑 Contraseña de descompresión:</h4>
-                <div class="contenedor-comando">
-                    <code>www.yelitzonpc.com</code>
-                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
-                        <i class="fas fa-copy"></i> Copiar
-                    </button>
-                </div>
-            </div>
-        `,
-        links: [
-            { texto: "Sitio oficial", url: "https://www.yelitzonpc.com/" }
         ],
         pasos: []
     },

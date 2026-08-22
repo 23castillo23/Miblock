@@ -1025,6 +1025,148 @@ export const datos_linux = [
         `,
         links: [],
         pasos: []
-}
+},
+{
+        categoria: "linux",
+        titulo: "Gobernadores de CPU en Linux (Guía Completa)",
+        imagen: "img/linux/cpu-governors.jpg",
+        comando: "cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor",
+        descripcion: "Entiende qué son los gobernadores de CPU, los 10 tipos que existen, y cómo consultar cuál está usando tu equipo ahora mismo.",
+        contenidoTutorialHtml: `
+            <h3>⚙️ ¿Qué es un Gobernador de CPU?</h3>
+            <p>Un <strong>gobernador (governor)</strong> es el programa dentro del kernel de Linux que decide, en tiempo real, a qué velocidad (frecuencia) debe trabajar tu procesador en cada instante. No toda tarea necesita el 100% de potencia — por ejemplo, escribir en un editor de texto no necesita lo mismo que renderizar un video. El gobernador es quien decide cuándo subir la velocidad, cuándo bajarla, y qué tan agresivo o conservador ser con esos cambios, buscando el mejor balance entre <strong>rendimiento</strong> y <strong>consumo de batería/temperatura</strong>.</p>
+
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Consultar qué gobernador tienes activo ahora mismo</h4>
+                <p>Abre una terminal y ejecuta:</p>
+                <div class="contenedor-comando">
+                    <code>cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <p>Esto solo te muestra el gobernador del primer núcleo (cpu0). Si tu procesador tiene varios núcleos (lo normal hoy en día), y quieres verlos todos a la vez, usa:</p>
+                <div class="contenedor-comando">
+                    <code>cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+
+                <h4>Paso 2: Ver qué gobernadores puedes usar en tu equipo</h4>
+                <p>No todos los gobernadores están disponibles en todos los procesadores — depende de tu hardware y de tu kernel. Para ver la lista real de los que sí puedes usar tú:</p>
+                <div class="contenedor-comando">
+                    <code>cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+
+                <h4>Paso 3: Ver un reporte detallado de frecuencias</h4>
+                <p>Para un diagnóstico más completo (frecuencia mínima, máxima, actual, y si el hardware está limitando la velocidad por temperatura):</p>
+                <div class="contenedor-comando">
+                    <code>cpupower frequency-info</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)">
+                        <i class="fas fa-copy"></i> Copiar
+                    </button>
+                </div>
+                <p class="mt-15"><i>Nota: si el comando <code>cpupower</code> no existe en tu sistema, instálalo primero. En distribuciones basadas en Ubuntu/Debian: <code>sudo apt install linux-tools-common linux-tools-generic</code></i></p>
+
+                <div class="separador-grad"></div>
+
+                <details class="acordeon-tutorial">
+                    <summary class="acordeon-header">
+                        <i class="fas fa-microchip"></i> 1. GOBERNADORES ESTÁNDAR (CPUFreq) — CLIC PARA VER LOS 6
+                    </summary>
+                    <div class="tutorial-pasos warning">
+
+                        <h4 class="color-info">Schedutil (Basado en el Planificador)</h4>
+                        <p><strong>Qué hace:</strong> Usa los datos de carga del planificador del kernel (<em>sched</em>) para calcular la frecuencia exacta requerida, en milisegundos. Es el estándar actual de Linux — la mayoría de distribuciones modernas lo traen activo por defecto.</p>
+                        <p><strong>Ventajas:</strong> Respuestas ultra rápidas, excelente balance energía/rendimiento y evita saltos innecesarios de frecuencia.</p>
+                        <p><strong>Desventajas:</strong> Puede no estar bien optimizado en kernels muy viejos o arquitecturas de hardware antiguas.</p>
+
+                        <div class="separador-grad separador-secondary"></div>
+
+                        <h4 class="color-exito">Performance (Rendimiento Fijo)</h4>
+                        <p><strong>Qué hace:</strong> Clava la velocidad del procesador a su frecuencia máxima permitida, de forma constante.</p>
+                        <p><strong>Ventajas:</strong> Cero latencia de escalado — ideal para exprimir cada fotograma en videojuegos o acelerar tareas de servidor.</p>
+                        <p><strong>Desventajas:</strong> Alto consumo eléctrico constante, genera temperaturas elevadas y desgasta los ventiladores más rápido al mantenerlos trabajando siempre al máximo.</p>
+
+                        <div class="separador-grad separador-secondary"></div>
+
+                        <h4 class="color-info">Powersave (Ahorro Fijo)</h4>
+                        <p><strong>Qué hace:</strong> Clava la velocidad del procesador a su frecuencia mínima permitida.</p>
+                        <p><strong>Ventajas:</strong> Consumo eléctrico mínimo — tu laptop se mantiene fría y la batería dura al máximo.</p>
+                        <p><strong>Desventajas:</strong> Rendimiento pésimo; las aplicaciones pesadas, o el sistema en general, se sentirán lentos.</p>
+
+                        <div class="separador-grad separador-secondary"></div>
+
+                        <h4 class="color-amarillo">Ondemand (Bajo Demanda)</h4>
+                        <p><strong>Qué hace:</strong> Salta inmediatamente a la frecuencia máxima ante cualquier ráfaga de trabajo, y baja escalonadamente al disminuir la carga.</p>
+                        <p><strong>Ventajas:</strong> Muy rápido para responder a tareas pesadas repentinas.</p>
+                        <p><strong>Desventajas:</strong> Ineficiente con cargas medianas, ya que tiende a sobre-reaccionar y gastar batería de más.</p>
+
+                        <div class="separador-grad separador-secondary"></div>
+
+                        <h4 class="color-amarillo">Conservative (Conservador)</h4>
+                        <p><strong>Qué hace:</strong> Sube y baja la frecuencia de forma muy gradual y por pasos fijos, de acuerdo a la carga sostenida.</p>
+                        <p><strong>Ventajas:</strong> Cambios de velocidad muy suaves; ahorra más batería que Ondemand en uso diario.</p>
+                        <p><strong>Desventajas:</strong> Reacción lenta; puede causar pequeños tirones (<em>stuttering</em>) al abrir juegos o programas pesados de golpe.</p>
+
+                        <div class="separador-grad separador-secondary"></div>
+
+                        <h4 class="color-morado">Userspace (Control de Usuario)</h4>
+                        <p><strong>Qué hace:</strong> Deja el control de la frecuencia en manos de programas externos que corren en el espacio de usuario (fuera del kernel), en vez de decidirlo el propio kernel.</p>
+                        <p><strong>Ventajas:</strong> Permite una personalización absoluta mediante demonios (programas en segundo plano) o scripts hechos a la medida.</p>
+                        <p><strong>Desventajas:</strong> Si el script externo falla o se congela, la CPU se quedará atrapada en una sola velocidad de forma indefinida, hasta que algo más la corrija.</p>
+                    </div>
+                </details>
+
+                <details class="acordeon-tutorial">
+                    <summary class="acordeon-header">
+                        <i class="fas fa-mobile-alt"></i> 2. GOBERNADORES DE DISPOSITIVOS MÓVILES (Android/ARM)
+                    </summary>
+                    <div class="tutorial-pasos warning">
+
+                        <h4 class="color-exito">Interactive (Interactivo)</h4>
+                        <p><strong>Qué hace:</strong> Diseñado originalmente por Google para Android. Eleva la frecuencia de inmediato al detectar interacción con la pantalla (un toque, un scroll).</p>
+                        <p><strong>Ventajas:</strong> Interfaz móvil sumamente fluida; elimina el retraso visual al hacer scroll.</p>
+                        <p><strong>Desventajas:</strong> Ya obsoleto en favor de Schedutil; consume mucha batería si estás tocando la pantalla constantemente.</p>
+
+                        <div class="separador-grad separador-secondary"></div>
+
+                        <h4 class="color-info">EAS / Sched / Energy Aware (Consciencia Energética)</h4>
+                        <p><strong>Qué hace:</strong> Diseñado para arquitecturas ARM <em>big.LITTLE</em> (que combinan núcleos potentes con núcleos eficientes en el mismo chip). Calcula el coste energético antes de decidir en qué núcleo mover cada tarea.</p>
+                        <p><strong>Ventajas:</strong> Eficiencia energética inigualable en smartphones; sabe exactamente qué núcleo gasta menos para cada tarea específica.</p>
+                        <p><strong>Desventajas:</strong> Complejo de implementar; requiere soporte estricto a nivel de hardware y firmware del fabricante — no es algo que puedas simplemente activar en cualquier equipo.</p>
+                    </div>
+                </details>
+
+                <details class="acordeon-tutorial">
+                    <summary class="acordeon-header">
+                        <i class="fas fa-bolt"></i> 3. GOBERNADORES MODERNOS POR HARDWARE (Intel / AMD P-State)
+                    </summary>
+                    <div class="tutorial-pasos warning">
+
+                        <h4 class="color-info">Intel P-State (Powersave / Performance Inteligentes)</h4>
+                        <p><strong>Qué hace:</strong> Aquí es el propio hardware (el procesador) quien toma el control, no el kernel. Su modo <em>powersave</em> no es fijo como el clásico — actúa como un balanceador dinámico súper eficiente, mientras que su modo <em>performance</em> prioriza la potencia bruta.</p>
+                        <p><strong>Ventajas:</strong> El procesador cambia de estado en microsegundos, mucho más rápido que los gobernadores clásicos basados en software.</p>
+                        <p><strong>Desventajas:</strong> Quita flexibilidad al usuario, ya que reemplaza e inhabilita por completo a Ondemand, Conservative y los demás gobernadores clásicos mientras esté activo.</p>
+
+                        <div class="separador-grad separador-secondary"></div>
+
+                        <h4 class="color-peligro">AMD P-State EPP (Energy Performance Preference)</h4>
+                        <p><strong>Qué hace:</strong> Exclusivo para procesadores AMD modernos (arquitectura Zen). Ofrece perfiles intermedios además de los clásicos, como <code>balance_performance</code> y <code>balance_power</code>, para un ajuste más fino que un simple "todo o nada".</p>
+                        <p><strong>Ventajas:</strong> Ajuste milimétrico de la curva de energía según la arquitectura Zen de AMD; exprime la batería en laptops de esta marca.</p>
+                        <p><strong>Desventajas:</strong> Requiere configuraciones de kernel y distribuciones Linux muy actualizadas para funcionar correctamente — en sistemas viejos puede no estar disponible.</p>
+                    </div>
+                </details>
+            </div>
+        `,
+        links: [
+            { texto: "Documentación del kernel sobre CPUFreq", url: "https://www.kernel.org/doc/html/latest/admin-guide/pm/cpufreq.html" }
+        ],
+        pasos: []
+    },
     
 ];

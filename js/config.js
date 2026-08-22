@@ -395,6 +395,14 @@ export const CONFIG_CATEGORIAS = [
         clase:    "utilidades"
     },
 
+    // ── Enlaces caídos (se conservan por si vuelven) ───────────
+    {
+        id:       "caducados",
+        etiqueta: "Caducados",
+        icono:    "fas fa-box-archive",
+        clase:    "caducados"
+    },
+
     // ── Favoritos ─────────────────────────────────────────────
     {
         id:       "favoritas",

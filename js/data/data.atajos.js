@@ -13,17 +13,17 @@ export const datos_atajos = [
             
             <div class="tutorial-pasos">
             <h4>Paso 1: Instrucciones</h4>
-            <p>Copia el código y guárdalo como 
-            
+            <p>Copia el código y guárdalo como:</p>
+
             <div class="contenedor-comando">
-                <code>Menu_Sistemas.bat</code></p>
+                <code>Menu_Sistemas.bat</code>
                 <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
             </div>
                 <details class="acordeon-tutorial">
                     <summary class="acordeon-header">
                         <i class="fas fa-code"></i> CLIC PARA MOSTRAR EL CÓDIGO
                     </summary>
-                    <div class="contenedor-comando" class="m-0">
+                    <div class="contenedor-comando m-0">
 <pre class="codigo-consola">
 @echo off
 title Central de Ingenieria - Menu de Atajos

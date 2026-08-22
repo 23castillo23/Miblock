@@ -589,6 +589,12 @@ header p {
 
 /* CSS: Fucsia para Utilidades */
 
+/* CSS: Gris apagado para Caducados — a propósito distinto y "sin vida" */
+.tab.active.caducados {
+    background: #57534e;
+    box-shadow: 0 4px 12px rgba(87, 83, 78, 0.4);
+}
+
 /* style.css - Pestaña Favoritos con Alta Visibilidad */
 .tab.favoritas.active {
     color: #ff9f43 !important;
@@ -1207,6 +1213,67 @@ main {
 }
 
 /* CSS: Fucsia */
+.etiqueta.caducados {
+    background-color: #57534e;
+    color: white;
+}
+
+/* CSS: Gris apagado */
+
+/* =====================================================
+   TARJETAS CADUCADAS - estilo "atenuado" para diferenciarlas
+   a simple vista de las tarjetas activas, sin necesidad de
+   leer el texto. Se aplica agregando la clase "tarjeta-caducada"
+   a la tarjeta desde javascript.js cuando categoria === "caducados".
+   ===================================================== */
+.tarjeta.caducados {
+    opacity: 0.6;
+    filter: grayscale(40%);
+    position: relative;
+}
+
+.tarjeta.caducados:hover {
+    opacity: 0.85;
+}
+
+/* CSS: Cinta de esquina "NO DISPONIBLE" - lado IZQUIERDO a proposito,
+   para no chocar con el pin de favoritos (que siempre vive arriba
+   a la derecha, top:15px right:15px). Se apoya en que .tarjeta ya
+   tiene overflow:hidden, asi que la cinta se recorta limpio sobre
+   la esquina redondeada, como si "envolviera" el borde. */
+.tarjeta.caducados::after {
+    content: "NO DISPONIBLE";
+    position: absolute;
+    top: 18px;
+    left: -38px;
+    width: 150px;
+    background: linear-gradient(135deg, #6b6a67, #45423e);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-align: center;
+    padding: 5px 0;
+    transform: rotate(-45deg);
+    transform-origin: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* CSS: Sombra sutil de esquina detras de la cinta, para el efecto
+   "envuelto" - un degradado suave que simula la tela doblandose */
+.tarjeta.caducados::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, rgba(87, 83, 78, 0.15) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+}
 
 /* =====================================================
    5. MODAL (Ventana Emergente)

@@ -40,6 +40,13 @@ const CATEGORIAS_CON_DATOS = [
     'onlinea', 'linux', 'windows', 'tutoriales', 'programacion',
     'sistemas', 'excel', 'investigacion', 'utilidades'
 ];
+// NOTA: 'caducados' NO va en esta lista a propósito.
+// Esta lista alimenta la pestaña "Todas" y "Favoritos" (ver cargarTodo()).
+// Si 'caducados' estuviera aquí, esas tarjetas se mezclarían con las
+// activas en "Todas". Al dejarla fuera, "Caducados" solo se carga
+// cuando el usuario hace clic en su propia pestaña — que sigue
+// funcionando porque cargarCategoria(cat) hace el import dinámico
+// sin depender de esta lista.
 
 // JS: Carga el archivo de una categoría si aún no está en caché.
 // "async" significa que la función trabaja en segundo plano sin congelar la página.
@@ -832,8 +839,18 @@ generarMenuCategorias();
 // Como filtrarPorCategoria es async, usamos .then() para no bloquear
 // el resto del código mientras llegan los datos
 filtrarPorCategoria('todas').then(() => {
-    // Una vez que cargó todo, actualizamos los contadores del menú
-    actualizarContadoresTabs();
+    // JS: 'caducados' NO está en CATEGORIAS_CON_DATOS a propósito
+    // (para que no aparezca mezclado dentro de "Todas"), pero eso
+    // también significa que actualizarContadoresTabs() no la ve
+    // hasta que el usuario le haga clic — y por eso el badge
+    // arrancaba en 0. Aquí la precargamos en silencio, solo para
+    // llenar cacheNotas y que el contador sea correcto desde el
+    // inicio. cargarCategoria() ya guarda el resultado en caché
+    // sola, así que no hace falta hacer nada con lo que devuelve.
+    cargarCategoria('caducados').then(() => {
+        // Una vez que cargó todo (incluyendo caducados), actualizamos los contadores del menú
+        actualizarContadoresTabs();
+    });
 });
 
 // JS: Se asegura de que la página empiece en la parte superior

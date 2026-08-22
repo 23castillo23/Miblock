@@ -16,7 +16,7 @@ export const datos_onlinea = [
                 <div class="contenedor-comando">
                     <code>
                         <a href="https://www.remove.bg/" target="_blank" class="link-comando">https://www.remove.bg/</a>
-                    https://www.remove.bg/</code>
+                    </code>
                     <button class="btn-copiar-interno" onclick="copiarComando(this)">
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
