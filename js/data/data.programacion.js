@@ -533,5 +533,44 @@ export const datos_programacion = [
         links: [{ texto: "Descargar Cursor", url: "https://cursor.sh" }],
         pasos: []
     },
+    {
+        categoria: "programacion",
+        titulo: "PyCharm Community",
+        imagen: "img/programacion/pycharm.jpg",
+        comando: "pycharm64.exe",
+        descripcion: "IDE profesional de JetBrains especializado en Python, con depurador avanzado y soporte para entornos virtuales.",
+        contenidoTutorialHtml: `
+            <h3>🐘 Instalación de PyCharm (JetBrains)</h3>
+            <p>PyCharm es uno de los IDEs más completos para Python: autocompletado inteligente, depurador visual y gestión integrada de entornos virtuales.</p>
+ 
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Descarga del instalador</h4>
+                <p>Elige la edición <strong>Community</strong> (gratuita) a menos que necesites herramientas web/empresariales de la edición Professional.</p>
+                <div class="contenedor-comando">
+                    <code>
+                        <a href="https://www.jetbrains.com/pycharm/download/?section=windows" target="_blank" class="link-comando">https://www.jetbrains.com/pycharm/download/?section=windows</a>
+                    </code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+ 
+                <h4>Paso 2: Opciones durante la instalación</h4>
+                <div class="nota-advertencia">
+                    <p class="m-0"><strong>⚠️ Recomendado:</strong> Marca <kbd>Add "bin" folder to the PATH</kbd> y <kbd>Create Desktop Shortcut</kbd> para acceder más rápido.</p>
+                </div>
+ 
+                <h4>Paso 3: Configuración del intérprete</h4>
+                <p>Al crear tu primer proyecto, PyCharm te pedirá elegir un <strong>intérprete de Python</strong>. Si ya instalaste Python (con "Add to PATH" activado), debería detectarlo automáticamente.</p>
+ 
+                <h4>Paso 4: Verificación</h4>
+                <div class="contenedor-comando">
+                    <code>pycharm64.exe</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+                <p><small>Al abrirlo, crea un nuevo proyecto de prueba y ejecuta un <code>print("Hola mundo")</code> para confirmar que todo funciona.</small></p>
+            </div>
+        `,
+        links: [{ texto: "Descargar PyCharm", url: "https://www.jetbrains.com/pycharm/download/?section=windows" }],
+        pasos: []
+    },
     // SISTEMAS
 ];
