@@ -533,7 +533,7 @@ export const datos_programacion = [
         links: [{ texto: "Descargar Cursor", url: "https://cursor.sh" }],
         pasos: []
     },
-    {
+{
         categoria: "programacion",
         titulo: "PyCharm Community",
         imagen: "img/programacion/pycharm.jpg",
@@ -567,6 +567,53 @@ export const datos_programacion = [
                     <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
                 </div>
                 <p><small>Al abrirlo, crea un nuevo proyecto de prueba y ejecuta un <code>print("Hola mundo")</code> para confirmar que todo funciona.</small></p>
+            </div>
+ 
+            <div class="separador-grad"></div>
+ 
+            <h3 class="borde-secondary">🐧 Instalación en Linux Mint (vía Snap)</h3>
+            <div class="tutorial-pasos">
+                <h4>1. Elimina el archivo de bloqueo de Snap</h4>
+                <p>Linux Mint bloquea Snap por defecto, así que primero hay que quitar esa restricción:</p>
+                <div class="contenedor-comando">
+                    <code>sudo rm /etc/apt/preferences.d/nosnap.pref</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+ 
+                <h4>2. Actualiza los repositorios</h4>
+                <div class="contenedor-comando">
+                    <code>sudo apt update</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+ 
+                <h4>3. Instala el motor de Snap (snapd)</h4>
+                <div class="contenedor-comando">
+                    <code>sudo apt install snapd</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+ 
+                <div class="nota-peligro">
+                    <p class="m-0"><strong>⚠️ Paso que se olvida fácil:</strong> Después de instalar <code>snapd</code> por primera vez, <strong>reinicia el equipo</strong>. Si no reinicias, el sistema aún no reconoce el servicio de Snap y los comandos siguientes pueden fallar o el programa instalado no aparecerá.</p>
+                </div>
+                <div class="contenedor-comando">
+                    <code>sudo reboot</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+ 
+                <h4>4. Instala PyCharm con Snap</h4>
+                <p>El flag <code>--classic</code> es obligatorio: le da a PyCharm permisos completos del sistema (necesarios para que funcione como un IDE normal).</p>
+                <div class="contenedor-comando">
+                    <code>sudo snap install pycharm-community --classic</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+ 
+                <h4>5. Ábrelo desde la terminal</h4>
+                <p>Una vez instalado (y tras el reinicio), puedes lanzarlo directamente con:</p>
+                <div class="contenedor-comando">
+                    <code>pycharm-community</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+                <p><small>💡 También debería aparecer en el menú de aplicaciones de Linux Mint con su propio ícono, sin necesidad de usar la terminal cada vez.</small></p>
             </div>
         `,
         links: [{ texto: "Descargar PyCharm", url: "https://www.jetbrains.com/pycharm/download/?section=windows" }],

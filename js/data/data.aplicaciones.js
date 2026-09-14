@@ -199,6 +199,113 @@ export const datos_aplicaciones = [
         ],
         pasos: []
     },
+{
+        categoria: "utilidades",
+        titulo: "Instalación y Uso de PDF24 Creator",
+        imagen: "img/aplicaciones/pdf24.jpg",
+        comando: "PDF24 Creator",
+        descripcion: "Manual para instalar y sacar el máximo provecho a PDF24, la navaja suiza gratuita para editar, unir, comprimir y convertir archivos PDF sin conexión a internet.",
+        contenidoTutorialHtml: `
+            <h3>📄 La mejor herramienta PDF gratuita y sin marcas de agua</h3>
+            <p>PDF24 Creator es una suite completa que se instala en tu equipo. A diferencia de muchas herramientas online, procesa todos tus documentos de forma local, garantizando la privacidad de tus datos.</p>
+            
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Descarga del Instalador</h4>
+                <p>Ve al sitio web oficial y descarga la versión para escritorio (disponible para Windows):</p>
+                <ul>
+                    <li><strong>PDF24 Creator (.exe):</strong> Versión estándar, gratuita tanto para uso personal como comercial.</li>
+                    <li><strong>MSI Installer:</strong> Útil si eres administrador de sistemas y necesitas instalarlo en red.</li>
+                </ul>
+                <div class="contenedor-comando">
+                    <code>
+                        <a href="https://tools.pdf24.org/es/creator" target="_blank" class="link-comando">https://tools.pdf24.org/es/creator</a>
+                    </code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar Link</button>
+                </div>
 
+                <h4>Paso 2: Proceso de Instalación</h4>
+                <ol>
+                    <li>Ejecuta el archivo descargado y acepta el acuerdo de licencia.</li>
+                    <li>Sigue las instrucciones del asistente. Es una instalación limpia, <strong>sin programas de terceros ni barras de herramientas ocultas</strong>.</li>
+                    <li>Al finalizar, verás el icono de la oveja (logo de PDF24) en tu escritorio.</li>
+                </ol>
+
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-10"><strong>⚠️ ¿Qué es la Impresora Virtual PDF24?</strong></p>
+                    <ul class="lista-limpia">
+                        <li class="mb-8">🖨️ Durante la instalación, se añadirá una nueva "impresora" a tu sistema operativo.</li>
+                        <li>💡 <strong>Cómo usarla:</strong> En cualquier programa (Word, navegador web, Bloc de notas), dale a "Imprimir" y elige la impresora llamada <em>PDF24</em>. En lugar de usar papel, generará un archivo PDF exacto de lo que estés viendo en pantalla.</li>
+                    </ul>
+                </div>
+
+                <h4>Paso 3: Funciones de la "Caja de Herramientas"</h4>
+                <p>Al abrir el programa desde el escritorio, verás una cuadrícula con múltiples opciones. Las más destacadas son:</p>
+                <ul>
+                    <li><strong>Unir PDF:</strong> Arrastra varios archivos y combínalos en un solo documento.</li>
+                    <li><strong>Comprimir PDF:</strong> Reduce drásticamente el peso de archivos grandes para poder enviarlos por correo.</li>
+                    <li><strong>Proteger / Desbloquear:</strong> Añade o quita contraseñas a tus documentos sensibles.</li>
+                    <li><strong>Extraer páginas:</strong> Saca únicamente las hojas que necesitas de un PDF largo.</li>
+                </ul>
+            </div>
+                <p class="m-0"><i class="fas fa-rocket"></i> <strong>Tip de Productividad:</strong> Si estás en una PC ajena y no puedes instalar programas, PDF24 también ofrece todas estas herramientas en su versión web (Tools PDF24), manteniendo una interfaz idéntica.</p>
+                
+            
+        `,
+        links: [
+            { texto: "Página Oficial de Descarga", url: "https://tools.pdf24.org/es/creator" },
+            { texto: "Video: Tutorial completo de PDF24", url: "https://www.youtube.com/watch?v=mMFK0wzvN_0", plataforma: "youtube" }
+        ],
+        pasos: []
+},
+{
+        categoria: "utilidades",
+        titulo: "Gestión y Edición de Documentos con joPDF",
+        imagen: "img/aplicaciones/jopdf.jpg",
+        comando: "joPDF Web Tools",
+        descripcion: "Descubre cómo utilizar joPDF, una plataforma práctica y directa para unir, dividir, comprimir y convertir tus archivos PDF sin complicaciones.",
+        contenidoTutorialHtml: `
+            <h3>📄 Alternativa rápida para manipular PDFs</h3>
+            <p>joPDF destaca por ser una herramienta directa y al grano. Te permite realizar las modificaciones más comunes que necesitan tus documentos directamente desde el navegador, sin instalaciones pesadas.</p>
+            
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Acceso a la Plataforma</h4>
+                <p>Ingresa al sitio web oficial donde encontrarás el panel principal con todas las herramientas de edición listas para usarse:</p>
+                <div class="contenedor-comando">
+                    <code>
+                        <a href="https://www.jopdf.com/" target="_blank" class="link-comando">https://www.jopdf.com/</a>
+                    </code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar Link</button>
+                </div>
+
+                <h4>Paso 2: Herramientas Principales</h4>
+                <p>Al igual que las grandes suites, joPDF se centra en resolver los problemas del día a día con tus documentos:</p>
+                <ul>
+                    <li><strong>Merge PDF (Unir):</strong> Selecciona varios archivos y combínalos en un único documento continuo.</li>
+                    <li><strong>Split PDF (Dividir):</strong> Separa un archivo grande en páginas individuales o extrae solo el rango que te interesa.</li>
+                    <li><strong>Compress PDF (Comprimir):</strong> Reduce el tamaño del archivo para que sea más fácil enviarlo por correo electrónico.</li>
+                    <li><strong>Conversiones:</strong> Transforma archivos PDF a formatos editables (Word) o de imagen (JPG), y viceversa.</li>
+                </ul>
+
+                <h4>Paso 3: Proceso de Edición (Flujo de Trabajo)</h4>
+                <ol>
+                    <li>Selecciona la herramienta que necesitas en la página principal.</li>
+                    <li>Haz clic en el botón de subida o arrastra tu archivo directamente a la zona marcada.</li>
+                    <li>Configura las opciones (por ejemplo, el orden de las páginas o el nivel de compresión).</li>
+                    <li>Haz clic en procesar y descarga tu nuevo archivo modificado.</li>
+                </ol>
+
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 15px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>⚠️ Ventaja multiplataforma:</strong> Al ser una herramienta basada 100% en la web, puedes utilizar joPDF desde cualquier sistema operativo (Windows, Linux, macOS) o incluso desde el navegador de tu teléfono móvil sin perder funcionalidades.</p>
+                </div>
+            </div>
+                <p class="m-0"><i class="fas fa-rocket"></i> <strong>Tip de Privacidad:</strong> Como con cualquier herramienta web gratuita, es recomendable revisar su política de retención de datos si vas a procesar documentos con información altamente confidencial o sensible.</p>
+                
+            
+        `,
+        links: [
+            { texto: "Página Oficial de joPDF", url: "https://www.jopdf.com/" }
+        ],
+        pasos: []
+},
     // CATEGORIA APLICACIONES ONLINEA
 ];
