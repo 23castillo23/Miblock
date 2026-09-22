@@ -321,7 +321,7 @@ export const datos_sistemas = [
         titulo: "Live Server: Servidor Local para Login",
         imagen: "img/sistemas/LiveServer.jpg", // Puedes usar esta o una de VS Code
         comando: "Extensions > Live Server > Go Live",
-        descripcion: "Activa un servidor virtual local para permitir la autenticación de Google y Firebase sin errores de seguridad.",
+        descripcion: "Extensión para VS Code que Activa un servidor virtual local para permitir la autenticación de Google y Firebase sin errores de seguridad.",
         contenidoTutorialHtml: `
             <h3>🌐 Función en el Proyecto</h3>
             <p>Por seguridad, <strong>Firebase</strong> bloquea cualquier intento de inicio de sesión si abres el archivo <code>index.html</code> directamente (haciendo doble clic). Esto sucede porque el navegador usa el protocolo <code>file://</code>, el cual no es considerado seguro por Google.</p>
@@ -345,6 +345,47 @@ export const datos_sistemas = [
         `,
         links: [
             { texto: "Extensión Oficial", url: "https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer" }
+        ],
+        pasos: []
+    },
+    {
+        categoria: "sistemas",
+        titulo: "PowerShell: Extensión para VS Code",
+        imagen: "img/sistemas/PowerShellExtension.jpg",
+        comando: "Extensions > PowerShell > Install",
+        descripcion: "Agrega soporte completo de PowerShell a Visual Studio Code: resaltado de sintaxis, autocompletado inteligente y depuración de scripts.",
+        contenidoTutorialHtml: `
+            <h3>💻 Función en el Proyecto</h3>
+            <p>Por defecto, VS Code trata los archivos <code>.ps1</code> (scripts de PowerShell) como texto plano — sin colores, sin sugerencias, sin avisos de errores. Esta extensión oficial de <strong>Microsoft</strong> convierte a VS Code en un editor completo para PowerShell, con las mismas comodidades que tienes al escribir JavaScript o Python.</p>
+            
+            <p>Es especialmente útil si trabajas con scripts <code>.bat</code>/<code>.ps1</code> para automatizar tareas de Windows (como los menús de atajos que ya tienes en tu proyecto), ya que te permite escribirlos, probarlos y depurarlos sin salir del editor.</p>
+
+            <div class="tutorial-pasos">
+                <h4>🛠️ Guía de Activación</h4>
+                <ol>
+                    <li>En VS Code, ve al icono de <strong>Extensions</strong> (<code>Ctrl + Shift + X</code>).</li>
+                    <li>Busca e instala: <strong>PowerShell</strong> (autor: Microsoft, verificado).</li>
+                    <li>Una vez instalado, abre o crea cualquier archivo con extensión <code>.ps1</code>.</li>
+                    <li>La extensión se activa automáticamente al detectar ese tipo de archivo — no necesitas configurar nada extra.</li>
+                </ol>
+
+                <h4 class="mt-15">✨ Funciones que agrega</h4>
+                <ul>
+                    <li><strong>Resaltado de sintaxis:</strong> colorea tu código para que sea mucho más fácil de leer.</li>
+                    <li><strong>IntelliSense:</strong> autocompletado inteligente para cmdlets (los comandos de PowerShell) y variables.</li>
+                    <li><strong>Fragmentos de código (snippets):</strong> plantillas ya hechas para estructuras comunes, que puedes insertar escribiendo unas pocas letras.</li>
+                    <li><strong>Detección de problemas:</strong> subraya errores y malas prácticas en tiempo real, usando el analizador oficial de scripts de PowerShell.</li>
+                    <li><strong>Ir a la definición:</strong> te permite saltar directo a donde está definida una función o variable con un clic.</li>
+                </ul>
+                
+                <div class="tech-note note-info">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Dato:</strong> Es una extensión oficial mantenida por Microsoft, con más de 21 millones de descargas — es la opción estándar y recomendada para trabajar con PowerShell dentro de VS Code.</p>
+                </div>
+            </div>
+        `,
+        links: [
+            { texto: "Extensión Oficial", url: "https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell" }
         ],
         pasos: []
     },

@@ -6,13 +6,14 @@ export const datos_aplicaciones = [
         titulo: "CrystalDiskInfo",
         imagen: "img/aplicaciones/crystaldiskinfo.jpg",
         comando: "http://crystalmark.info/download/index-e.html",
-        descripcion: "Monitor de salud y temperatura para unidades de almacenamiento (HDD y SSD).",
+        descripcion: "Revisa qué tan sano está tu disco duro o SSD, como un chequeo médico para tu computadora, para saber si es momento de respaldar tus archivos antes de que sea tarde.",
         contenidoTutorialHtml: `
-            <h3>🔍 Diagnóstico de Almacenamiento</h3>
-            <p>Es la herramienta estándar para verificar si un disco duro o SSD tiene sectores dañados o si su vida útil está por terminar.</p>
-            
+            <h3>🔍 Un chequeo médico para tu disco duro</h3>
+            <p>Todos los discos duros y SSD tienen una vida útil. Este programa los revisa y te avisa, con colores fáciles de entender, si están en buen estado o si están por fallar, para que no pierdas tus fotos, videos o documentos de golpe.</p>
+ 
             <div class="tutorial-pasos">
-                <h4>Enlace de descarga oficial:</h4>
+                <h4>Paso 1: Descarga el programa</h4>
+                <p>Entra al sitio oficial y descarga la versión gratuita para tu computadora:</p>
                 <div class="contenedor-comando">
                     <code>
                         <a href="http://crystalmark.info/download/index-e.html" target="_blank" class="link-comando">http://crystalmark.info/download/index-e.html</a>
@@ -21,7 +22,20 @@ export const datos_aplicaciones = [
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
                 </div>
-                <p><strong>Dato Técnico:</strong> Si el estado aparece en <em>"Riesgo"</em> (amarillo), es el momento ideal para realizar un respaldo inmediato de tu información.</p>
+ 
+                <h4>Paso 2: Instálalo</h4>
+                <p>Abre el archivo descargado y sigue las instrucciones en pantalla, dando clic en "Siguiente" hasta terminar.</p>
+ 
+                <h4>Paso 3: Entiende los colores</h4>
+                <ul>
+                    <li><strong>Azul:</strong> Todo está bien, no hay de qué preocuparse.</li>
+                    <li><strong>Amarillo (Precaución):</strong> El disco empieza a mostrar señales de desgaste.</li>
+                    <li><strong>Rojo (Riesgo):</strong> El disco puede fallar pronto, es momento de respaldar tu información y pensar en cambiarlo.</li>
+                </ul>
+ 
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>💡 Consejo:</strong> Revisa este programa cada pocos meses. Si un día ves que tu computadora empieza a hacer ruidos raros o se pone lenta al abrir archivos, ábrelo de inmediato para checar el estado del disco.</p>
+                </div>
             </div>
         `,
         links: [
@@ -35,13 +49,13 @@ export const datos_aplicaciones = [
         titulo: "AIDA64",
         imagen: "img/aplicaciones/aida64.jpg",
         comando: "https://www.aida64.com/downloads",
-        descripcion: "Diagnóstico avanzado y consulta detallada de todos los componentes de hardware del sistema.",
+        descripcion: "Te muestra, en un solo lugar y de forma clara, toda la información sobre las piezas que tiene tu computadora por dentro.",
         contenidoTutorialHtml: `
-            <h3>📊 Información Detallada del Hardware</h3>
-            <p>Proporciona un informe exhaustivo de cada chip, sensor y componente instalado en la computadora.</p>
-            
+            <h3>📊 Conoce qué tiene tu computadora por dentro</h3>
+            <p>¿Alguna vez quisiste saber qué procesador, memoria o tarjeta gráfica tiene tu equipo, o qué tan caliente se pone mientras lo usas? Este programa te lo muestra todo, explicado de forma ordenada.</p>
+ 
             <div class="tutorial-pasos">
-                <h4>Obtener instalador:</h4>
+                <h4>Paso 1: Descarga el programa</h4>
                 <div class="contenedor-comando">
                     <code>
                         <a href="https://www.aida64.com/downloads" target="_blank" class="link-comando">https://www.aida64.com/downloads</a>
@@ -50,28 +64,38 @@ export const datos_aplicaciones = [
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
                 </div>
-                <p><strong>Uso Pro:</strong> Ideal para verificar las temperaturas bajo carga de trabajo y los voltajes de la fuente de poder.</p>
+ 
+                <h4>Paso 2: Instálalo</h4>
+                <p>Ejecuta el instalador y sigue los pasos. No necesitas cambiar ninguna opción, con dejar todo por defecto es suficiente.</p>
+ 
+                <h4>Paso 3: Explora tu equipo</h4>
+                <p>Al abrirlo verás un menú con carpetas como "Computadora", "Placa base" o "Pantalla". Da clic en cualquiera y podrás ver, por ejemplo, la temperatura de tu procesador en tiempo real.</p>
+ 
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>💡 Consejo:</strong> Es muy útil cuando vas a comprar una computadora usada: te permite ver exactamente qué piezas trae, sin tener que abrirla ni confiar solo en lo que dice el vendedor.</p>
+                </div>
             </div>
         `,
         links: [
-            { texto: "Sitio oficial", url: "https://www.aida64.com/downloads" }
+            { texto: "Sitio oficial", url: "https://www.aida64.com/downloads" },
+            { texto: "Video Tutorial", url: "https://www.youtube.com/watch?v=UBniGXctOaA", plataforma: "youtube" }
         ],
         pasos: []
     },
-
+ 
     // Multimedia y Edición,
 {
         categoria: "aplicaciones",
         titulo: "HandBrake",
         imagen: "img/aplicaciones/handbrake-logo.jpg",
         comando: "https://handbrake.fr/downloads.php",
-        descripcion: "Transcodificador de código abierto para comprimir y convertir videos de un formato a otro.",
+        descripcion: "Reduce el tamaño de tus videos para que ocupen menos espacio, sin que se note la diferencia en la calidad.",
         contenidoTutorialHtml: `
-            <h3>🗜️ Transcodificación de Video</h3>
-            <p>Utilízalo para reducir el tamaño de tus videos sin perder calidad visual notable.</p>
-            
+            <h3>🗜️ Haz tus videos más ligeros</h3>
+            <p>Si un video pesa demasiado para subirlo a internet o enviarlo por WhatsApp, este programa lo comprime para que ocupe mucho menos espacio, casi sin perder calidad.</p>
+ 
             <div class="tutorial-pasos">
-                <h4>Descarga directa:</h4>
+                <h4>Paso 1: Descarga el programa</h4>
                 <div class="contenedor-comando">
                     <code>
                         <a href="https://handbrake.fr/downloads.php" target="_blank" class="link-comando">https://handbrake.fr/downloads.php</a>
@@ -80,12 +104,25 @@ export const datos_aplicaciones = [
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
                 </div>
-                <p><strong>Tip:</strong> Es compatible con aceleración por hardware (NVIDIA NVENC / Intel QuickSync) para conversiones ultra rápidas.</p>
+ 
+                <h4>Paso 2: Instálalo</h4>
+                <p>Abre el instalador y sigue las instrucciones, dando "Siguiente" hasta terminar.</p>
+ 
+                <h4>Paso 3: Reduce tu primer video</h4>
+                <ol>
+                    <li>Abre el programa y arrastra el video que quieres comprimir.</li>
+                    <li>Elige dónde quieres guardar el archivo nuevo.</li>
+                    <li>Da clic en el botón verde "Start" (Iniciar) y espera a que termine.</li>
+                </ol>
+ 
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>💡 Consejo:</strong> No necesitas tocar las opciones avanzadas. Con la configuración que trae por defecto ("Fast 1080p30") ya obtienes un buen resultado.</p>
+                </div>
             </div>
         `,
         links: [
             { texto: "Sitio oficial", url: "https://handbrake.fr/downloads.php" },
-            { texto: "Video Tutorial", url: "https://www.youtube.com/shorts/d00YqovfUhM", plataforma: "youtube" }
+            { texto: "Video Tutorial", url: "https://www.youtube.com/shorts/a4efSJ1X1kM", plataforma: "youtube" }
         ],
         pasos: []
     },
@@ -94,13 +131,13 @@ export const datos_aplicaciones = [
         titulo: "MP3TAG",
         imagen: "img/aplicaciones/mp3tag.jpg",
         comando: "https://www.mp3tag.de/download.html",
-        descripcion: "Editor universal de metadatos (etiquetas) para archivos de audio y carátulas.",
+        descripcion: "Ordena tu música: corrige nombres de canciones, artistas y agrega las portadas de los álbumes, todo de forma rápida y en grupo.",
         contenidoTutorialHtml: `
-            <h3>🏷️ Editor de Etiquetas de Audio</h3>
-            <p>Permite organizar tu biblioteca musical cambiando nombres, autores, géneros y carátulas de forma masiva.</p>
-            
+            <h3>🏷️ Pon en orden tu música</h3>
+            <p>¿Tienes canciones con el nombre mal escrito, sin artista o sin la portada del álbum? Este programa te deja corregir toda esa información de muchas canciones al mismo tiempo, en lugar de una por una.</p>
+ 
             <div class="tutorial-pasos">
-                <h4>Página de descarga:</h4>
+                <h4>Paso 1: Descarga el programa</h4>
                 <div class="contenedor-comando">
                     <code>
                         <a href="https://www.mp3tag.de/download.html" target="_blank" class="link-comando">https://www.mp3tag.de/download.html</a>
@@ -109,10 +146,26 @@ export const datos_aplicaciones = [
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
                 </div>
+ 
+                <h4>Paso 2: Instálalo</h4>
+                <p>Ejecuta el instalador y sigue los pasos, aceptando las opciones que vienen por defecto.</p>
+ 
+                <h4>Paso 3: Corrige tus canciones</h4>
+                <ol>
+                    <li>Abre el programa y arrastra la carpeta con tu música.</li>
+                    <li>Selecciona una o varias canciones de la lista.</li>
+                    <li>Escribe el nombre correcto, el artista o el álbum en los recuadros de la derecha.</li>
+                    <li>Da clic en el botón de guardar (el disco flexible) para aplicar los cambios.</li>
+                </ol>
+ 
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>💡 Consejo:</strong> Puedes seleccionar varias canciones del mismo álbum a la vez y escribir el nombre del artista una sola vez para todas, ahorrándote mucho tiempo.</p>
+                </div>
             </div>
         `,
         links: [
-            { texto: "Sitio oficial", url: "https://www.mp3tag.de/download.html" }
+            { texto: "Sitio oficial", url: "https://www.mp3tag.de/download.html" },
+            { texto: "Video Tutorial", url: "https://www.youtube.com/watch?v=gJ9HmyX10sE", plataforma: "youtube" }
         ],
         pasos: []
     },
@@ -121,13 +174,13 @@ export const datos_aplicaciones = [
         titulo: "MKVToolNix",
         imagen: "img/aplicaciones/mkvtoolnix.jpg",
         comando: "https://mkvtoolnix.download/downloads.html",
-        descripcion: "Herramientas para unir o separar pistas de audio, video y subtítulos en archivos MKV.",
+        descripcion: "Te ayuda a editar tus películas: puedes unir o separar el audio, el video y los subtítulos, o quitar idiomas que no necesitas para que el archivo pese menos.",
         contenidoTutorialHtml: `
-            <h3>🎬 Herramientas para Contenedores MKV</h3>
-            <p>La herramienta definitiva para el 'multiplexado' de archivos de video profesional.</p>
-            
+            <h3>🎬 Edita el contenido de tus películas</h3>
+            <p>Los archivos de video en formato MKV pueden traer varios audios (español, inglés, etc.) y varios subtítulos dentro del mismo archivo. Este programa te deja quitar lo que no usas o unir/separar esas partes, sin tener que volver a convertir todo el video.</p>
+ 
             <div class="tutorial-pasos">
-                <h4>Repositorio de descarga:</h4>
+                <h4>Paso 1: Descarga el programa</h4>
                 <div class="contenedor-comando">
                     <code>
                         <a href="https://mkvtoolnix.download/downloads.html" target="_blank" class="link-comando">https://mkvtoolnix.download/downloads.html</a>
@@ -136,11 +189,26 @@ export const datos_aplicaciones = [
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
                 </div>
-                <p><strong>Función Clave:</strong> Permite eliminar pistas de audio innecesarias o idiomas sobrantes de una película para ahorrar espacio.</p>
+ 
+                <h4>Paso 2: Instálalo</h4>
+                <p>Abre el instalador y sigue las instrucciones hasta terminar.</p>
+ 
+                <h4>Paso 3: Quita un idioma que no necesitas</h4>
+                <ol>
+                    <li>Abre el programa y arrastra tu archivo de video.</li>
+                    <li>Verás una lista con las pistas de audio y subtítulos que trae.</li>
+                    <li>Quita la marca (checkbox) de las pistas que no quieres conservar.</li>
+                    <li>Da clic en "Iniciar multiplexado" para generar el nuevo archivo, más ligero.</li>
+                </ol>
+ 
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>💡 Consejo:</strong> Si descargaste una película con audio en varios idiomas y solo hablas español, quitar los demás audios puede reducir bastante el peso del archivo.</p>
+                </div>
             </div>
         `,
         links: [
-            { texto: "Sitio oficial", url: "https://mkvtoolnix.download/downloads.html" }
+            { texto: "Sitio oficial", url: "https://mkvtoolnix.download/downloads.html" },
+            { texto: "Video Tutorial", url: "https://www.youtube.com/watch?v=gxXCZXVNAuY", plataforma: "youtube" }
         ],
         pasos: []
     },
@@ -149,13 +217,13 @@ export const datos_aplicaciones = [
         titulo: "FastStone Viewer",
         imagen: "img/aplicaciones/FastStone.jpg",
         comando: "https://www.faststone.org/FSIVDownload.htm",
-        descripcion: "Visor y editor ligero de fotos con soporte para archivos RAW y conversión por lotes.",
+        descripcion: "Un visor de fotos rápido y sencillo que te deja ver y comparar tus imágenes lado a lado, mucho más ágil que el que trae Windows.",
         contenidoTutorialHtml: `
-            <h3>🖼️ Visor y Editor Fotográfico</h3>
-            <p>Es una de las mejores alternativas al visor de Windows por su velocidad y capacidad de comparar imágenes lado a lado.</p>
-            
+            <h3>🖼️ Ve tus fotos más rápido y mejor</h3>
+            <p>Es un programa para abrir y organizar tus fotos. Abre las imágenes casi al instante, incluso las de cámaras profesionales, y te permite comparar varias fotos al mismo tiempo para elegir la mejor.</p>
+ 
             <div class="tutorial-pasos">
-                <h4>Enlace de descarga:</h4>
+                <h4>Paso 1: Descarga el programa</h4>
                 <div class="contenedor-comando">
                     <code>
                         <a href="https://www.faststone.org/FSIVDownload.htm" target="_blank" class="link-comando">https://www.faststone.org/FSIVDownload.htm</a>
@@ -163,6 +231,16 @@ export const datos_aplicaciones = [
                     <button class="btn-copiar-interno" onclick="copiarComando(this)">
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
+                </div>
+ 
+                <h4>Paso 2: Instálalo</h4>
+                <p>Ejecuta el instalador y sigue los pasos, dando "Siguiente" hasta terminar.</p>
+ 
+                <h4>Paso 3: Úsalo para ver tus fotos</h4>
+                <p>Ábrelo y navega hasta la carpeta donde tienes tus fotos, en el panel de la izquierda. Da doble clic en cualquier imagen para verla en grande, y usa las flechas del teclado para pasar a la siguiente.</p>
+ 
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>💡 Consejo:</strong> Puedes configurarlo como el programa que abre tus fotos por defecto, para que siempre se abran más rápido que con el visor normal de Windows.</p>
                 </div>
             </div>
         `,
@@ -177,13 +255,13 @@ export const datos_aplicaciones = [
         titulo: "CORSAIR iCUE",
         imagen: "img/aplicaciones/corsair.jpg",
         comando: "https://www.corsair.com/us/en/downloads",
-        descripcion: "Software de gestión para configurar iluminación y funciones en periféricos de la marca Corsair.",
+        descripcion: "El programa para controlar las luces de colores y ajustar el funcionamiento de tus accesorios Corsair (teclado, mouse, ventiladores) desde un solo lugar.",
         contenidoTutorialHtml: `
-            <h3>🖱️ Gestión de Periféricos Corsair</h3>
-            <p>Controla desde un solo lugar el RGB de tu teclado, los perfiles del mouse y el rendimiento de tus ventiladores Corsair.</p>
-            
+            <h3>🖱️ Controla tus accesorios Corsair</h3>
+            <p>Si tienes un teclado, mouse o ventiladores de la marca Corsair, este programa te deja cambiar los colores de las luces, guardar combinaciones que te gusten y ajustar cómo se comporta cada accesorio, todo desde una sola pantalla.</p>
+ 
             <div class="tutorial-pasos">
-                <h4>Centro de descargas:</h4>
+                <h4>Paso 1: Descarga el programa</h4>
                 <div class="contenedor-comando">
                     <code>
                         <a href="https://www.corsair.com/us/en/downloads" target="_blank" class="link-comando">https://www.corsair.com/us/en/downloads</a>
@@ -191,6 +269,16 @@ export const datos_aplicaciones = [
                     <button class="btn-copiar-interno" onclick="copiarComando(this)">
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
+                </div>
+ 
+                <h4>Paso 2: Instálalo y conecta tus accesorios</h4>
+                <p>Instala el programa y conecta tu teclado, mouse u otros accesorios Corsair. El programa los detectará automáticamente al abrirlo.</p>
+ 
+                <h4>Paso 3: Personaliza las luces</h4>
+                <p>Selecciona tu accesorio en la lista de la izquierda, ve a la pestaña de iluminación y elige un color o un efecto (como que las luces cambien poco a poco). Guarda tu combinación favorita como un perfil.</p>
+ 
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>💡 Consejo:</strong> Puedes crear un perfil distinto para cada juego o actividad, y el programa lo cambiará solo cuando abras ese programa.</p>
                 </div>
             </div>
         `,
@@ -200,7 +288,7 @@ export const datos_aplicaciones = [
         pasos: []
     },
 {
-        categoria: "utilidades",
+        categoria: "aplicaciones",
         titulo: "Instalación y Uso de PDF24 Creator",
         imagen: "img/aplicaciones/pdf24.jpg",
         comando: "PDF24 Creator",
@@ -258,7 +346,7 @@ export const datos_aplicaciones = [
         pasos: []
 },
 {
-        categoria: "utilidades",
+        categoria: "aplicaciones",
         titulo: "Gestión y Edición de Documentos con joPDF",
         imagen: "img/aplicaciones/jopdf.jpg",
         comando: "joPDF Web Tools",

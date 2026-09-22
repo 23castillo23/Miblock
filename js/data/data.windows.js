@@ -6,13 +6,14 @@ export const datos_windows = [
         titulo: "Hiren's BootCD PE",
         imagen: "img/windows/HBCD_PE.jpg",
         comando: "https://www.hirensbootcd.org/download/",
-        descripcion: "Entorno de rescate basado en Windows PE para recuperar archivos y reparar sistemas dañados.",
+        descripcion: "Una USB de emergencia que te deja encender tu computadora y rescatar tus archivos, aunque Windows ya no arranque.",
         contenidoTutorialHtml: `
-            <h3>💊 Entorno de Rescate Profesional</h3>
-            <p>Es una herramienta indispensable para técnicos. Permite arrancar la PC desde una USB cuando el Windows original falla.</p>
-            
+            <h3>💊 Una USB de emergencia para tu computadora</h3>
+            <p>Cuando Windows deja de arrancar y solo ves una pantalla negra o un error, esta herramienta te salva: es como una "computadora de repuesto" que corre desde una memoria USB, sin tocar el Windows dañado, para que puedas rescatar tus fotos y documentos o intentar arreglar el problema.</p>
+ 
             <div class="tutorial-pasos">
-                <h4>Instrucciones de descarga:</h4>
+                <h4>Paso 1: Descarga el programa</h4>
+                <p>Entra al sitio oficial y descarga el archivo (viene en formato ISO, listo para grabar en una USB):</p>
                 <div class="contenedor-comando">
                     <code>
                         <a href="https://www.hirensbootcd.org/download/" target="_blank" class="link-comando">https://www.hirensbootcd.org/download/</a>
@@ -21,7 +22,20 @@ export const datos_windows = [
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
                 </div>
-                <p><strong>Dato Pro:</strong> Incluye herramientas preinstaladas para recuperar contraseñas, clonar discos y analizar hardware.</p>
+ 
+                <h4>Paso 2: Prepara tu USB</h4>
+                <p>Necesitas una memoria USB (de al menos 4 GB, que puedas borrar) y un programa como Rufus para copiar el archivo descargado dentro de ella y volverla "de arranque".</p>
+ 
+                <h4>Paso 3: Enciende tu PC desde la USB</h4>
+                <ol>
+                    <li>Conecta la USB a la computadora con problemas.</li>
+                    <li>Enciéndela y presiona la tecla para elegir dónde arrancar (normalmente F12, F11 o Esc, depende de la marca).</li>
+                    <li>Selecciona tu USB en la lista y espera a que cargue el menú de herramientas.</li>
+                </ol>
+ 
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>💡 Consejo:</strong> Ya adentro, trae un programa parecido al explorador de archivos de Windows: úsalo para copiar tus documentos, fotos o videos importantes a otra USB antes de intentar cualquier reparación.</p>
+                </div>
             </div>
         `,
         links: [
@@ -230,19 +244,19 @@ export const datos_windows = [
         ],
         pasos: []
     },
-
+    
 {
         categoria: "windows",
         titulo: "Ventoy (Multiboot)",
         imagen: "img/windows/VentoyUSB.jpg",
         comando: "https://www.ventoy.net/en/download.html",
-        descripcion: "Crea una USB multibooteo donde solo necesitas copiar y pegar tus archivos ISO.",
+        descripcion: "Convierte tu USB en una memoria mágica: guarda ahí varios sistemas operativos a la vez y solo arrastra y suelta los archivos, sin tener que formatearla cada vez.",
         contenidoTutorialHtml: `
-            <h3>📂 Multiboot USB (Ventoy)</h3>
-            <p>A diferencia de Rufus, con Ventoy no necesitas formatear la USB cada vez que quieres cambiar de sistema.</p>
-            
+            <h3>📂 Una sola USB para instalar varios sistemas</h3>
+            <p>Normalmente, cuando quieres tener una USB para instalar Windows, tienes que borrarla por completo. Con Ventoy eso ya no pasa: preparas la USB una sola vez y después solo copias y pegas los archivos que quieras instalar (Windows 10, Windows 11, Linux, etc.), todos juntos y listos para usarse cuando los necesites.</p>
+ 
             <div class="tutorial-pasos">
-                <h4>Descarga Ventoy:</h4>
+                <h4>Paso 1: Descarga Ventoy</h4>
                 <div class="contenedor-comando">
                     <code>
                         <a href="https://www.ventoy.net/en/download.html" target="_blank" class="link-comando">https://www.ventoy.net/en/download.html</a>
@@ -251,7 +265,29 @@ export const datos_windows = [
                         <i class="fas fa-copy"></i> Copiar Link
                     </button>
                 </div>
-                <p><strong>Ventaja:</strong> Puedes tener Windows 10, Windows 11 y Linux en la misma USB y elegir cuál arrancar desde un menú visual.</p>
+ 
+                <h4>Paso 2: Prepara tu USB (solo una vez)</h4>
+                <p>Conecta tu USB (recuerda que se borrará todo lo que tenga), abre el programa Ventoy2Disk y da clic en "Install", eligiendo tu USB en la lista. Esto la deja lista para siempre.</p>
+ 
+                <h4>Paso 3: Agrega los sistemas que quieras</h4>
+                <p>Ahora solo copia tus archivos ISO (de Windows, Linux, etc.) directamente dentro de la USB, como si fuera una carpeta normal. Puedes meter varios al mismo tiempo.</p>
+ 
+                <h4>Paso 4: Úsala en cualquier computadora</h4>
+                <p>Conecta la USB, enciende la PC y elige arrancar desde ella (normalmente con F12, F11 o Esc). Aparecerá un menú donde eliges cuál de los sistemas que guardaste quieres instalar o probar.</p>
+ 
+                <div style="background: rgba(234, 179, 8, 0.08); border: 1px solid #eab308; padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-8"><strong>⚡ Nota: UEFI vs Legacy (BIOS)</strong></p>
+                    <p class="mb-8">Cuando enciendes tu computadora, ella arranca en uno de estos dos modos. Son como dos "idiomas" distintos, y si no coinciden, tu USB puede no aparecer:</p>
+                    <ul class="lista-limpia">
+                        <li class="mb-8"><strong>UEFI (moderno):</strong> lo usan casi todas las computadoras de los últimos 10 años. Arranca más rápido y soporta discos grandes.</li>
+                        <li><strong>Legacy / BIOS (clásico):</strong> el modo viejo, en computadoras más antiguas, más simple pero sin esas ventajas.</li>
+                    </ul>
+                    <p class="mb-0">Al entrar al menú de arranque (F12, F11 o Esc), si ves tu USB dos veces, elige la que dice <em>"UEFI: nombre de tu USB"</em> en computadoras modernas.</p>
+                </div>
+ 
+                <div style="background: rgba(99, 102, 241, 0.05); border: 1px solid var(--primary); padding: 15px; margin: 10px 0; border-radius: 8px;">
+                    <p class="mb-0"><strong>💡 Consejo:</strong> Es ideal si ayudas a instalar sistemas en varias computadoras: en lugar de tener una USB para cada versión de Windows, llevas una sola con todas guardadas.</p>
+                </div>
             </div>
         `,
         links: [
@@ -260,6 +296,7 @@ export const datos_windows = [
         ],
         pasos: []
     },
+
 {
         categoria: "windows",
         titulo: "Massgrave (Activación)",
