@@ -842,5 +842,69 @@ export const datos_programacion = [
         links: [{ texto: "Descargar PyCharm", url: "https://www.jetbrains.com/pycharm/download/?section=windows" }],
         pasos: []
     },
+    {
+        categoria: "programacion",
+        titulo: "Cisco Packet Tracer",
+        imagen: "img/programacion/packet-tracer.jpg",
+        comando: "PacketTracer",
+        descripcion: "Programa gratuito de Cisco para practicar redes de computadoras sin comprar equipo. Arrastras computadoras, routers y cables en la pantalla, los conectas y compruebas que se comuniquen entre sí, todo de forma virtual.",
+        contenidoTutorialHtml: `
+            <h3>🌐 Instalación de Cisco Packet Tracer</h3>
+            <p>Packet Tracer es un simulador: te deja construir una red completa en tu computadora (como armar una maqueta digital) para practicar direcciones IP, subredes, routers y switches sin tocar equipo real. Es la herramienta que se usa en los cursos de redes de Cisco.</p>
+
+            <div class="tutorial-pasos">
+                <h4>Paso 1: Crear tu cuenta gratuita en NetAcad</h4>
+                <p>El programa es gratis, pero Cisco pide una cuenta de <strong>Cisco Networking Academy (NetAcad)</strong> para dejarte descargarlo. Entra al enlace, elige registrarte y crea tu cuenta con tu correo.</p>
+                <div class="contenedor-comando">
+                    <code>
+                        <a href="https://www.netacad.com/es/packet-tracer-download" target="_blank" class="link-comando">https://www.netacad.com/es/packet-tracer-download</a>
+                    </code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+
+                <h4>Paso 2: Descargar el instalador</h4>
+                <p>Con tu cuenta iniciada, busca la opción <strong>Descargar Packet Tracer</strong> (en el sitio suele estar en el menú de Recursos) y elige la versión de <strong>Windows 64 bits</strong>. Descarga la versión más reciente disponible.</p>
+                <div class="nota-advertencia">
+                    <p class="m-0"><strong>⚠️ Descarga solo desde netacad.com.</strong> En otras páginas circulan copias modificadas que pueden traer virus o robar tus datos.</p>
+                </div>
+                <p><small>Si el menú se ve distinto, es normal: Cisco cambia la página de vez en cuando. Busca el nombre "Packet Tracer" dentro de tu cuenta.</small></p>
+
+                <h4>Paso 3: Instalar</h4>
+                <p>Abre el archivo descargado y sigue el asistente: <strong>Next</strong> (Siguiente), acepta la licencia y deja las opciones que vienen por defecto hasta terminar con <strong>Finish</strong>.</p>
+                <div class="nota-peligro">
+                    <p class="m-0"><strong>⚠️ Si Windows muestra "Windows protegió tu PC":</strong> pulsa <kbd>Más información</kbd> y luego <kbd>Ejecutar de todas formas</kbd>. Hazlo solo si descargaste el archivo del sitio oficial de NetAcad.</p>
+                </div>
+
+                <h4>Paso 4: Primer inicio</h4>
+                <p>Al abrir el programa por primera vez te pedirá <strong>iniciar sesión</strong> con la misma cuenta de NetAcad. Es necesario para poder usarlo sin límites.</p>
+
+                <div class="separador-grad"></div>
+
+                <h3 class="borde-secondary">🧪 Tu primera red de prueba</h3>
+                <p>Para comprobar que todo funciona, arma esta red mínima de dos computadoras:</p>
+                <ul>
+                    <li>Abajo a la izquierda elige <strong>Dispositivos finales</strong> y arrastra dos <strong>PC</strong> al área de trabajo.</li>
+                    <li>Elige <strong>Conexiones</strong> (el icono del rayo), selecciona el cable <strong>Cobre cruzado</strong> y únelos haciendo clic en una PC y luego en la otra (puerto FastEthernet).</li>
+                    <li>Haz clic en cada PC, ve a <strong>Desktop &gt; IP Configuration</strong> y ponles IPs de la misma red, por ejemplo <code>192.168.1.1</code> y <code>192.168.1.2</code> con máscara <code>255.255.255.0</code>.</li>
+                    <li>En la primera PC abre <strong>Desktop &gt; Command Prompt</strong> y haz una prueba de comunicación:</li>
+                </ul>
+                <div class="contenedor-comando">
+                    <code>ping 192.168.1.2</code>
+                    <button class="btn-copiar-interno" onclick="copiarComando(this)"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
+                <p><small>💡 Si ves respuestas ("Reply from 192.168.1.2"), tu red funciona. Si dice "Request timed out", revisa que el cable esté bien conectado y que las IPs estén bien escritas.</small></p>
+
+                <div class="nota-exito">
+                    <p class="m-0"><i class="fas fa-info-circle"></i> <strong>Tip:</strong> Guarda tus prácticas con <strong>Archivo &gt; Guardar</strong>. Se crea un archivo <code>.pkt</code> que puedes volver a abrir o entregar a tu maestro.</p>
+                </div>
+            </div>
+        `,
+        links: [
+            { texto: "Descargar Packet Tracer (Centro de recursos NetAcad)", url: "https://www.netacad.com/resources/lab-downloads?courseLang=es-XL" },
+            { texto: "Sitio oficial de Cisco Networking Academy", url: "https://www.netacad.com/" }
+        ],
+        pasos: []
+    },
+
     // SISTEMAS
 ];
